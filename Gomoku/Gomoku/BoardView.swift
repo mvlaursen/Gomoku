@@ -11,10 +11,16 @@ import UIKit
 // This text-based view is temporary and will be replaced with a graphic,
 // SpriteKit-based view.
 class BoardView: UITextView {
+    var game = Game()
+    
     // Temporary, just to test board rendering.
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.render(board: Board())
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (_) in
+            self.game.doTurn()
+            self.render(board: self.game.board)
+        }
     }
     
     /*

@@ -23,7 +23,9 @@ struct Board {
         squares = Array(repeating: Array(repeating: .empty, count: Board.boardSize), count: Board.boardSize)
     }
     
-    init(copying other: Board) {
-        squares = other.squares
+    init(board other: Board, row: Int, column: Int, square: Square) {
+        var newSquares = other.squares
+        newSquares[row][column] = square
+        self.squares = newSquares
     }
 }

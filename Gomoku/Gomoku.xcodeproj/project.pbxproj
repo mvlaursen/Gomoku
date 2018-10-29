@@ -18,6 +18,7 @@
 		3B1EA390218683D500A23700 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1EA38F218683D500A23700 /* SpriteKit.framework */; };
 		3B1EA3922186A0B300A23700 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3912186A0B300A23700 /* BoardView.swift */; };
 		3B1EA3942186A5B900A23700 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3932186A5B900A23700 /* Board.swift */; };
+		3B6E29C9218777C200F4AF0B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E29C8218777C200F4AF0B /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		3B1EA38F218683D500A23700 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		3B1EA3912186A0B300A23700 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		3B1EA3932186A5B900A23700 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		3B6E29C8218777C200F4AF0B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				3B1EA35F2186781700A23700 /* ViewController.swift */,
 				3B1EA3932186A5B900A23700 /* Board.swift */,
 				3B1EA3912186A0B300A23700 /* BoardView.swift */,
+				3B6E29C8218777C200F4AF0B /* Game.swift */,
 				3B1EA3612186781700A23700 /* Main.storyboard */,
 				3B1EA3672186781900A23700 /* Assets.xcassets */,
 				3B1EA3692186781900A23700 /* LaunchScreen.storyboard */,
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B1EA3602186781700A23700 /* ViewController.swift in Sources */,
+				3B6E29C9218777C200F4AF0B /* Game.swift in Sources */,
 				3B1EA3922186A0B300A23700 /* BoardView.swift in Sources */,
 				3B1EA3942186A5B900A23700 /* Board.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,
