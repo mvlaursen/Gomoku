@@ -11,27 +11,12 @@ import UIKit
 // This text-based view is temporary and will be replaced with a graphic,
 // SpriteKit-based view.
 class BoardView: UITextView {
+    // Temporary, just to test board rendering.
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.text = """
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            . . . . . . . . . . . . . . .\n
-            """
+        self.render(board: Board())
     }
-
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -39,5 +24,24 @@ class BoardView: UITextView {
         // Drawing code
     }
     */
-
+    
+    func render(board: Board) {
+        var text = ""
+        
+        for row in board.squares {
+            for square in row {
+                switch square {
+                case .empty:
+                    text.append(".")
+                case .black:
+                    text.append("B")
+                case .white:
+                    text.append("W")
+                }
+            }
+            text.append("\n")
+        }
+        
+        self.text = text
+    }
 }

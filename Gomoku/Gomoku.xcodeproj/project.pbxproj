@@ -17,6 +17,7 @@
 		3B1EA3812186781900A23700 /* GomokuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3802186781900A23700 /* GomokuUITests.swift */; };
 		3B1EA390218683D500A23700 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1EA38F218683D500A23700 /* SpriteKit.framework */; };
 		3B1EA3922186A0B300A23700 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3912186A0B300A23700 /* BoardView.swift */; };
+		3B1EA3942186A5B900A23700 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3932186A5B900A23700 /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		3B1EA3822186781900A23700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B1EA38F218683D500A23700 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		3B1EA3912186A0B300A23700 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		3B1EA3932186A5B900A23700 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				3B1EA35D2186781700A23700 /* AppDelegate.swift */,
 				3B1EA35F2186781700A23700 /* ViewController.swift */,
+				3B1EA3932186A5B900A23700 /* Board.swift */,
 				3B1EA3912186A0B300A23700 /* BoardView.swift */,
 				3B1EA3612186781700A23700 /* Main.storyboard */,
 				3B1EA3672186781900A23700 /* Assets.xcassets */,
@@ -276,6 +279,7 @@
 			files = (
 				3B1EA3602186781700A23700 /* ViewController.swift in Sources */,
 				3B1EA3922186A0B300A23700 /* BoardView.swift in Sources */,
+				3B1EA3942186A5B900A23700 /* Board.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,
 				3B1EA3662186781700A23700 /* Gomoku.xcdatamodeld in Sources */,
 			);
