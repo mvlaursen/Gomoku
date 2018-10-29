@@ -17,9 +17,13 @@ class BoardView: UITextView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.render(board: Board())
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (_) in
-            self.game.doTurn()
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            let completedTurn = self.game.doTurn()
             self.render(board: self.game.board)
+            if !completedTurn {
+                timer.invalidate()
+            }
         }
     }
     
@@ -34,9 +38,9 @@ class BoardView: UITextView {
     func render(board: Board) {
         var text = ""
         
-        for row in board.squares {
-            for square in row {
-                switch square {
+        for i in 0..<Board.boardSize {
+            for j in 0..<Board.boardSize {
+                switch board.squares[i * Board.boardSize + j] {
                 case .empty:
                     text.append(".")
                 case .black:

@@ -17,15 +17,24 @@ enum Square {
 struct Board {
     static let boardSize = 15
     
-    let squares: [[Square]]
+    let availableMoves: Set<Int>
+    let squares: [Square]
     
     init() {
-        squares = Array(repeating: Array(repeating: .empty, count: Board.boardSize), count: Board.boardSize)
+        let numSquares = Board.boardSize * Board.boardSize
+        availableMoves = Set(Array<Int>.init(0..<numSquares))
+        squares = Array(repeating: .empty, count: numSquares)
     }
     
-    init(board other: Board, row: Int, column: Int, square: Square) {
+    init(board other: Board, index: Int, square: Square) {
+        // TODO Protect against bad index.
+        
+        var newAvailableMoves = other.availableMoves
+        newAvailableMoves.remove(index)
+        self.availableMoves = newAvailableMoves
+        
         var newSquares = other.squares
-        newSquares[row][column] = square
+        newSquares[index] = square
         self.squares = newSquares
     }
 }

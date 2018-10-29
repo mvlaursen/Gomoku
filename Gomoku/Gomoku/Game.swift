@@ -11,47 +11,23 @@ import Foundation
 class Game {
     var board: Board = Board()
     
-    func doTurn() {
-        if doWhiteMove() {
-            doBlackMove()
-        }
+    func doTurn() -> Bool {
+        return doWhiteMove() && doBlackMove()
     }
     
-    func doBlackMove() {
-        var foundMove = false
-        
-        for i in 0...board.squares.count {
-            for j in 0...board.squares[i].count {
-                if board.squares[i][j] == .empty {
-                    board = Board(board: self.board, row: i, column: j, square: .black)
-                    foundMove = true
-                    break
-                }
-            }
-            
-            if foundMove {
-                break
-            }
+    func doBlackMove() -> Bool {
+        guard let moveIndex = board.availableMoves.randomElement() else {
+            return false
         }
+        board = Board(board: board, index: moveIndex, square: .black)
+        return true
     }
 
     func doWhiteMove() -> Bool {
-        var foundMove = false
-        
-        for i in 0...board.squares.count {
-            for j in 0...board.squares[i].count {
-                if board.squares[i][j] == .empty {
-                    board = Board(board: self.board, row: i, column: j, square: .white)
-                    foundMove = true
-                    break
-                }
-            }
-            
-            if foundMove {
-                break
-            }
+        guard let moveIndex = board.availableMoves.randomElement() else {
+            return false
         }
-        
-        return foundMove
+        board = Board(board: board, index: moveIndex, square: .white)
+        return true
     }
 }
