@@ -69,16 +69,31 @@ class Game {
     }
     
     func generateListOfRunIndices(moveIndex: Int) -> [[Int]] {
-        // TODO This only generates horizontal runs within a single row. Need
-        // to generate diagonal and vertical runs.
+        let moveRow = moveIndex / 15
         
-        let leftIndexForRow = 15 * (moveIndex / 15)
-        let leftIndex = max(moveIndex - 4, leftIndexForRow)
+        let leftIndexForRow = 15 * moveRow
+        let leftIndex = max(leftIndexForRow, moveIndex - 4)
         let rightIndex = min(moveIndex, leftIndexForRow + 10)
+        
+        let topRow = max(0, moveRow - 4)
+        let bottomRow = min(moveRow, 10)
+        let moveOffsetInRow = moveIndex - leftIndexForRow
+        
         var list: [[Int]] = []
 
+        // Generate horizontal runs.
         for index in leftIndex...rightIndex {
             list.append([index, index + 1, index + 2, index + 3, index + 4])
+        }
+        
+        // Generate vertical runs.
+        for row in topRow...bottomRow {
+            list.append([
+                15 * row + moveOffsetInRow,
+                15 * (row + 1) + moveOffsetInRow,
+                15 * (row + 2) + moveOffsetInRow,
+                15 * (row + 3) + moveOffsetInRow,
+                15 * (row + 4) + moveOffsetInRow])
         }
         
         return list
