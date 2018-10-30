@@ -68,6 +68,8 @@ class Game {
         return false
     }
     
+    // TODO: This is a complicated calculation. Consider replacing all of this
+    // with pre-generated or partially generated data stored in the app bundle.
     func generateListOfRunIndices(moveIndex: Int) -> [[Int]] {
         let moveRow = moveIndex / 15
         
