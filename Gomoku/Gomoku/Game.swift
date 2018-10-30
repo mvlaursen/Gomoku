@@ -12,25 +12,33 @@ class Game {
     var board: Board = Board()
     
     func doTurn() -> Bool {
-        return doWhiteMove() && doBlackMove()
+        var gameOver = true
+        
+        if let whiteMoveIndex = doWhiteMove() {
+            if !didWin(moveIndex: whiteMoveIndex) {
+                if let blackMoveIndex = doBlackMove() {
+                    gameOver = didWin(moveIndex: blackMoveIndex)
+                }
+            }
+        }
+        
+        return gameOver
     }
     
-    func doBlackMove() -> Bool {
+    func doBlackMove() -> Int? {
         guard let moveIndex = board.availableMoves.randomElement() else {
-            return false
+            return nil
         }
         board = Board(board: board, index: moveIndex, square: .black)
-        let win = didWin(moveIndex: moveIndex)
-        return true
+        return moveIndex
     }
 
-    func doWhiteMove() -> Bool {
+    func doWhiteMove() -> Int? {
         guard let moveIndex = board.availableMoves.randomElement() else {
-            return false
+            return nil
         }
         board = Board(board: board, index: moveIndex, square: .white)
-        let win = didWin(moveIndex: moveIndex)
-        return true
+        return moveIndex
     }
     
     func didWin(moveIndex: Int) -> Bool {

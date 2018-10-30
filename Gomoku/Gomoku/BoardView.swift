@@ -19,9 +19,9 @@ class BoardView: UITextView {
         self.render(board: Board())
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-            let completedTurn = self.game.doTurn()
+            let gameOver = self.game.doTurn()
             self.render(board: self.game.board)
-            if !completedTurn {
+            if gameOver {
                 timer.invalidate()
             }
         }
