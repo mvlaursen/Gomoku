@@ -88,8 +88,8 @@ class Game {
             list.append([index, index + 1, index + 2, index + 3, index + 4])
         }
         
-        // Generate vertical runs.
         for row in topRow...bottomRow {
+            // Append vertical run.
             list.append([
                 15 * row + moveOffsetInRow,
                 15 * (row + 1) + moveOffsetInRow,
