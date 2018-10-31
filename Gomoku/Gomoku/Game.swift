@@ -68,36 +68,70 @@ class Game {
         return false
     }
     
-    // TODO: This is a complicated calculation. Consider replacing all of this
-    // with pre-generated or partially generated data stored in the app bundle.
-    func generateListOfRunIndices(moveIndex: Int) -> [[Int]] {
-        let moveRow = moveIndex / 15
-        
-        let leftIndexForRow = 15 * moveRow
-        let leftIndex = max(leftIndexForRow, moveIndex - 4)
-        let rightIndex = min(moveIndex, leftIndexForRow + 10)
-        
-        let topRow = max(0, moveRow - 4)
-        let bottomRow = min(moveRow, 10)
-        let moveOffsetInRow = moveIndex - leftIndexForRow
-        
-        var list: [[Int]] = []
+    // Templates for run indices
+    static let horzTemplates = [[-4, -3, -2, -1, 0], [-3, -2, -1, 0, 1],
+        [-2, -1, 0, 1, 2], [-1, 0, 1, 2, 3], [0, 1, 2, 3, 4]]
+    static let vertTemplates = [[-60, -45, -30, -15, 0],
+        [-45, -30, -15, 0, 15], [-30, -15, 0, 15, 30], [-15, 0, 15, 30, 45],
+        [0, 15, 30, 45, 60]]
+    static let diagTemplates = [[-64, -48, -32, -16, 0],
+        [-48, -32, -16, 0, 16], [-32, -16, 0, 16, 32], [-16, 0, 16, 32, 48],
+        [0, 16, 32, 48, 64]]
+    static let rdiagTemplates = [[-56, -42, -28, -14, 0],
+        [-42, -28, -14, 0, 14], [-28, -14, 0, 14, 28], [-14, 0, 14, 28, 42],
+        [0, 14, 28, 42, 56]]
+    
+    func offsetTemplates(templates: [[Int]], offset: Int) -> [[Int]] {
+        let runIndices = templates.map { (template: [Int]) -> [Int] in
+            template.map { (index: Int) -> Int in
+                index + offset
+            }
+        }
+        return runIndices
+    }
+    
+    func filterByRunBounds(runIndicesList: [[Int]], lowerBound: Int, upperBound: Int) -> [[Int]] {
+        let filteredRunIndicesList = runIndicesList.filter { (runIndices: [Int]) -> Bool in
+            runIndices.allSatisfy({ (index) -> Bool in
+                index >= lowerBound && index <= upperBound
+            })
+        }
+        return filteredRunIndicesList
+    }
 
-        // Generate horizontal runs.
-        for index in leftIndex...rightIndex {
-            list.append([index, index + 1, index + 2, index + 3, index + 4])
-        }
+    // TODO: This is a complicated calculation. Consider replacing all of this
+    // with a pre-generated run list for each move index.
+    func generateListOfRunIndices(moveIndex: Int) -> [[Int]] {
+        var runIndicesList: [[Int]] = []
         
-        for row in topRow...bottomRow {
-            // Append vertical run.
-            list.append([
-                15 * row + moveOffsetInRow,
-                15 * (row + 1) + moveOffsetInRow,
-                15 * (row + 2) + moveOffsetInRow,
-                15 * (row + 3) + moveOffsetInRow,
-                15 * (row + 4) + moveOffsetInRow])
-        }
+        // Horizontal run indices
         
-        return list
+        let horzIndices = offsetTemplates(templates: Game.horzTemplates, offset: moveIndex)
+        let leftmostInRow = 15 * (moveIndex / 15)
+        let rightmostInRow = leftmostInRow + 14
+        let horzIndicesFiltered = filterByRunBounds(runIndicesList: horzIndices, lowerBound: leftmostInRow, upperBound: rightmostInRow)
+        runIndicesList.append(contentsOf: horzIndicesFiltered)
+        
+        // Vertical run indices
+        
+        let vertIndices = offsetTemplates(templates: Game.vertTemplates, offset: moveIndex)
+        let topInCol = max(0, moveIndex - 60)
+        let bottomInCol = min(224, moveIndex + 60)
+        let vertIndicesFiltered = filterByRunBounds(runIndicesList: vertIndices, lowerBound: topInCol, upperBound: bottomInCol)
+        runIndicesList.append(contentsOf: vertIndicesFiltered)
+        
+        let diagIndices = offsetTemplates(templates: Game.diagTemplates, offset: moveIndex)
+        let topLeftCorner = max(0, moveIndex - 64)
+        let bottomRightCorner = min(224, moveIndex + 64)
+        let diagIndicesFiltered = filterByRunBounds(runIndicesList: diagIndices, lowerBound: topLeftCorner, upperBound: bottomRightCorner)
+        runIndicesList.append(contentsOf: diagIndicesFiltered)
+        
+        let rdiagIndices = offsetTemplates(templates: Game.rdiagTemplates, offset: moveIndex)
+        let topRightCorner = max(0, moveIndex - 56)
+        let bottomLeftCorner = min(224, moveIndex + 56)
+        let rdiagIndicesFiltered = filterByRunBounds(runIndicesList: rdiagIndices, lowerBound: topRightCorner, upperBound: bottomLeftCorner)
+        runIndicesList.append(contentsOf: rdiagIndicesFiltered)
+        
+       return runIndicesList
     }
 }
