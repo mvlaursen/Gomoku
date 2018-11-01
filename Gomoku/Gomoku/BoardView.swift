@@ -16,7 +16,7 @@ class BoardView: UITextView {
     // Temporary, just to test board rendering.
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.render(board: Board())
+        self.render(board: game.board)
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             let gameOver = self.game.doTurn()

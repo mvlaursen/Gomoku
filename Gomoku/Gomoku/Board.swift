@@ -45,7 +45,7 @@ struct Board {
     }
     
     init(board other: Board, index: Int, square: Square) {
-        // TODO Protect against bad index.
+        assert(index > 0 && index < other.squares.count)
         
         var newAvailableMoves = other.availableMoves
         newAvailableMoves.remove(index)
