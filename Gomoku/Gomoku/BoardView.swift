@@ -10,39 +10,28 @@ import UIKit
 
 class BoardView: UIView {
     var game = Game()
-
-/*    override init(frame: CGRect) {
-        super.init(frame: frame)
-//        self.render(board: game.board)
-        
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-            let gameOver = self.game.doTurn()
-//            self.render(board: self.game.board)
-            if gameOver {
-                timer.invalidate()
-            }
-        }
-    }*/
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //        self.render(board: game.board)
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             let gameOver = self.game.doTurn()
-            //            self.render(board: self.game.board)
+            self.setNeedsDisplay()
             if gameOver {
                 timer.invalidate()
             }
         }
     }
     
-    /*
+    let colors = [UIColor.red, UIColor.green, UIColor.blue]
+
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        let color:UIColor = colors.randomElement()!
+        let rect = CGRect(x: 25, y: 25, width: 100, height: 100)
+        let bpath:UIBezierPath = UIBezierPath(rect: rect)
+        color.set()
+        bpath.stroke()
     }
-    */
-
 }
