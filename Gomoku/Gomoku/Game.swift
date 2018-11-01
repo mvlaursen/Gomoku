@@ -73,7 +73,7 @@ class Game {
             if run.allSatisfy({ (square: Square) -> Bool in
                 square == squareAtMove
             }) {
-                print(runIndices)
+                print("\(squareAtMove): \(runIndices)")
                 return true
             }
         }
