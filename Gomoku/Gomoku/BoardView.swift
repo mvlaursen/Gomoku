@@ -38,9 +38,11 @@ class BoardView: UITextView {
     func render(board: Board) {
         var text = ""
         
-        for i in 0..<Board.boardSize {
-            for j in 0..<Board.boardSize {
-                switch board.squares[i * Board.boardSize + j] {
+        for i in 0..<Board.extendedBoardSize {
+            for j in 0..<Board.extendedBoardSize {
+                switch board.squares[i * Board.extendedBoardSize + j] {
+                case .outofbounds:
+                    text.append("-")
                 case .empty:
                     text.append(".")
                 case .black:
