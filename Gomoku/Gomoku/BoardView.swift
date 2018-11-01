@@ -2,25 +2,35 @@
 //  BoardView.swift
 //  Gomoku
 //
-//  Created by Mike Laursen on 10/28/18.
+//  Created by Mike Laursen on 11/1/18.
 //  Copyright © 2018 Appamajigger. All rights reserved.
 //
 
 import UIKit
 
-// This text-based view is temporary and will be replaced with a graphic,
-// SpriteKit-based view.
-class BoardView: UITextView {
+class BoardView: UIView {
     var game = Game()
-    
-    // Temporary, just to test board rendering.
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.render(board: game.board)
+
+/*    override init(frame: CGRect) {
+        super.init(frame: frame)
+//        self.render(board: game.board)
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             let gameOver = self.game.doTurn()
-            self.render(board: self.game.board)
+//            self.render(board: self.game.board)
+            if gameOver {
+                timer.invalidate()
+            }
+        }
+    }*/
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        //        self.render(board: game.board)
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            let gameOver = self.game.doTurn()
+            //            self.render(board: self.game.board)
             if gameOver {
                 timer.invalidate()
             }
@@ -34,26 +44,5 @@ class BoardView: UITextView {
         // Drawing code
     }
     */
-    
-    func render(board: Board) {
-        var text = ""
-        
-        for i in 0..<Board.paddedBoardDim {
-            for j in 0..<Board.paddedBoardDim {
-                switch board.squares[i * Board.paddedBoardDim + j] {
-                case .outofbounds:
-                    text.append("-")
-                case .empty:
-                    text.append(".")
-                case .black:
-                    text.append("B")
-                case .white:
-                    text.append("W")
-                }
-            }
-            text.append("\n")
-        }
-        
-        self.text = text
-    }
+
 }
