@@ -23,20 +23,14 @@ class BoardView: UIView {
         }
     }
     
-    let colors = [UIColor.red, UIColor.green, UIColor.blue]
-
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         assert(rect.size.width == rect.size.height)
 
         let numSquares = CGFloat(Board.paddedBoardDim)
+        let numSquares2 = CGFloat(Board.playableBoardDim)
         let squareDim = rect.size.width / (numSquares + 1.0)
 
-        // This is hinky, but it's just temporary: change the color each time
-        // we draw just so we can see that we are redrawing.
-        colors.randomElement()!.set()
-        
+        UIColor.lightGray.set()
         for row in 1...Board.paddedBoardDim {
             let y = CGFloat(row) * squareDim
             let horzLine = UIBezierPath()
@@ -48,6 +42,22 @@ class BoardView: UIView {
             let vertLine = UIBezierPath()
             vertLine.move(to: CGPoint(x: y, y: squareDim))
             vertLine.addLine(to: CGPoint(x: y, y: numSquares * squareDim))
+            vertLine.close()
+            vertLine.stroke()
+        }
+        
+        UIColor.black.set()
+        for row in 5...(Board.playableBoardDim + 4) {
+            let y = CGFloat(row) * squareDim
+            let horzLine = UIBezierPath()
+            horzLine.move(to: CGPoint(x: 5.0 * squareDim, y: y))
+            horzLine.addLine(to: CGPoint(x: 4.0 * squareDim + numSquares2 * squareDim, y: y))
+            horzLine.close()
+            horzLine.stroke()
+            
+            let vertLine = UIBezierPath()
+            vertLine.move(to: CGPoint(x: y, y: 5.0 * squareDim))
+            vertLine.addLine(to: CGPoint(x: y, y: 4.0 * squareDim + numSquares2 * squareDim))
             vertLine.close()
             vertLine.stroke()
         }
