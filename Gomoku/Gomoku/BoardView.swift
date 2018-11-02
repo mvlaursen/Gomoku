@@ -28,10 +28,28 @@ class BoardView: UIView {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        let color:UIColor = colors.randomElement()!
-        let rect = CGRect(x: 25, y: 25, width: 100, height: 100)
-        let bpath:UIBezierPath = UIBezierPath(rect: rect)
-        color.set()
-        bpath.stroke()
+        assert(rect.size.width == rect.size.height)
+
+        let numSquares = CGFloat(Board.paddedBoardDim)
+        let squareDim = rect.size.width / (numSquares + 1.0)
+
+        // This is hinky, but it's just temporary: change the color each time
+        // we draw just so we can see that we are redrawing.
+        colors.randomElement()!.set()
+        
+        for row in 1...Board.paddedBoardDim {
+            let y = CGFloat(row) * squareDim
+            let horzLine = UIBezierPath()
+            horzLine.move(to: CGPoint(x: squareDim, y: y))
+            horzLine.addLine(to: CGPoint(x: numSquares * squareDim, y: y))
+            horzLine.close()
+            horzLine.stroke()
+            
+            let vertLine = UIBezierPath()
+            vertLine.move(to: CGPoint(x: y, y: squareDim))
+            vertLine.addLine(to: CGPoint(x: y, y: numSquares * squareDim))
+            vertLine.close()
+            vertLine.stroke()
+        }
     }
 }
