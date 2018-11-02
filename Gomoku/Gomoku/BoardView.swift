@@ -24,40 +24,43 @@ class BoardView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        // The rect is supposed to have a 1:1 aspect ratio layout constraint.
         assert(rect.size.width == rect.size.height)
 
-        let numSquares = CGFloat(Board.paddedBoardDim)
-        let numSquares2 = CGFloat(Board.playableBoardDim)
-        let squareDim = rect.size.width / (numSquares + 1.0)
+        let numSquaresPadded = CGFloat(Board.paddedBoardDim)
+        let numSquaresPlayable = CGFloat(Board.playableBoardDim)
+        let squareDim = rect.size.width / (numSquaresPadded + 1.0)
 
         UIColor.lightGray.set()
         for row in 1...Board.paddedBoardDim {
-            let y = CGFloat(row) * squareDim
+            let rank = CGFloat(row) * squareDim
+            let lineLength = numSquaresPadded * squareDim
             let horzLine = UIBezierPath()
-            horzLine.move(to: CGPoint(x: squareDim, y: y))
-            horzLine.addLine(to: CGPoint(x: numSquares * squareDim, y: y))
+            horzLine.move(to: CGPoint(x: squareDim, y: rank))
+            horzLine.addLine(to: CGPoint(x: lineLength, y: rank))
             horzLine.close()
             horzLine.stroke()
             
             let vertLine = UIBezierPath()
-            vertLine.move(to: CGPoint(x: y, y: squareDim))
-            vertLine.addLine(to: CGPoint(x: y, y: numSquares * squareDim))
+            vertLine.move(to: CGPoint(x: rank, y: squareDim))
+            vertLine.addLine(to: CGPoint(x: rank, y: lineLength))
             vertLine.close()
             vertLine.stroke()
         }
         
         UIColor.black.set()
         for row in 5...(Board.playableBoardDim + 4) {
-            let y = CGFloat(row) * squareDim
+            let rank = CGFloat(row) * squareDim
+            let lineLength = numSquaresPlayable * squareDim
             let horzLine = UIBezierPath()
-            horzLine.move(to: CGPoint(x: 5.0 * squareDim, y: y))
-            horzLine.addLine(to: CGPoint(x: 4.0 * squareDim + numSquares2 * squareDim, y: y))
+            horzLine.move(to: CGPoint(x: 5.0 * squareDim, y: rank))
+            horzLine.addLine(to: CGPoint(x: 4.0 * squareDim + lineLength, y: rank))
             horzLine.close()
             horzLine.stroke()
             
             let vertLine = UIBezierPath()
-            vertLine.move(to: CGPoint(x: y, y: 5.0 * squareDim))
-            vertLine.addLine(to: CGPoint(x: y, y: 4.0 * squareDim + numSquares2 * squareDim))
+            vertLine.move(to: CGPoint(x: rank, y: 5.0 * squareDim))
+            vertLine.addLine(to: CGPoint(x: rank, y: 4.0 * squareDim + lineLength))
             vertLine.close()
             vertLine.stroke()
         }
