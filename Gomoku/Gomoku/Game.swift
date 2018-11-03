@@ -23,19 +23,20 @@ class Game {
         [-14, 0, 14, 28, 42], [0, 14, 28, 42, 56]]
     
     var board: Board = Board()
+    var winningRun: Array<Int>? = nil
     
     func doTurn() -> Bool {
-        var gameOver = true
-        
-        if let whiteMoveIndex = doWhiteMove() {
-            if !didWin(moveIndex: whiteMoveIndex) {
-                if let blackMoveIndex = doBlackMove() {
-                    gameOver = didWin(moveIndex: blackMoveIndex)
+        if let blackMoveIndex = doBlackMove() {
+            if didWin(moveIndex: blackMoveIndex) {
+                return true
+            } else if let whiteMoveIndex = doWhiteMove() {
+                if didWin(moveIndex: whiteMoveIndex) {
+                    return true
                 }
             }
         }
         
-        return gameOver
+        return false
     }
     
     func doBlackMove() -> Int? {
@@ -74,6 +75,7 @@ class Game {
                 square == squareAtMove
             }) {
                 print("\(squareAtMove): \(runIndices)")
+                self.winningRun = runIndices
                 return true
             }
         }

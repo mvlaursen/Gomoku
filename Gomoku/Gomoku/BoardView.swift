@@ -74,5 +74,11 @@ class BoardView: UIView {
                 }
             }
         }
+        
+        if let winningRun = game.winningRun {
+            for index in winningRun {
+                drawStone(rect: rect, color: UIColor.red, row: index / Board.paddedBoardDim, col: index - (Board.paddedBoardDim * (index / Board.paddedBoardDim)))
+            }
+        }
     }
 }
