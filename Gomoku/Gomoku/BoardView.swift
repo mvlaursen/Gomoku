@@ -57,23 +57,22 @@ class BoardView: UIView {
         stone.fill()
         stone.stroke()
     }
-
-    // Again, this is temporary silliness, just so we can see the board being
-    // redrawn with each game turn.
-    static let colors = [UIColor.black, UIColor.red, UIColor.green, UIColor.blue]
     
     override func draw(_ rect: CGRect) {
         // The rect is supposed to have a 1:1 aspect ratio layout constraint.
         assert(rect.size.width == rect.size.height)
 
         drawGrid(rect: rect, color: UIColor.lightGray, firstRank: 0, numRanks: Board.paddedBoardDim)
-        drawGrid(rect: rect, color: BoardView.colors.randomElement()!, firstRank: 4, numRanks: Board.playableBoardDim)
+        drawGrid(rect: rect, color: UIColor.black, firstRank: Board.lowerBound, numRanks: Board.playableBoardDim)
         
-        drawStone(rect: rect, color: UIColor.black, row: 5, col: 5)
-        drawStone(rect: rect, color: UIColor.black, row: 6, col: 6)
-        drawStone(rect: rect, color: UIColor.black, row: 7, col: 7)
-        drawStone(rect: rect, color: UIColor.black, row: 8, col: 8)
-        drawStone(rect: rect, color: UIColor.black, row: 9, col: 9)
-
+        for row in Board.runLength..<Board.playableBoardDim + Board.runLength {
+            for col in Board.runLength..<Board.playableBoardDim + Board.runLength {
+                switch game.board.squares[row * Board.playableBoardDim + col] {
+                case .black: drawStone(rect: rect, color: UIColor.black, row: row, col: col)
+                case .white: drawStone(rect: rect, color: UIColor.lightGray, row: row, col: col)
+                default: break
+                }
+            }
+        }
     }
 }
