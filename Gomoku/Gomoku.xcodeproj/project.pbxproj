@@ -16,7 +16,6 @@
 		3B1EA3762186781900A23700 /* GomokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3752186781900A23700 /* GomokuTests.swift */; };
 		3B1EA3812186781900A23700 /* GomokuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3802186781900A23700 /* GomokuUITests.swift */; };
 		3B1EA390218683D500A23700 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1EA38F218683D500A23700 /* SpriteKit.framework */; };
-		3B1EA3922186A0B300A23700 /* BoardViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3912186A0B300A23700 /* BoardViewOld.swift */; };
 		3B1EA3942186A5B900A23700 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3932186A5B900A23700 /* Board.swift */; };
 		3B2284F2218BC41D003FBAA9 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2284F1218BC41D003FBAA9 /* BoardView.swift */; };
 		3B6E29C9218777C200F4AF0B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E29C8218777C200F4AF0B /* Game.swift */; };
@@ -55,7 +54,6 @@
 		3B1EA3802186781900A23700 /* GomokuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuUITests.swift; sourceTree = "<group>"; };
 		3B1EA3822186781900A23700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B1EA38F218683D500A23700 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		3B1EA3912186A0B300A23700 /* BoardViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewOld.swift; sourceTree = "<group>"; };
 		3B1EA3932186A5B900A23700 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		3B2284F1218BC41D003FBAA9 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		3B6E29C8218777C200F4AF0B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				3B1EA35F2186781700A23700 /* ViewController.swift */,
 				3B1EA3932186A5B900A23700 /* Board.swift */,
 				3B2284F1218BC41D003FBAA9 /* BoardView.swift */,
-				3B1EA3912186A0B300A23700 /* BoardViewOld.swift */,
 				3B6E29C8218777C200F4AF0B /* Game.swift */,
 				3B1EA3612186781700A23700 /* Main.storyboard */,
 				3B1EA3672186781900A23700 /* Assets.xcassets */,
@@ -286,7 +283,6 @@
 				3B2284F2218BC41D003FBAA9 /* BoardView.swift in Sources */,
 				3B1EA3602186781700A23700 /* ViewController.swift in Sources */,
 				3B6E29C9218777C200F4AF0B /* Game.swift in Sources */,
-				3B1EA3922186A0B300A23700 /* BoardViewOld.swift in Sources */,
 				3B1EA3942186A5B900A23700 /* Board.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,
 				3B1EA3662186781700A23700 /* Gomoku.xcdatamodeld in Sources */,
