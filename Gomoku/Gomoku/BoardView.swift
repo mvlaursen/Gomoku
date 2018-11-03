@@ -23,46 +23,39 @@ class BoardView: UIView {
         }
     }
     
+    func drawGrid(rect: CGRect, color: UIColor, firstRank: Int, numRanks: Int) {
+        color.set()
+        
+        let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
+        let lineStart = CGFloat(firstRank + 1) * squareDim
+        let lineLength = CGFloat(firstRank + numRanks) * squareDim
+
+        for rank in firstRank..<firstRank + numRanks {
+            let lineOffset = CGFloat(rank + 1) * squareDim
+            
+            let horzLine = UIBezierPath()
+            horzLine.move(to: CGPoint(x: lineStart, y: lineOffset))
+            horzLine.addLine(to: CGPoint(x: lineLength, y: lineOffset))
+            horzLine.close()
+            horzLine.stroke()
+            
+            let vertLine = UIBezierPath()
+            vertLine.move(to: CGPoint(x: lineOffset, y: lineStart))
+            vertLine.addLine(to: CGPoint(x: lineOffset, y: lineLength))
+            vertLine.close()
+            vertLine.stroke()
+        }
+    }
+
+    // Again, this is temporary silliness, just so we can see the board being
+    // redrawn with each game turn.
+    static let colors = [UIColor.black, UIColor.red, UIColor.green, UIColor.blue]
+    
     override func draw(_ rect: CGRect) {
         // The rect is supposed to have a 1:1 aspect ratio layout constraint.
         assert(rect.size.width == rect.size.height)
 
-        let numSquaresPadded = CGFloat(Board.paddedBoardDim)
-        let numSquaresPlayable = CGFloat(Board.playableBoardDim)
-        let squareDim = rect.size.width / (numSquaresPadded + 1.0)
-
-        UIColor.lightGray.set()
-        for row in 1...Board.paddedBoardDim {
-            let rank = CGFloat(row) * squareDim
-            let lineLength = numSquaresPadded * squareDim
-            let horzLine = UIBezierPath()
-            horzLine.move(to: CGPoint(x: squareDim, y: rank))
-            horzLine.addLine(to: CGPoint(x: lineLength, y: rank))
-            horzLine.close()
-            horzLine.stroke()
-            
-            let vertLine = UIBezierPath()
-            vertLine.move(to: CGPoint(x: rank, y: squareDim))
-            vertLine.addLine(to: CGPoint(x: rank, y: lineLength))
-            vertLine.close()
-            vertLine.stroke()
-        }
-        
-        UIColor.black.set()
-        for row in 5...(Board.playableBoardDim + 4) {
-            let rank = CGFloat(row) * squareDim
-            let lineLength = numSquaresPlayable * squareDim
-            let horzLine = UIBezierPath()
-            horzLine.move(to: CGPoint(x: 5.0 * squareDim, y: rank))
-            horzLine.addLine(to: CGPoint(x: 4.0 * squareDim + lineLength, y: rank))
-            horzLine.close()
-            horzLine.stroke()
-            
-            let vertLine = UIBezierPath()
-            vertLine.move(to: CGPoint(x: rank, y: 5.0 * squareDim))
-            vertLine.addLine(to: CGPoint(x: rank, y: 4.0 * squareDim + lineLength))
-            vertLine.close()
-            vertLine.stroke()
-        }
+        drawGrid(rect: rect, color: UIColor.lightGray, firstRank: 0, numRanks: Board.paddedBoardDim)
+        drawGrid(rect: rect, color: BoardView.colors.randomElement()!, firstRank: 4, numRanks: Board.playableBoardDim)
     }
 }
