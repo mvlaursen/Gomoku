@@ -52,7 +52,7 @@ class BoardView: UIView {
         let stone = UIBezierPath()
 
         color.set()
-        stone.addArc(withCenter: CGPoint(x: CGFloat(row) * squareDim, y: CGFloat(col) * squareDim), radius: squareDim / 3.0, startAngle: 0, endAngle: CGFloat(2 * M_PI), clockwise: true)
+        stone.addArc(withCenter: CGPoint(x: CGFloat(col + 1) * squareDim, y: CGFloat(row + 1) * squareDim), radius: squareDim / 3.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         stone.close()
         stone.fill()
         stone.stroke()
@@ -65,9 +65,9 @@ class BoardView: UIView {
         drawGrid(rect: rect, color: UIColor.lightGray, firstRank: 0, numRanks: Board.paddedBoardDim)
         drawGrid(rect: rect, color: UIColor.black, firstRank: Board.lowerBound, numRanks: Board.playableBoardDim)
         
-        for row in Board.runLength..<Board.playableBoardDim + Board.runLength {
-            for col in Board.runLength..<Board.playableBoardDim + Board.runLength {
-                switch game.board.squares[row * Board.playableBoardDim + col] {
+        for row in Board.lowerBound..<Board.playableBoardDim + Board.lowerBound {
+            for col in Board.lowerBound..<Board.playableBoardDim + Board.lowerBound {
+                switch game.board.squares[row * Board.paddedBoardDim + col] {
                 case .black: drawStone(rect: rect, color: UIColor.black, row: row, col: col)
                 case .white: drawStone(rect: rect, color: UIColor.lightGray, row: row, col: col)
                 default: break
@@ -77,7 +77,9 @@ class BoardView: UIView {
         
         if let winningRun = game.winningRun {
             for index in winningRun {
-                drawStone(rect: rect, color: UIColor.red, row: index / Board.paddedBoardDim, col: index - (Board.paddedBoardDim * (index / Board.paddedBoardDim)))
+                let row = index / Board.paddedBoardDim
+                let col = index - Board.paddedBoardDim * row
+                drawStone(rect: rect, color: UIColor.red, row: row, col: col)
             }
         }
     }
