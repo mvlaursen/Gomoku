@@ -47,6 +47,17 @@ class BoardView: UIView {
         }
     }
     
+    func highlightStone(rect: CGRect, row: Int, col: Int) {
+        // TODO: We are calculating this same value in three different places.
+        let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
+        let highlight = UIBezierPath()
+        
+        UIColor.red.set()
+        highlight.addArc(withCenter: CGPoint(x: CGFloat(col + 1) * squareDim, y: CGFloat(row + 1) * squareDim), radius: (squareDim / 3.0) + 1.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        highlight.close()
+        highlight.stroke()
+    }
+
     func drawStone(rect: CGRect, color: UIColor, row: Int, col: Int) {
         let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
         let stone = UIBezierPath()
@@ -79,7 +90,7 @@ class BoardView: UIView {
             for index in winningRun {
                 let row = index / Board.paddedBoardDim
                 let col = index - Board.paddedBoardDim * row
-                drawStone(rect: rect, color: UIColor.red, row: row, col: col)
+                highlightStone(rect: rect, row: row, col: col)
             }
         }
     }
