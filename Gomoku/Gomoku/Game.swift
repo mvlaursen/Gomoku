@@ -9,6 +9,11 @@
 import Foundation
 
 class Game {
+    // In the Board class, the number of stones in a row for a win is
+    // parameterized. But here we assume five in a row. It's fine for the
+    // purposes of the app to assume five in a row because the intention is
+    // only to support the traditional Gomoku game and there is no intention to
+    // let the user customize the board size or winning conditions.
     static let runIndicesOffsetsList = [
         // Horizontal runs
         [-4, -3, -2, -1, 0], [-3, -2, -1, 0, 1],
