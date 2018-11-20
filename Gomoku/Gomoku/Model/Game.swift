@@ -8,11 +8,6 @@
 
 import Foundation
 
-// TODO: Move completely random testing to be used in testing only?
-func randomMoveChooser(board: Board) -> Int? {
-    return board.availableMoveIndices.randomElement()
-}
-
 class Game {
     // In the Board class, the number of stones in a row for a win is
     // parameterized. But here we assume five in a row. It's fine for the
