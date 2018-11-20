@@ -109,11 +109,10 @@
 		3B1EA35C2186781700A23700 /* Gomoku */ = {
 			isa = PBXGroup;
 			children = (
+				3BB8328221A49447008B248A /* Model */,
 				3B1EA35D2186781700A23700 /* AppDelegate.swift */,
 				3B1EA35F2186781700A23700 /* ViewController.swift */,
-				3B1EA3932186A5B900A23700 /* Board.swift */,
 				3B2284F1218BC41D003FBAA9 /* BoardView.swift */,
-				3B6E29C8218777C200F4AF0B /* Game.swift */,
 				3B1EA3612186781700A23700 /* Main.storyboard */,
 				3B1EA3672186781900A23700 /* Assets.xcassets */,
 				3B1EA3692186781900A23700 /* LaunchScreen.storyboard */,
@@ -147,6 +146,15 @@
 				3B1EA38F218683D500A23700 /* SpriteKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3BB8328221A49447008B248A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B1EA3932186A5B900A23700 /* Board.swift */,
+				3B6E29C8218777C200F4AF0B /* Game.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
