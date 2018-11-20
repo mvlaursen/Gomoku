@@ -25,6 +25,14 @@ struct Board {
     let mostRecentMove: Move
     let squares: [Square]
     
+    static func indexFrom(row: Int, column: Int) -> Int {
+        // TODO: Get rid of this precondition by defining a range?
+        precondition(row >= 0 && row < Board.paddedBoardDim)
+        precondition(column >= 0 && column < Board.paddedBoardDim)
+        
+        return row * Board.paddedBoardDim + column
+    }
+
     init() {
         var mutableAvailableMoveIndices = Set<Int>()
         var mutableSquares = Array<Square>(repeating: .outofbounds,
@@ -32,7 +40,7 @@ struct Board {
         
         for row in Board.lowerBound...Board.upperBound {
             for column in Board.lowerBound...Board.upperBound {
-                    let index = row * Board.paddedBoardDim + column
+                    let index = Board.indexFrom(row: row, column: column)
                     mutableSquares[index] = .empty
                     mutableAvailableMoveIndices.insert(row * Board.paddedBoardDim
                         + column)
@@ -48,7 +56,7 @@ struct Board {
     }
     
     init(board other: Board, index: Int, square: Square) {
-        assert(index > 0 && index < other.squares.count)
+        precondition(index > 0 && index < other.squares.count)
         
         mostRecentMove = (mover: square, index: index)
         

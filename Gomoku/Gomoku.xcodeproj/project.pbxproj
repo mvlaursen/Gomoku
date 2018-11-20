@@ -23,6 +23,7 @@
 		3BB8328821A49A1C008B248A /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328721A49A1C008B248A /* Square.swift */; };
 		3BB8328A21A4A63F008B248A /* GameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328921A4A63F008B248A /* GameConfiguration.swift */; };
 		3BB8328C21A4C093008B248A /* RandomMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */; };
+		3BB8328E21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		3BB8328721A49A1C008B248A /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		3BB8328921A4A63F008B248A /* GameConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfiguration.swift; sourceTree = "<group>"; };
 		3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMoveChooser.swift; sourceTree = "<group>"; };
+		3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeuristicScoreMoveChooser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				3B6E29C8218777C200F4AF0B /* Game.swift */,
 				3BB8328921A4A63F008B248A /* GameConfiguration.swift */,
 				3BB8328521A4983A008B248A /* GameNode.swift */,
+				3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */,
 				3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */,
 				3BB8328721A49A1C008B248A /* Square.swift */,
 			);
@@ -307,6 +310,7 @@
 				3B6E29C9218777C200F4AF0B /* Game.swift in Sources */,
 				3BB8328621A4983A008B248A /* GameNode.swift in Sources */,
 				3B1EA3942186A5B900A23700 /* Board.swift in Sources */,
+				3BB8328E21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,
 				3B1EA3662186781700A23700 /* Gomoku.xcdatamodeld in Sources */,
 				3BB8328C21A4C093008B248A /* RandomMoveChooser.swift in Sources */,
