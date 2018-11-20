@@ -9,12 +9,10 @@
 import Foundation
 
 struct Board {
-    static let runLength = 5
-    static let playableBoardDim = 15
-    static let paddedBoardDim = playableBoardDim + 2 * (runLength - 1)
+    static let paddedBoardDim = GameConfiguration.boardDim + 2 * (GameConfiguration.winningRunLength - 1)
     // The lower and upper bounds are included in the playable board area.
-    static let lowerBound = runLength - 1
-    static let upperBound = lowerBound + playableBoardDim - 1
+    static let lowerBound = GameConfiguration.winningRunLength - 1
+    static let upperBound = lowerBound + GameConfiguration.boardDim - 1
     
     let availableMoves: Set<Int>
     // Even though a Gomoku board is two-dimensional, modeling the board as a

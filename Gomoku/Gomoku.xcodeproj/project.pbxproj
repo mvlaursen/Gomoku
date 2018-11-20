@@ -21,6 +21,7 @@
 		3B6E29C9218777C200F4AF0B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E29C8218777C200F4AF0B /* Game.swift */; };
 		3BB8328621A4983A008B248A /* GameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328521A4983A008B248A /* GameNode.swift */; };
 		3BB8328821A49A1C008B248A /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328721A49A1C008B248A /* Square.swift */; };
+		3BB8328A21A4A63F008B248A /* GameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328921A4A63F008B248A /* GameConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		3B6E29C8218777C200F4AF0B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3BB8328521A4983A008B248A /* GameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNode.swift; sourceTree = "<group>"; };
 		3BB8328721A49A1C008B248A /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		3BB8328921A4A63F008B248A /* GameConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				3B1EA3932186A5B900A23700 /* Board.swift */,
 				3B6E29C8218777C200F4AF0B /* Game.swift */,
+				3BB8328921A4A63F008B248A /* GameConfiguration.swift */,
 				3BB8328521A4983A008B248A /* GameNode.swift */,
 				3BB8328721A49A1C008B248A /* Square.swift */,
 			);
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB8328821A49A1C008B248A /* Square.swift in Sources */,
+				3BB8328A21A4A63F008B248A /* GameConfiguration.swift in Sources */,
 				3B2284F2218BC41D003FBAA9 /* BoardView.swift in Sources */,
 				3B1EA3602186781700A23700 /* ViewController.swift in Sources */,
 				3B6E29C9218777C200F4AF0B /* Game.swift in Sources */,

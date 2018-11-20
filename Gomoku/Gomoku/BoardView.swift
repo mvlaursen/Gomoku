@@ -74,10 +74,10 @@ class BoardView: UIView {
         assert(rect.size.width == rect.size.height)
 
         drawGrid(rect: rect, color: UIColor.lightGray, firstRank: 0, numRanks: Board.paddedBoardDim)
-        drawGrid(rect: rect, color: UIColor.black, firstRank: Board.lowerBound, numRanks: Board.playableBoardDim)
+        drawGrid(rect: rect, color: UIColor.black, firstRank: Board.lowerBound, numRanks: GameConfiguration.boardDim)
         
-        for row in Board.lowerBound..<Board.playableBoardDim + Board.lowerBound {
-            for col in Board.lowerBound..<Board.playableBoardDim + Board.lowerBound {
+        for row in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
+            for col in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
                 switch game.board.squares[row * Board.paddedBoardDim + col] {
                 case .black: drawStone(rect: rect, color: UIColor.black, row: row, col: col)
                 case .white: drawStone(rect: rect, color: UIColor.lightGray, row: row, col: col)
