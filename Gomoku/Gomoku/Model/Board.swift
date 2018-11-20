@@ -8,13 +8,6 @@
 
 import Foundation
 
-enum Square {
-    case outofbounds
-    case empty
-    case black
-    case white
-}
-
 struct Board {
     static let runLength = 5
     static let playableBoardDim = 15

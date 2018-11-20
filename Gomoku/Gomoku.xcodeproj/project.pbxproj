@@ -19,6 +19,8 @@
 		3B1EA3942186A5B900A23700 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3932186A5B900A23700 /* Board.swift */; };
 		3B2284F2218BC41D003FBAA9 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2284F1218BC41D003FBAA9 /* BoardView.swift */; };
 		3B6E29C9218777C200F4AF0B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E29C8218777C200F4AF0B /* Game.swift */; };
+		3BB8328621A4983A008B248A /* GameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328521A4983A008B248A /* GameNode.swift */; };
+		3BB8328821A49A1C008B248A /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328721A49A1C008B248A /* Square.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		3B1EA3932186A5B900A23700 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		3B2284F1218BC41D003FBAA9 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		3B6E29C8218777C200F4AF0B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		3BB8328521A4983A008B248A /* GameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNode.swift; sourceTree = "<group>"; };
+		3BB8328721A49A1C008B248A /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,8 @@
 			children = (
 				3B1EA3932186A5B900A23700 /* Board.swift */,
 				3B6E29C8218777C200F4AF0B /* Game.swift */,
+				3BB8328521A4983A008B248A /* GameNode.swift */,
+				3BB8328721A49A1C008B248A /* Square.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,9 +294,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BB8328821A49A1C008B248A /* Square.swift in Sources */,
 				3B2284F2218BC41D003FBAA9 /* BoardView.swift in Sources */,
 				3B1EA3602186781700A23700 /* ViewController.swift in Sources */,
 				3B6E29C9218777C200F4AF0B /* Game.swift in Sources */,
+				3BB8328621A4983A008B248A /* GameNode.swift in Sources */,
 				3B1EA3942186A5B900A23700 /* Board.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,
 				3B1EA3662186781700A23700 /* Gomoku.xcdatamodeld in Sources */,
