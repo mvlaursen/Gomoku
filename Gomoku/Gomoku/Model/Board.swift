@@ -9,20 +9,23 @@
 import Foundation
 
 struct Board {
+    typealias Move = (mover: Square, index: Int)
+    
     static let paddedBoardDim = GameConfiguration.boardDim + 2 * (GameConfiguration.winningRunLength - 1)
     // The lower and upper bounds are included in the playable board area.
     static let lowerBound = GameConfiguration.winningRunLength - 1
     static let upperBound = lowerBound + GameConfiguration.boardDim - 1
     
-    let availableMoves: Set<Int>
+    let availableMoveIndices: Set<Int>
     // Even though a Gomoku board is two-dimensional, modeling the board as a
     // one-dimensional array makes some things easier, such as keeping a list
     // of moves that are still available, using higher order array functions to
     // check for winning runs, etc.
+    let mostRecentMove: Move
     let squares: [Square]
     
     init() {
-        var mutableAvailableMoves = Set<Int>()
+        var mutableAvailableMoveIndices = Set<Int>()
         var mutableSquares = Array<Square>(repeating: .outofbounds,
             count: Board.paddedBoardDim * Board.paddedBoardDim)
         
@@ -30,21 +33,27 @@ struct Board {
             for column in Board.lowerBound...Board.upperBound {
                     let index = row * Board.paddedBoardDim + column
                     mutableSquares[index] = .empty
-                    mutableAvailableMoves.insert(row * Board.paddedBoardDim
+                    mutableAvailableMoveIndices.insert(row * Board.paddedBoardDim
                         + column)
             }
         }
         
-        self.availableMoves = mutableAvailableMoves
+        let firstMoveIndex = mutableSquares.count / 2
+        mutableAvailableMoveIndices.remove(firstMoveIndex)
+        self.availableMoveIndices = mutableAvailableMoveIndices
+        self.mostRecentMove = (mover: .black, index: firstMoveIndex)
+        mutableSquares[firstMoveIndex] = .black
         self.squares = mutableSquares
     }
     
     init(board other: Board, index: Int, square: Square) {
         assert(index > 0 && index < other.squares.count)
         
-        var newAvailableMoves = other.availableMoves
+        mostRecentMove = (mover: square, index: index)
+        
+        var newAvailableMoves = other.availableMoveIndices
         newAvailableMoves.remove(index)
-        self.availableMoves = newAvailableMoves
+        self.availableMoveIndices = newAvailableMoves
         
         var newSquares = other.squares
         newSquares[index] = square

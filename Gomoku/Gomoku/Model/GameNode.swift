@@ -8,19 +8,24 @@
 
 import Foundation
 
-class GameNode {
-    typealias Move = (mover: Square, index: Int)
-    
+class GameNode {    
     let board: Board
-    let move: Move
     
     var children: Array<GameNode> = []
-    var heuristicScore = 0
+    var heuristicScore: Int
     var minMaxScore = 0
     
-    init(board: Board, move: Move) {
-        precondition(move.mover.isAPlayer)
+    init(board: Board) {
         self.board = board
-        self.move = move
+        
+        if self.board.mostRecentMove.mover == .black {
+            heuristicScore = Int.min
+            minMaxScore = Int.min
+        } else if self.board.mostRecentMove.mover == .white {
+            heuristicScore = Int.max
+            minMaxScore = Int.max
+        } else {
+            preconditionFailure()
+        }
     }
 }

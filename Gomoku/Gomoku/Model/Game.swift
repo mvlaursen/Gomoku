@@ -28,6 +28,7 @@ class Game {
         [-22, 0, 22, 44, 66], [0, 22, 44, 66, 88]]
     
     var board: Board = Board()
+    var firstMove: Bool = true
     var winningRun: Array<Int>? = nil
     
     func doTurn() -> Bool {
@@ -45,7 +46,14 @@ class Game {
     }
     
     func doBlackMove() -> Int? {
-        guard let moveIndex = board.availableMoves.randomElement() else {
+        // The game always starts with black placing a stone in the center of
+        // the board.
+        if firstMove {
+            firstMove = false
+            return board.mostRecentMove.index
+        }
+
+        guard let moveIndex = board.availableMoveIndices.randomElement() else {
             return nil
         }
         board = Board(board: board, index: moveIndex, square: .black)
@@ -53,7 +61,7 @@ class Game {
     }
 
     func doWhiteMove() -> Int? {
-        guard let moveIndex = board.availableMoves.randomElement() else {
+        guard let moveIndex = board.availableMoveIndices.randomElement() else {
             return nil
         }
         board = Board(board: board, index: moveIndex, square: .white)
