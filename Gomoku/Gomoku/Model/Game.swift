@@ -8,6 +8,11 @@
 
 import Foundation
 
+// TODO: Move completely random testing to be used in testing only?
+func randomMoveChooser(board: Board) -> Int? {
+    return board.availableMoveIndices.randomElement()
+}
+
 class Game {
     // In the Board class, the number of stones in a row for a win is
     // parameterized. But here we assume five in a row. It's fine for the
@@ -31,6 +36,9 @@ class Game {
     var firstMove: Bool = true
     var winningRun: Array<Int>? = nil
     
+    let blackMoveChooser: Board.MoveChooser = randomMoveChooser
+    let whiteMoveChooser: Board.MoveChooser = randomMoveChooser
+    
     func doTurn() -> Bool {
         if let blackMoveIndex = doBlackMove() {
             if didWin(moveIndex: blackMoveIndex) {
@@ -53,7 +61,7 @@ class Game {
             return board.mostRecentMove.index
         }
 
-        guard let moveIndex = board.availableMoveIndices.randomElement() else {
+        guard let moveIndex = blackMoveChooser(board) else {
             return nil
         }
         board = Board(board: board, index: moveIndex, square: .black)
@@ -61,7 +69,7 @@ class Game {
     }
 
     func doWhiteMove() -> Int? {
-        guard let moveIndex = board.availableMoveIndices.randomElement() else {
+        guard let moveIndex = whiteMoveChooser(board) else {
             return nil
         }
         board = Board(board: board, index: moveIndex, square: .white)
