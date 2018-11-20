@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Make sure the random numbers we use in the app are random.
+        let time = Int(NSDate().timeIntervalSinceReferenceDate)
+        srand48(time)
+        
         return true
     }
 

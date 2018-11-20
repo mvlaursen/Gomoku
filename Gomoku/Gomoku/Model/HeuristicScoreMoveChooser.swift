@@ -8,6 +8,12 @@
 
 import Foundation
 
+// TODO: Provide a way to choose the best move for .black or .white.
+
+// TODO: Instead of calculating the heuristic score from scratch each time, can
+// we make an incremental adjustment to the heuristic score from the starting
+// board?
+
 let adjacentIndicesOffsetsList = [
     // Horizontal adjacency
     [0, 1],
@@ -20,7 +26,7 @@ func heuristicScoreMoveChooser(board: Board) -> Int? {
     var bestMoveIndex: Int? = nil
     var bestScore = Int.min
     
-    for moveIndex in board.availableMoveIndices {
+    for moveIndex in board.availableMoveIndices.shuffled() {
         let nextBoard = Board(board: board, index: moveIndex)
         let score = heuristicScore(board: nextBoard)
         if score > bestScore {
