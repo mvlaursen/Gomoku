@@ -9,23 +9,55 @@
 import Foundation
 
 let adjacentIndicesOffsetsList = [
-    // Horizontal runs
-    [0, 1, 2, 3, 4],
-    // Vertical runs
-    [0, 23, 46, 69, 92],
-    // Diagonal runs
-    [0, 24, 48, 72, 96], [0, 22, 44, 66, 88]]
+    // Horizontal adjacency
+    [0, 1],
+    // Vertical adjacency
+    [0, 23],
+    // Diagonal adjacency
+    [0, 24], [0, 22]]
 
 func heuristicScoreMoveChooser(board: Board) -> Int? {
-    return board.availableMoveIndices.randomElement()
+    var bestMoveIndex: Int? = nil
+    var bestScore = Int.min
+    
+    for moveIndex in board.availableMoveIndices {
+        let nextBoard = Board(board: board, index: moveIndex)
+        let score = heuristicScore(board: nextBoard)
+        if score > bestScore {
+            bestMoveIndex = moveIndex
+            bestScore = score
+        }
+    }
+    
+    return bestMoveIndex
 }
 
-fileprivate func score(board: Board) -> Int {
-    let score = 0
+func heuristicScore(board: Board) -> Int {
+    var score = 0
     
-    for row in Board.lowerBound...Board.upperBound {
-        for column in Board.lowerBound...Board.upperBound {
+    for row in Board.lowerBound..<Board.upperBound {
+        for column in Board.lowerBound..<Board.upperBound {
             let index = Board.indexFrom(row: row, column: column)
+            let runIndicesList = adjacentIndicesOffsetsList.map { (offsets: [Int]) -> [Int] in
+                offsets.map { (offset: Int) -> Int in
+                    index + offset
+                }
+            }
+            for runIndices in runIndicesList {
+                let run = runIndices.map { (index) -> Square in
+                    board.squares[index]
+                }
+                if run.allSatisfy({ (square) -> Bool in
+                    square == .black
+                }) {
+                    score = score - 1
+                }
+                else if run.allSatisfy({ (square) -> Bool in
+                    square == .white
+                }) {
+                    score = score + 1
+                }
+            }
         }
     }
         

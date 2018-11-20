@@ -55,17 +55,18 @@ struct Board {
         self.squares = mutableSquares
     }
     
-    init(board other: Board, index: Int, square: Square) {
+    init(board other: Board, index: Int) {
         precondition(index > 0 && index < other.squares.count)
         
-        mostRecentMove = (mover: square, index: index)
+        let mover = other.mostRecentMove.mover == Square.black ? Square.white : Square.black
+        mostRecentMove = (mover: mover, index: index)
         
         var newAvailableMoves = other.availableMoveIndices
         newAvailableMoves.remove(index)
         self.availableMoveIndices = newAvailableMoves
         
         var newSquares = other.squares
-        newSquares[index] = square
+        newSquares[index] = mover
         self.squares = newSquares
     }
 }

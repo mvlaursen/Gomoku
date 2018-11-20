@@ -59,15 +59,15 @@ class Game {
         guard let moveIndex = blackMoveChooser(board) else {
             return nil
         }
-        board = Board(board: board, index: moveIndex, square: .black)
+        board = Board(board: board, index: moveIndex)
         return moveIndex
     }
 
     func doWhiteMove() -> Int? {
-        guard let moveIndex = whiteMoveChooser(board) else {
+        guard let moveIndex = heuristicScoreMoveChooser(board: board) else {
             return nil
         }
-        board = Board(board: board, index: moveIndex, square: .white)
+        board = Board(board: board, index: moveIndex)
         return moveIndex
     }
     
