@@ -27,8 +27,8 @@ class Game {
         [-88, -66, -44, -22, 0], [-66, -44, -22, 0, 22], [-44, -22, 0, 22, 44],
         [-22, 0, 22, 44, 66], [0, 22, 44, 66, 88]]
     
-    var board: Board = Board()
     var firstMove: Bool = true
+    var rootNode: GameNode = GameNode(board: Board())
     var winningRun: Array<Int>? = nil
     
     let blackMoveChooser: Board.MoveChooser = heuristicScoreMoveChooser
@@ -55,29 +55,31 @@ class Game {
         // the board.
         if firstMove {
             firstMove = false
-            moveIndex = board.squares.count / 2
+            moveIndex = rootNode.board.squares.count / 2
         } else {
-            moveIndex = blackMoveChooser(board)
+            moveIndex = blackMoveChooser(rootNode.board)
         }
         
         if moveIndex != nil {
-            board = Board(board: board, index: moveIndex!)
+            let board = Board(board: rootNode.board, index: moveIndex!)
+            rootNode = GameNode(board: board)
         }
         
         return moveIndex
     }
 
     func doWhiteMove() -> Int? {
-        guard let moveIndex = whiteMoveChooser(board) else {
+        guard let moveIndex = whiteMoveChooser(rootNode.board) else {
             return nil
         }
-        board = Board(board: board, index: moveIndex)
+        let board = Board(board: rootNode.board, index: moveIndex)
+        rootNode = GameNode(board: board)
         return moveIndex
     }
     
     func didWin(moveIndex: Int) -> Bool {
-        assert(moveIndex < board.squares.count)
-        let squareAtMove = board.squares[moveIndex]
+        assert(moveIndex < rootNode.board.squares.count)
+        let squareAtMove = rootNode.board.squares[moveIndex]
         assert(squareAtMove != .outofbounds && squareAtMove != .empty)
         
         let runIndicesList = Game.runIndicesOffsetsList.map { (offsets: [Int]) -> [Int] in
@@ -88,7 +90,7 @@ class Game {
         
         for runIndices in runIndicesList {
             let run = runIndices.map { (index) -> Square in
-                board.squares[index]
+                rootNode.board.squares[index]
             }
             
             if run.allSatisfy({ (square: Square) -> Bool in

@@ -81,7 +81,7 @@ class BoardView: UIView {
         
         for row in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
             for col in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
-                switch game.board.squares[row * Board.paddedBoardDim + col] {
+                switch game.rootNode.board.squares[row * Board.paddedBoardDim + col] {
                 case .black: drawStone(rect: rect, color: UIColor.black, row: row, col: col)
                 case .white: drawStone(rect: rect, color: UIColor.lightGray, row: row, col: col)
                 default: break
