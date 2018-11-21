@@ -23,13 +23,22 @@ let adjacentIndicesOffsetsList = [
     [0, 24], [0, 22]]
 
 func heuristicScoreMoveChooser(board: Board) -> Int? {
+    var maximize = true
+    if board.mostRecentMove != nil && board.mostRecentMove!.mover == Square.black {
+        maximize = false
+    }
+    
     var bestMoveIndex: Int? = nil
-    var bestScore = Int.min
+    var bestScore = maximize ? Int.min : Int.max
     
     for moveIndex in board.availableMoveIndices.shuffled() {
         let nextBoard = Board(board: board, index: moveIndex)
         let score = heuristicScore(board: nextBoard)
-        if score > bestScore {
+
+        if maximize && score > bestScore {
+            bestMoveIndex = moveIndex
+            bestScore = score
+        } else if !maximize && score < bestScore {
             bestMoveIndex = moveIndex
             bestScore = score
         }
@@ -56,12 +65,12 @@ func heuristicScore(board: Board) -> Int {
                 if run.allSatisfy({ (square) -> Bool in
                     square == .black
                 }) {
-                    score = score - 1
+                    score = score + 1
                 }
                 else if run.allSatisfy({ (square) -> Bool in
                     square == .white
                 }) {
-                    score = score + 1
+                    score = score - 1
                 }
             }
         }
