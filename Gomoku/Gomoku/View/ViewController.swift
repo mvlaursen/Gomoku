@@ -17,12 +17,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func play(_ sender: UIButton) {
+        playButton.alpha = 0.5
         playButton.isEnabled = false
         
         let boardViews = self.view.subviews.filter { $0 is BoardView }
         precondition(boardViews.count == 1)
-        if let boardView = boardViews[0] as? BoardView {
-            boardView.play { self.playButton.isEnabled = true }
+        let boardView = boardViews[0] as! BoardView
+        boardView.play {
+            self.playButton.alpha = 1.0
+            self.playButton.isEnabled = true
         }
     }
 }
