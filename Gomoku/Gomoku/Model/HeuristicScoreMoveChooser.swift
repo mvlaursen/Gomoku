@@ -8,8 +8,6 @@
 
 import Foundation
 
-// TODO: Provide a way to choose the best move for .black or .white.
-
 // TODO: Instead of calculating the heuristic score from scratch each time, can
 // we make an incremental adjustment to the heuristic score from the starting
 // board?
