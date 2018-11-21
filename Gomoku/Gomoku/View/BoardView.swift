@@ -11,19 +11,22 @@ import UIKit
 class BoardView: UIView {
     var game = Game()
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    func play(completion: @escaping () -> ()) {
+        game = Game()
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             let gameOver = self.game.doTurn()
             self.setNeedsDisplay()
             if gameOver {
                 timer.invalidate()
+                completion()
             }
         }
     }
-    
-    func drawGrid(rect: CGRect, color: UIColor, firstRank: Int, numRanks: Int) {
+
+    // MARK: Drawing
+
+    private func drawGrid(rect: CGRect, color: UIColor, firstRank: Int, numRanks: Int) {
         let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
         let lineStart = CGFloat(firstRank + 1) * squareDim
         let lineLength = CGFloat(firstRank + numRanks) * squareDim
@@ -47,7 +50,7 @@ class BoardView: UIView {
         }
     }
     
-    func highlightStone(rect: CGRect, row: Int, col: Int) {
+    private func highlightStone(rect: CGRect, row: Int, col: Int) {
         // TODO: We are calculating this same value in three different places.
         let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
         let highlight = UIBezierPath()
@@ -58,7 +61,7 @@ class BoardView: UIView {
         highlight.stroke()
     }
 
-    func drawStone(rect: CGRect, color: UIColor, row: Int, col: Int) {
+    private func drawStone(rect: CGRect, color: UIColor, row: Int, col: Int) {
         let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
         let stone = UIBezierPath()
 

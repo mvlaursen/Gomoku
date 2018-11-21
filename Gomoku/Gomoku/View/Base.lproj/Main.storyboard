@@ -29,7 +29,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ju1-81-ebS"/>
                                 </constraints>
-                                <state key="normal" title="Play Again">
+                                <state key="normal" title="Play">
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
