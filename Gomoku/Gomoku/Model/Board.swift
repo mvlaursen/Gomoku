@@ -18,11 +18,11 @@ struct Board {
     static let upperBound = lowerBound + GameConfiguration.boardDim - 1
     
     let availableMoveIndices: Set<Int>
+    let mostRecentMove: Move
     // Even though a Gomoku board is two-dimensional, modeling the board as a
     // one-dimensional array makes some things easier, such as keeping a list
     // of moves that are still available, using higher order array functions to
     // check for winning runs, etc.
-    let mostRecentMove: Move
     let squares: [Square]
     
     static func indexFrom(row: Int, column: Int) -> Int {
