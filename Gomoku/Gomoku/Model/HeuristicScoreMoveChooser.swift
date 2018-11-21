@@ -20,17 +20,17 @@ let adjacentIndicesOffsetsList = [
     // Diagonal adjacency
     [0, 24], [0, 22]]
 
-func heuristicScoreMoveChooser(board: Board) -> Int? {
+func heuristicScoreMoveChooser(gameNode: GameNode) -> Int? {
     var maximize = true
-    if board.mostRecentMove != nil && board.mostRecentMove!.mover == Square.black {
+    if gameNode.board.mostRecentMove != nil && gameNode.board.mostRecentMove!.mover == Square.black {
         maximize = false
     }
     
     var bestMoveIndex: Int? = nil
     var bestScore = maximize ? Int.min : Int.max
     
-    for moveIndex in board.availableMoveIndices.shuffled() {
-        let nextBoard = Board(board: board, index: moveIndex)
+    for moveIndex in gameNode.board.availableMoveIndices.shuffled() {
+        let nextBoard = Board(board: gameNode.board, index: moveIndex)
         let score = heuristicScore(board: nextBoard)
 
         if maximize && score > bestScore {

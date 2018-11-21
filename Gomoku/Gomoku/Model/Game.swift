@@ -31,9 +31,11 @@ class Game {
     var rootNode: GameNode = GameNode(board: Board())
     var winningRun: Array<Int>? = nil
     
-    let blackMoveChooser: Board.MoveChooser = heuristicScoreMoveChooser
-    let whiteMoveChooser: Board.MoveChooser = heuristicScoreMoveChooser
-    
+//    let blackMoveChooser: GameNode.MoveChooser = heuristicScoreMoveChooser
+//    let whiteMoveChooser: GameNode.MoveChooser = heuristicScoreMoveChooser
+    let blackMoveChooser: GameNode.MoveChooser = randomMoveChooser
+    let whiteMoveChooser: GameNode.MoveChooser = randomMoveChooser
+
     func doTurn() -> Bool {
         if let blackMoveIndex = doBlackMove() {
             if didWin(moveIndex: blackMoveIndex) {
@@ -57,7 +59,7 @@ class Game {
             firstMove = false
             moveIndex = rootNode.board.squares.count / 2
         } else {
-            moveIndex = blackMoveChooser(rootNode.board)
+            moveIndex = blackMoveChooser(rootNode)
         }
         
         if moveIndex != nil {
@@ -69,7 +71,7 @@ class Game {
     }
 
     func doWhiteMove() -> Int? {
-        guard let moveIndex = whiteMoveChooser(rootNode.board) else {
+        guard let moveIndex = whiteMoveChooser(rootNode) else {
             return nil
         }
         let board = Board(board: rootNode.board, index: moveIndex)

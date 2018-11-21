@@ -9,6 +9,6 @@
 import Foundation
 
 // TODO: Move completely random testing to be used in testing only?
-func randomMoveChooser(board: Board) -> Int? {
-    return board.availableMoveIndices.randomElement()
+func randomMoveChooser(gameNode: GameNode) -> Int? {
+    return gameNode.board.availableMoveIndices.randomElement()
 }

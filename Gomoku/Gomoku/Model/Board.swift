@@ -10,7 +10,6 @@ import Foundation
 
 struct Board {
     typealias Move = (mover: Square, index: Int)
-    typealias MoveChooser = (Board) -> Int?
     
     static let paddedBoardDim = GameConfiguration.boardDim + 2 * (GameConfiguration.winningRunLength - 1)
     // The lower and upper bounds are included in the playable board area.
