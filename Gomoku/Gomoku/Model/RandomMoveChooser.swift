@@ -9,6 +9,11 @@
 import Foundation
 
 // TODO: Move completely random testing to be used in testing only?
-func randomMoveChooser(gameNode: GameNode) -> Int? {
-    return gameNode.board.availableMoveIndices.randomElement()
+func randomMoveChooser(gameNode: GameNode) -> GameNode? {
+    if let moveIndex = gameNode.board.availableMoveIndices.randomElement() {
+        let nextBoard = Board(board: gameNode.board, index: moveIndex)
+        return GameNode(board: nextBoard)
+    } else {
+        return nil
+    }
 }

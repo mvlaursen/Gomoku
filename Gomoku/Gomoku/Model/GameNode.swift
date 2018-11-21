@@ -9,7 +9,6 @@
 import Foundation
 
 class GameNode {    
-    typealias MoveChooser = (GameNode) -> Int?
 
     let board: Board
     
