@@ -49,17 +49,21 @@ class Game {
     }
     
     func doBlackMove() -> Int? {
+        var moveIndex: Int? = nil
+        
         // The game always starts with black placing a stone in the center of
         // the board.
         if firstMove {
             firstMove = false
-            return board.mostRecentMove.index
+            moveIndex = board.squares.count / 2
+        } else {
+            moveIndex = blackMoveChooser(board)
         }
-
-        guard let moveIndex = blackMoveChooser(board) else {
-            return nil
+        
+        if moveIndex != nil {
+            board = Board(board: board, index: moveIndex!)
         }
-        board = Board(board: board, index: moveIndex)
+        
         return moveIndex
     }
 

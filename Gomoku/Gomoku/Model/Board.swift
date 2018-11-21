@@ -18,7 +18,7 @@ struct Board {
     static let upperBound = lowerBound + GameConfiguration.boardDim - 1
     
     let availableMoveIndices: Set<Int>
-    let mostRecentMove: Move
+    let mostRecentMove: Move?
     // Even though a Gomoku board is two-dimensional, modeling the board as a
     // one-dimensional array makes some things easier, such as keeping a list
     // of moves that are still available, using higher order array functions to
@@ -41,25 +41,24 @@ struct Board {
         for row in Board.lowerBound...Board.upperBound {
             for column in Board.lowerBound...Board.upperBound {
                     let index = Board.indexFrom(row: row, column: column)
+                    mutableAvailableMoveIndices.insert(row * Board.paddedBoardDim + column)
                     mutableSquares[index] = .empty
-                    mutableAvailableMoveIndices.insert(row * Board.paddedBoardDim
-                        + column)
             }
         }
         
-        let firstMoveIndex = mutableSquares.count / 2
-        mutableAvailableMoveIndices.remove(firstMoveIndex)
         self.availableMoveIndices = mutableAvailableMoveIndices
-        self.mostRecentMove = (mover: .black, index: firstMoveIndex)
-        mutableSquares[firstMoveIndex] = .black
+        self.mostRecentMove = nil
         self.squares = mutableSquares
     }
     
     init(board other: Board, index: Int) {
         precondition(index > 0 && index < other.squares.count)
         
-        let mover = other.mostRecentMove.mover == Square.black ? Square.white : Square.black
-        mostRecentMove = (mover: mover, index: index)
+        var mover = Square.black
+        if let mostRecentMove = other.mostRecentMove {
+            mover = mostRecentMove.mover == Square.black ? Square.white : Square.black
+        }
+        self.mostRecentMove = (mover: mover, index: index)
         
         var newAvailableMoves = other.availableMoveIndices
         newAvailableMoves.remove(index)
