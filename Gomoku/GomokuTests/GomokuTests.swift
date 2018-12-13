@@ -34,14 +34,7 @@ class GomokuTests: XCTestCase {
     func testRunGeneration() {
         let game = Game()
         
-//        let result000 = game.generateListOfRunIndices(moveIndex: 0)
-//        XCTAssertTrue(result000.count == 3)
-        
-//        let result008 = game.generateListOfRunIndices(moveIndex: 8)
-//        XCTAssertTrue(result008.count == 8)
-        
-        game.kahoona()
-        
+        let result000 = game.generateRunIndicesList(moveIndex: 264)
+        XCTAssertTrue(result000.count == 20)
     }
-
 }

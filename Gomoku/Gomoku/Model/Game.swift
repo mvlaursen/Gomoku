@@ -86,11 +86,7 @@ class Game {
         let squareAtMove = rootNode.board.squares[moveIndex]
         assert(squareAtMove != .outofbounds && squareAtMove != .empty)
         
-        let runIndicesList = Game.runIndicesOffsetsList.map { (offsets: [Int]) -> [Int] in
-            offsets.map { (offset: Int) -> Int in
-                moveIndex + offset
-            }
-        }
+        let runIndicesList = generateRunIndicesList(moveIndex: moveIndex)
         
         for runIndices in runIndicesList {
             let run = runIndices.map { (index) -> Square in
@@ -107,5 +103,19 @@ class Game {
         }
         
         return false
+    }
+    
+    func generateRunIndicesList(moveIndex: Int) -> [[Int]] {
+        assert(moveIndex < rootNode.board.squares.count)
+        let squareAtMove = rootNode.board.squares[moveIndex]
+        assert(squareAtMove != .outofbounds)
+
+        let runIndicesList = Game.runIndicesOffsetsList.map { (offsets: [Int]) -> [Int] in
+            offsets.map { (offset: Int) -> Int in
+                moveIndex + offset
+            }
+        }
+        
+        return runIndicesList
     }
 }

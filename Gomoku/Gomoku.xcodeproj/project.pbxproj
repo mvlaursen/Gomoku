@@ -18,6 +18,12 @@
 		3B1EA390218683D500A23700 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1EA38F218683D500A23700 /* SpriteKit.framework */; };
 		3B1EA3942186A5B900A23700 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3932186A5B900A23700 /* Board.swift */; };
 		3B2284F2218BC41D003FBAA9 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2284F1218BC41D003FBAA9 /* BoardView.swift */; };
+		3B536E1021C21146005625B6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E29C8218777C200F4AF0B /* Game.swift */; };
+		3B536E1121C2115B005625B6 /* GameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328521A4983A008B248A /* GameNode.swift */; };
+		3B536E1221C2116C005625B6 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3932186A5B900A23700 /* Board.swift */; };
+		3B536E1321C2117A005625B6 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328721A49A1C008B248A /* Square.swift */; };
+		3B536E1421C2118A005625B6 /* GameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328921A4A63F008B248A /* GameConfiguration.swift */; };
+		3B536E1521C211A6005625B6 /* RandomMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */; };
 		3B6E29C9218777C200F4AF0B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E29C8218777C200F4AF0B /* Game.swift */; };
 		3BB8328621A4983A008B248A /* GameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328521A4983A008B248A /* GameNode.swift */; };
 		3BB8328821A49A1C008B248A /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328721A49A1C008B248A /* Square.swift */; };
@@ -329,7 +335,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B536E1521C211A6005625B6 /* RandomMoveChooser.swift in Sources */,
+				3B536E1321C2117A005625B6 /* Square.swift in Sources */,
 				3B1EA3762186781900A23700 /* GomokuTests.swift in Sources */,
+				3B536E1121C2115B005625B6 /* GameNode.swift in Sources */,
+				3B536E1221C2116C005625B6 /* Board.swift in Sources */,
+				3B536E1421C2118A005625B6 /* GameConfiguration.swift in Sources */,
+				3B536E1021C21146005625B6 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
