@@ -24,6 +24,7 @@
 		3B536E1321C2117A005625B6 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328721A49A1C008B248A /* Square.swift */; };
 		3B536E1421C2118A005625B6 /* GameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328921A4A63F008B248A /* GameConfiguration.swift */; };
 		3B536E1521C211A6005625B6 /* RandomMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */; };
+		3B536E1721C21881005625B6 /* MinMaxMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B536E1621C21881005625B6 /* MinMaxMoveChooser.swift */; };
 		3B6E29C9218777C200F4AF0B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E29C8218777C200F4AF0B /* Game.swift */; };
 		3BB8328621A4983A008B248A /* GameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328521A4983A008B248A /* GameNode.swift */; };
 		3BB8328821A49A1C008B248A /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328721A49A1C008B248A /* Square.swift */; };
@@ -67,6 +68,7 @@
 		3B1EA38F218683D500A23700 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		3B1EA3932186A5B900A23700 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		3B2284F1218BC41D003FBAA9 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		3B536E1621C21881005625B6 /* MinMaxMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMaxMoveChooser.swift; sourceTree = "<group>"; };
 		3B6E29C8218777C200F4AF0B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3BB8328521A4983A008B248A /* GameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNode.swift; sourceTree = "<group>"; };
 		3BB8328721A49A1C008B248A /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				3BB8328921A4A63F008B248A /* GameConfiguration.swift */,
 				3BB8328521A4983A008B248A /* GameNode.swift */,
 				3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */,
+				3B536E1621C21881005625B6 /* MinMaxMoveChooser.swift */,
 				3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */,
 				3BB8328721A49A1C008B248A /* Square.swift */,
 			);
@@ -323,6 +326,7 @@
 				3B1EA3602186781700A23700 /* ViewController.swift in Sources */,
 				3B6E29C9218777C200F4AF0B /* Game.swift in Sources */,
 				3BB8328621A4983A008B248A /* GameNode.swift in Sources */,
+				3B536E1721C21881005625B6 /* MinMaxMoveChooser.swift in Sources */,
 				3B1EA3942186A5B900A23700 /* Board.swift in Sources */,
 				3BB8328E21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,

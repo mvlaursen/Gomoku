@@ -35,6 +35,8 @@ class Game {
     
 //    let blackMoveChooser: Game.MoveChooser = heuristicScoreMoveChooser
 //    let whiteMoveChooser: Game.MoveChooser = heuristicScoreMoveChooser
+//    let blackMoveChooser: Game.MoveChooser = minMaxMoveChooser
+//    let whiteMoveChooser: Game.MoveChooser = minMaxMoveChooser
     let blackMoveChooser: Game.MoveChooser = randomMoveChooser
     let whiteMoveChooser: Game.MoveChooser = randomMoveChooser
 
