@@ -67,4 +67,36 @@ struct Board {
         newSquares[index] = mover
         self.squares = newSquares
     }
+
+    func heuristicScore() -> Int {
+        var score = 0
+        
+        for row in Board.lowerBound..<Board.upperBound {
+            for column in Board.lowerBound..<Board.upperBound {
+                let index = Board.indexFrom(row: row, column: column)
+                let runIndicesList = adjacentIndicesOffsetsList.map { (offsets: [Int]) -> [Int] in
+                    offsets.map { (offset: Int) -> Int in
+                        index + offset
+                    }
+                }
+                for runIndices in runIndicesList {
+                    let run = runIndices.map { (index) -> Square in
+                        self.squares[index]
+                    }
+                    if run.allSatisfy({ (square) -> Bool in
+                        square == .black
+                    }) {
+                        score = score + 1
+                    }
+                    else if run.allSatisfy({ (square) -> Bool in
+                        square == .white
+                    }) {
+                        score = score - 1
+                    }
+                }
+            }
+        }
+        
+        return score
+    }
 }

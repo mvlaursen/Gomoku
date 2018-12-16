@@ -8,6 +8,31 @@
 
 import Foundation
 
+func evaluate(gameNode: GameNode) {
+    if gameNode.children.count > 0 {
+        for child in gameNode.children {
+            evaluate(gameNode: child)
+        }
+        
+        // TODO: Add pruning.
+        if let mostRecentMove = gameNode.board.mostRecentMove {
+            if mostRecentMove.mover == .black {
+                gameNode.score = Int.min
+                for child in gameNode.children {
+                    gameNode.score = max(gameNode.score, child.score)
+                }
+            } else if mostRecentMove.mover == .white {
+                gameNode.score = Int.max
+                for child in gameNode.children {
+                    gameNode.score = min(gameNode.score, child.score)
+                }
+            } // TODO: else?
+        }
+    } else {
+        gameNode.score = gameNode.board.heuristicScore()
+    }
+}
+
 func generateChildren(gameNode: GameNode, depth: Int) {
     if depth > 0 {
         if gameNode.children.count == 0 {
@@ -30,12 +55,19 @@ func generateChildren(gameNode: GameNode, depth: Int) {
 }
 
 func minMaxMoveChooser(gameNode: GameNode) -> GameNode? {
-    generateChildren(gameNode: gameNode, depth: 3)
+//    generateChildren(gameNode: gameNode, depth: 3)
+//
+//    if let mostRecentMove = gameNode.board.mostRecentMove {
+//        if mostRecentMove.mover == .black {
+//            var lowestScore = Int.max
+//            var nodeTo
+//
+//            for child in gameNode.children {
+//                evaluate(gameNode: child)
+//            }
+//        }
+//    }
+//
     
-    // bogus
-    if gameNode.children.count > 0 {
-        return gameNode.children.randomElement()
-    } else {
-        return nil
-    }
+    return nil
 }
