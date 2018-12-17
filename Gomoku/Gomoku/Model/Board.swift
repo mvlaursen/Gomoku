@@ -15,6 +15,7 @@ struct Board {
     // The lower and upper bounds are included in the playable board area.
     static let lowerBound = GameConfiguration.winningRunLength - 1
     static let upperBound = lowerBound + GameConfiguration.boardDim - 1
+    static let middleMoveIndex: Int = Board.paddedBoardDim * Board.paddedBoardDim / 2
     
     let availableMoveIndices: Set<Int>
     let mostRecentMove: Move?

@@ -21,7 +21,8 @@ class GomokuGameTests: XCTestCase {
     func testRunGeneration() {
         let game = Game()
         
-        let result000 = game.generateRunIndicesList(moveIndex: 264)
+        XCTAssert(Board.middleMoveIndex == 264)
+        let result000 = game.generateRunIndicesList(moveIndex: Board.middleMoveIndex)
         XCTAssertTrue(result000.count == 20)
     }
 }
