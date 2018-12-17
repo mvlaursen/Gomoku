@@ -17,14 +17,14 @@ func evaluate(gameNode: GameNode) {
         // TODO: Add pruning.
         if let mostRecentMove = gameNode.board.mostRecentMove {
             if mostRecentMove.mover == .black {
-                gameNode.score = Int.min
-                for child in gameNode.children {
-                    gameNode.score = max(gameNode.score, child.score)
-                }
-            } else if mostRecentMove.mover == .white {
                 gameNode.score = Int.max
                 for child in gameNode.children {
                     gameNode.score = min(gameNode.score, child.score)
+                }
+            } else if mostRecentMove.mover == .white {
+                gameNode.score = Int.min
+                for child in gameNode.children {
+                    gameNode.score = max(gameNode.score, child.score)
                 }
             } // TODO: else?
         }
@@ -39,8 +39,11 @@ func generateChildren(gameNode: GameNode, depth: Int) {
             // TODO: Come up with a better solution for limiting the number of
             // moves. The problem is that a tree based on ALL the available
             // moves is often too large to search in a reasonable time.
+            //
+            // Perhaps instead of choosing moves randomly, write a
+            // heuristicScore() function for moves and use that to pick moves.
             let shuffledMoveIndices = gameNode.board.availableMoveIndices.shuffled()
-            let cappedMoveIndices = shuffledMoveIndices.prefix(10)
+            let cappedMoveIndices = shuffledMoveIndices.prefix(5)
             
             for moveIndex in cappedMoveIndices {
                 let nextBoard = Board(board: gameNode.board, index: moveIndex)
