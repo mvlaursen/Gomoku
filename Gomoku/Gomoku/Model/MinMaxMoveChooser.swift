@@ -8,10 +8,10 @@
 
 import Foundation
 
-func evaluate(gameNode: GameNode) {
+func assignMinMaxScore(gameNode: GameNode) {
     if gameNode.children.count > 0 {
         for child in gameNode.children {
-            evaluate(gameNode: child)
+            assignMinMaxScore(gameNode: child)
         }
         
         // TODO: Add pruning.
@@ -33,7 +33,7 @@ func evaluate(gameNode: GameNode) {
     }
 }
 
-func generateChildren(gameNode: GameNode, depth: Int) {
+func generateChildren(gameNode: GameNode, depth: Int, maxMovesPerLevel: Int) {
     if depth > 0 {
         if gameNode.children.count == 0 {
             // TODO: Come up with a better solution for limiting the number of
@@ -43,7 +43,7 @@ func generateChildren(gameNode: GameNode, depth: Int) {
             // Perhaps instead of choosing moves randomly, write a
             // heuristicScore() function for moves and use that to pick moves.
             let shuffledMoveIndices = gameNode.board.availableMoveIndices.shuffled()
-            let cappedMoveIndices = shuffledMoveIndices.prefix(5)
+            let cappedMoveIndices = shuffledMoveIndices.prefix(maxMovesPerLevel)
             
             for moveIndex in cappedMoveIndices {
                 let nextBoard = Board(board: gameNode.board, index: moveIndex)
@@ -52,7 +52,7 @@ func generateChildren(gameNode: GameNode, depth: Int) {
         }
         
         for child in gameNode.children {
-            generateChildren(gameNode: child, depth: depth - 1)
+            generateChildren(gameNode: child, depth: depth - 1, maxMovesPerLevel: maxMovesPerLevel)
         }
     }
 }
@@ -60,7 +60,7 @@ func generateChildren(gameNode: GameNode, depth: Int) {
 func minMaxMoveChooser(gameNode: GameNode) -> GameNode? {
     var nextMove:GameNode? = nil
 
-    generateChildren(gameNode: gameNode, depth: 3)
+    generateChildren(gameNode: gameNode, depth: 3, maxMovesPerLevel: 5)
 
     if let mostRecentMove = gameNode.board.mostRecentMove {
         // TODO: Make this work for either the black or white player. Right now
@@ -70,7 +70,7 @@ func minMaxMoveChooser(gameNode: GameNode) -> GameNode? {
             var highestScore = Int.min
 
             for child in gameNode.children {
-                evaluate(gameNode: child)
+                assignMinMaxScore(gameNode: child)
                 if child.score > highestScore {
                     highestScore = child.score
                     nextMove = child

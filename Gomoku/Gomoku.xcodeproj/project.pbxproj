@@ -13,7 +13,6 @@
 		3B1EA3662186781700A23700 /* Gomoku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3642186781700A23700 /* Gomoku.xcdatamodeld */; };
 		3B1EA3682186781900A23700 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA3672186781900A23700 /* Assets.xcassets */; };
 		3B1EA36B2186781900A23700 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA3692186781900A23700 /* LaunchScreen.storyboard */; };
-		3B1EA3762186781900A23700 /* GomokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3752186781900A23700 /* GomokuTests.swift */; };
 		3B1EA3812186781900A23700 /* GomokuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3802186781900A23700 /* GomokuUITests.swift */; };
 		3B1EA390218683D500A23700 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1EA38F218683D500A23700 /* SpriteKit.framework */; };
 		3B1EA3942186A5B900A23700 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3932186A5B900A23700 /* Board.swift */; };
@@ -31,6 +30,10 @@
 		3BB8328A21A4A63F008B248A /* GameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328921A4A63F008B248A /* GameConfiguration.swift */; };
 		3BB8328C21A4C093008B248A /* RandomMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */; };
 		3BB8328E21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */; };
+		3BF78DD421C74BF30098605F /* GomokuMinMaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF78DD321C74BF30098605F /* GomokuMinMaxTests.swift */; };
+		3BF78DD521C74C3B0098605F /* MinMaxMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B536E1621C21881005625B6 /* MinMaxMoveChooser.swift */; };
+		3BF78DD621C74C480098605F /* HeuristicScoreMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */; };
+		3BF78DD821C74D450098605F /* GomokuGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF78DD721C74D450098605F /* GomokuGameTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +63,6 @@
 		3B1EA36A2186781900A23700 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B1EA36C2186781900A23700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B1EA3712186781900A23700 /* GomokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GomokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B1EA3752186781900A23700 /* GomokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuTests.swift; sourceTree = "<group>"; };
 		3B1EA3772186781900A23700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B1EA37C2186781900A23700 /* GomokuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GomokuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1EA3802186781900A23700 /* GomokuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuUITests.swift; sourceTree = "<group>"; };
@@ -75,6 +77,8 @@
 		3BB8328921A4A63F008B248A /* GameConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfiguration.swift; sourceTree = "<group>"; };
 		3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMoveChooser.swift; sourceTree = "<group>"; };
 		3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeuristicScoreMoveChooser.swift; sourceTree = "<group>"; };
+		3BF78DD321C74BF30098605F /* GomokuMinMaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuMinMaxTests.swift; sourceTree = "<group>"; };
+		3BF78DD721C74D450098605F /* GomokuGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuGameTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +142,8 @@
 		3B1EA3742186781900A23700 /* GomokuTests */ = {
 			isa = PBXGroup;
 			children = (
-				3B1EA3752186781900A23700 /* GomokuTests.swift */,
+				3BF78DD721C74D450098605F /* GomokuGameTests.swift */,
+				3BF78DD321C74BF30098605F /* GomokuMinMaxTests.swift */,
 				3B1EA3772186781900A23700 /* Info.plist */,
 			);
 			path = GomokuTests;
@@ -339,10 +344,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BF78DD521C74C3B0098605F /* MinMaxMoveChooser.swift in Sources */,
 				3B536E1521C211A6005625B6 /* RandomMoveChooser.swift in Sources */,
+				3BF78DD621C74C480098605F /* HeuristicScoreMoveChooser.swift in Sources */,
+				3BF78DD421C74BF30098605F /* GomokuMinMaxTests.swift in Sources */,
 				3B536E1321C2117A005625B6 /* Square.swift in Sources */,
-				3B1EA3762186781900A23700 /* GomokuTests.swift in Sources */,
 				3B536E1121C2115B005625B6 /* GameNode.swift in Sources */,
+				3BF78DD821C74D450098605F /* GomokuGameTests.swift in Sources */,
 				3B536E1221C2116C005625B6 /* Board.swift in Sources */,
 				3B536E1421C2118A005625B6 /* GameConfiguration.swift in Sources */,
 				3B536E1021C21146005625B6 /* Game.swift in Sources */,
