@@ -58,21 +58,25 @@ func generateChildren(gameNode: GameNode, depth: Int, maxMovesPerLevel: Int) {
 }
 
 func minMaxMoveChooser(gameNode: GameNode) -> GameNode? {
+    return minMaxMoveChooserAux(gameNode: gameNode, depth: 3, maxMovesPerLevel: 5)
+}
+
+func minMaxMoveChooserAux(gameNode: GameNode, depth: Int, maxMovesPerLevel: Int) -> GameNode? {
     var nextMove:GameNode? = nil
 
-    generateChildren(gameNode: gameNode, depth: 3, maxMovesPerLevel: 5)
+    generateChildren(gameNode: gameNode, depth: depth, maxMovesPerLevel: maxMovesPerLevel)
 
     if let mostRecentMove = gameNode.board.mostRecentMove {
         // TODO: Make this work for either the black or white player. Right now
         // it only works for black.
 
         if mostRecentMove.mover == .white {
-            var highestScore = Int.min
+            gameNode.score = Int.min
 
             for child in gameNode.children {
                 assignMinMaxScore(gameNode: child)
-                if child.score > highestScore {
-                    highestScore = child.score
+                if child.score > gameNode.score {
+                    gameNode.score = child.score
                     nextMove = child
                 }
             }
