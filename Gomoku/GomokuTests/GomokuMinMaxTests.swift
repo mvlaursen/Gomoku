@@ -50,7 +50,7 @@ class GomokuMinMaxTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testEvaluateMinMax() {
+    func testEvaluateMinMax01() {
         // This tests starts with the squares arranged so that the upper, left
         // black stone is on the middle square, and there are four available
         // squares. The min-max algorithm should choose to place a black stone
@@ -72,8 +72,38 @@ class GomokuMinMaxTests: XCTestCase {
         let chosenGameNode = minMaxMoveChooserAux(gameNode: gameNode, depth: 2, maxMovesPerLevel: 4)
         XCTAssertEqual(gameNode.score, 0)
         XCTAssertNotNil(chosenGameNode)
+        XCTAssertEqual(chosenGameNode!.score, 0)
         XCTAssertNotNil(chosenGameNode!.board.mostRecentMove)
-        XCTAssert(chosenGameNode!.board.mostRecentMove!.index == mmi + 3,
+        XCTAssert(chosenGameNode!.board.mostRecentMove!.index == mmi + 3
+            || chosenGameNode!.board.mostRecentMove!.index == mmi_nextRow + 3,
             "chosen move index: \(chosenGameNode!.board.mostRecentMove!.index)")
     }
+    
+//    func testEvaluateMinMax02() {
+//        // This tests starts with the squares arranged as pictured:
+//        // a a a a a + +
+//        // a b b b w + +
+//        // a a w w a + +
+//        // + + + + + + +
+//        let mmi = Board.middleMoveIndex
+//        let mmi_nextRow = Board.middleMoveIndex + Board.paddedBoardDim
+//        let moves: [Board.Move] = [
+//            (.black,  mmi), (.white, mmi_nextRow + 1),
+//            (.black, mmi + 1), (.white, mmi_nextRow + 2),
+//            (.black, mmi + 2), (.white, mmi + 3)]
+//        let availableMoveIndices: Set<Int> = [
+//            mmi - 24, mmi - 23, mmi - 22, mmi - 21, mmi - 20,
+//            mmi - 1,
+//            mmi_nextRow - 1, mmi_nextRow, mmi_nextRow + 3]
+//        let board = Board(moves: moves, availableMoveIndices: availableMoveIndices)
+//        let gameNode = GameNode(board: board)
+//        
+//        let chosenGameNode = minMaxMoveChooserAux(gameNode: gameNode, depth: 2, maxMovesPerLevel: 9)
+//        XCTAssertEqual(gameNode.score, 1)
+//        XCTAssertNotNil(chosenGameNode)
+//        XCTAssertEqual(chosenGameNode!.score, 1)
+//        XCTAssertNotNil(chosenGameNode!.board.mostRecentMove)
+//        XCTAssert(chosenGameNode!.board.mostRecentMove!.index == mmi - 22,
+//            "chosen move index: \(chosenGameNode!.board.mostRecentMove!.index)")
+//    }
 }
