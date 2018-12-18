@@ -60,7 +60,9 @@ func regenerateChildren(gameNode: GameNode, depth: Int) {
 }
 
 func minMaxMoveChooser(gameNode: GameNode) -> GameNode? {
-    return minMaxMoveChooserAux(gameNode: gameNode, depth: 3)
+    let depth = 9 - Int(log2(Float(gameNode.board.availableMoveIndices.count)))
+    print("==> available: \(gameNode.board.availableMoveIndices.count) depth: \(depth)")
+    return minMaxMoveChooserAux(gameNode: gameNode, depth: depth);
 }
 
 func minMaxMoveChooserAux(gameNode: GameNode, depth: Int) -> GameNode? {
