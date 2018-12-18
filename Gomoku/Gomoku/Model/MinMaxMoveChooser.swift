@@ -14,7 +14,6 @@ func assignMinMaxScore(gameNode: GameNode) {
             assignMinMaxScore(gameNode: child)
         }
         
-        // TODO: Add pruning.
         if let mostRecentMove = gameNode.board.mostRecentMove {
             if mostRecentMove.mover == .black {
                 gameNode.score = Int.max
