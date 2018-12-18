@@ -33,38 +33,41 @@ func assignMinMaxScore(gameNode: GameNode) {
     }
 }
 
-func generateChildren(gameNode: GameNode, depth: Int, maxMovesPerLevel: Int) {
+func regenerateChildren(gameNode: GameNode, depth: Int) {
     if depth > 0 {
-        if gameNode.children.count == 0 {
-            // TODO: Come up with a better solution for limiting the number of
-            // moves. The problem is that a tree based on ALL the available
-            // moves is often too large to search in a reasonable time.
-            //
-            // Perhaps instead of choosing moves randomly, write a
-            // heuristicScore() function for moves and use that to pick moves.
-            let shuffledMoveIndices = gameNode.board.availableMoveIndices.shuffled()
-            let cappedMoveIndices = shuffledMoveIndices.prefix(maxMovesPerLevel)
+        gameNode.children = Array<GameNode>()
+        
+        let shuffledMoveIndices = gameNode.board.availableMoveIndices.shuffled()
+        var highestScore = Int.min
             
-            for moveIndex in cappedMoveIndices {
-                let nextBoard = Board(board: gameNode.board, index: moveIndex)
-                gameNode.children.append(GameNode(board: nextBoard))
+        for moveIndex in shuffledMoveIndices {
+            let childBoard = Board(board: gameNode.board, index: moveIndex)
+            let childNode = GameNode(board: childBoard)
+            childNode.score = childNode.board.heuristicScoreQuick()
+            highestScore = max(highestScore, childNode.score)
+            if childNode.score >= highestScore {
+                gameNode.children.append(childNode)
             }
         }
         
+        gameNode.children = gameNode.children.filter { (childNode) -> Bool in
+            childNode.score == highestScore
+        }
+        
         for child in gameNode.children {
-            generateChildren(gameNode: child, depth: depth - 1, maxMovesPerLevel: maxMovesPerLevel)
+            regenerateChildren(gameNode: child, depth: depth - 1)
         }
     }
 }
 
 func minMaxMoveChooser(gameNode: GameNode) -> GameNode? {
-    return minMaxMoveChooserAux(gameNode: gameNode, depth: 3, maxMovesPerLevel: 5)
+    return minMaxMoveChooserAux(gameNode: gameNode, depth: 3)
 }
 
-func minMaxMoveChooserAux(gameNode: GameNode, depth: Int, maxMovesPerLevel: Int) -> GameNode? {
+func minMaxMoveChooserAux(gameNode: GameNode, depth: Int) -> GameNode? {
     var nextMove:GameNode? = nil
 
-    generateChildren(gameNode: gameNode, depth: depth, maxMovesPerLevel: maxMovesPerLevel)
+    regenerateChildren(gameNode: gameNode, depth: depth)
 
     if let mostRecentMove = gameNode.board.mostRecentMove {
         // TODO: Make this work for either the black or white player. Right now

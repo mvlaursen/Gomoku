@@ -59,8 +59,8 @@ class GomokuMinMaxTests: XCTestCase {
         // + b b b a a +
         // + w w w a a +
         // + + + + + + +
-        let mmi = Board.middleMoveIndex
-        let mmi_nextRow = Board.middleMoveIndex + Board.paddedBoardDim
+        let mmi = Board.centerIndex
+        let mmi_nextRow = Board.centerIndex + Board.paddedBoardDim
         let moves: [Board.Move] = [
             (.black,  mmi), (.white, mmi_nextRow),
             (.black, mmi + 1), (.white, mmi_nextRow + 1),
@@ -69,10 +69,10 @@ class GomokuMinMaxTests: XCTestCase {
         let board = Board(moves: moves, availableMoveIndices: availableMoveIndices)
         let gameNode = GameNode(board: board)
         
-        let chosenGameNode = minMaxMoveChooserAux(gameNode: gameNode, depth: 2, maxMovesPerLevel: 4)
-        XCTAssertEqual(gameNode.score, 0)
+        let chosenGameNode = minMaxMoveChooserAux(gameNode: gameNode, depth: 2)
+        XCTAssertEqual(gameNode.score, 1)
         XCTAssertNotNil(chosenGameNode)
-        XCTAssertEqual(chosenGameNode!.score, 0)
+        XCTAssertEqual(chosenGameNode!.score, 1)
         XCTAssertNotNil(chosenGameNode!.board.mostRecentMove)
         XCTAssert(chosenGameNode!.board.mostRecentMove!.index == mmi + 3
             || chosenGameNode!.board.mostRecentMove!.index == mmi_nextRow + 3,
@@ -98,7 +98,7 @@ class GomokuMinMaxTests: XCTestCase {
 //        let board = Board(moves: moves, availableMoveIndices: availableMoveIndices)
 //        let gameNode = GameNode(board: board)
 //        
-//        let chosenGameNode = minMaxMoveChooserAux(gameNode: gameNode, depth: 2, maxMovesPerLevel: 9)
+//        let chosenGameNode = minMaxMoveChooserAux(gameNode: gameNode, depth: 2)
 //        XCTAssertEqual(gameNode.score, 1)
 //        XCTAssertNotNil(chosenGameNode)
 //        XCTAssertEqual(chosenGameNode!.score, 1)

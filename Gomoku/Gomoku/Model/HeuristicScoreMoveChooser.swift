@@ -31,7 +31,7 @@ func heuristicScoreMoveChooser(gameNode: GameNode) -> GameNode? {
     
     for moveIndex in gameNode.board.availableMoveIndices.shuffled() {
         let nextBoard = Board(board: gameNode.board, index: moveIndex)
-        let score = heuristicScore(board: nextBoard)
+        let score = nextBoard.heuristicScore()
 
         if maximize && score > bestScore {
             bestNextBoard = nextBoard
@@ -47,38 +47,6 @@ func heuristicScoreMoveChooser(gameNode: GameNode) -> GameNode? {
     } else {
         return nil
     }
-}
-
-func heuristicScore(board: Board) -> Int {
-    var score = 0
-    
-    for row in Board.lowerBound..<Board.upperBound {
-        for column in Board.lowerBound..<Board.upperBound {
-            let index = Board.indexFrom(row: row, column: column)
-            let runIndicesList = adjacentIndicesOffsetsList.map { (offsets: [Int]) -> [Int] in
-                offsets.map { (offset: Int) -> Int in
-                    index + offset
-                }
-            }
-            for runIndices in runIndicesList {
-                let run = runIndices.map { (index) -> Square in
-                    board.squares[index]
-                }
-                if run.allSatisfy({ (square) -> Bool in
-                    square == .black
-                }) {
-                    score = score + 1
-                }
-                else if run.allSatisfy({ (square) -> Bool in
-                    square == .white
-                }) {
-                    score = score - 1
-                }
-            }
-        }
-    }
-        
-    return score
 }
 
 

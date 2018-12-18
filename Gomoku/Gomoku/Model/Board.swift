@@ -12,10 +12,11 @@ struct Board {
     typealias Move = (mover: Square, index: Int)
     
     static let paddedBoardDim = GameConfiguration.boardDim + 2 * (GameConfiguration.winningRunLength - 1)
+    static let squaresCount: Int = Board.paddedBoardDim * Board.paddedBoardDim
+    static let centerIndex: Int = Board.squaresCount / 2
     // The lower and upper bounds are included in the playable board area.
     static let lowerBound = GameConfiguration.winningRunLength - 1
     static let upperBound = lowerBound + GameConfiguration.boardDim - 1
-    static let middleMoveIndex: Int = Board.paddedBoardDim * Board.paddedBoardDim / 2
     
     let availableMoveIndices: Set<Int>
     let mostRecentMove: Move?
@@ -32,11 +33,18 @@ struct Board {
         
         return row * Board.paddedBoardDim + column
     }
+    
+    static func rowAndColumnFrom(index: Int) -> (row: Int, column: Int) {
+        precondition(index >= 0 && index < Board.squaresCount)
+        let row = index / Board.paddedBoardDim
+        let column = index % Board.paddedBoardDim
+        return (row: row, column: column)
+    }
 
     init() {
         var mutableAvailableMoveIndices = Set<Int>()
         var mutableSquares = Array<Square>(repeating: .outofbounds,
-            count: Board.paddedBoardDim * Board.paddedBoardDim)
+            count: Board.squaresCount)
         
         for row in Board.lowerBound...Board.upperBound {
             for column in Board.lowerBound...Board.upperBound {
@@ -100,4 +108,40 @@ struct Board {
         
         return score
     }
+    
+    func heuristicScoreQuick() -> Int {
+        var score = 0
+        
+        let centerIndex = self.mostRecentMove?.index ?? Board.centerIndex
+        let center = Board.rowAndColumnFrom(index: centerIndex)
+        
+        for row in (center.row - 2)..<(center.row + 2) {
+            for column in (center.column - 2)..<(center.column + 2) {
+                let index = Board.indexFrom(row: row, column: column)
+                let runIndicesList = adjacentIndicesOffsetsList.map { (offsets: [Int]) -> [Int] in
+                    offsets.map { (offset: Int) -> Int in
+                        index + offset
+                    }
+                }
+                for runIndices in runIndicesList {
+                    let run = runIndices.map { (index) -> Square in
+                        self.squares[index]
+                    }
+                    if run.allSatisfy({ (square) -> Bool in
+                        square == .black
+                    }) {
+                        score = score + 1
+                    }
+                    else if run.allSatisfy({ (square) -> Bool in
+                        square == .white
+                    }) {
+                        score = score - 1
+                    }
+                }
+            }
+        }
+        
+        return score
+    }
 }
+
