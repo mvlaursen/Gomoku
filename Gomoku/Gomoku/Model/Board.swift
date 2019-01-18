@@ -12,7 +12,7 @@ struct Board {
     typealias Move = (mover: Square, index: Int)
     
     static let paddedBoardDim = GameConfiguration.boardDim + 2 * (GameConfiguration.winningRunLength - 1)
-    static let squaresCount: Int = Board.paddedBoardDim * Board.paddedBoardDim
+    private static let squaresCount: Int = Board.paddedBoardDim * Board.paddedBoardDim
     static let centerIndex: Int = Board.squaresCount / 2
     // The lower and upper bounds are included in the playable board area.
     static let lowerBound = GameConfiguration.winningRunLength - 1
@@ -26,7 +26,7 @@ struct Board {
     // check for winning runs, etc.
     let squares: [Square]
     
-    static func indexFrom(row: Int, column: Int) -> Int {
+    private static func indexFrom(row: Int, column: Int) -> Int {
         // TODO: Get rid of this precondition by defining a range?
         precondition(row >= 0 && row < Board.paddedBoardDim)
         precondition(column >= 0 && column < Board.paddedBoardDim)
@@ -34,7 +34,7 @@ struct Board {
         return row * Board.paddedBoardDim + column
     }
     
-    static func rowAndColumnFrom(index: Int) -> (row: Int, column: Int) {
+    private static func rowAndColumnFrom(index: Int) -> (row: Int, column: Int) {
         precondition(index >= 0 && index < Board.squaresCount)
         let row = index / Board.paddedBoardDim
         let column = index % Board.paddedBoardDim
