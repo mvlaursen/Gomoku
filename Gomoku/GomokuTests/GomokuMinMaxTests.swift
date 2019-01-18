@@ -53,12 +53,13 @@ class GomokuMinMaxTests: XCTestCase {
     func testEvaluateMinMax01() {
         // This tests starts with the squares arranged so that the upper, left
         // black (b) stone is on the middle square, and there are four
-        // available (a) squares. The min-max algorithm should choose to place
-        // a black stone to make four black stones in a row.
-        // + + + + + + +
-        // + b b b a a +
-        // + w w w a a +
-        // + + + + + + +
+        // available (.) squares:
+        //
+        //    x x x x x x x
+        //    x b b b . . x
+        //    x w w w . . x
+        //    x x x x x x x
+        
         let ci = Board.centerIndex
         let ci_nextRow = Board.centerIndex + Board.paddedBoardDim
         let moves: [Board.Move] = [
@@ -81,12 +82,14 @@ class GomokuMinMaxTests: XCTestCase {
     
 //    func testEvaluateMinMax02() {
 //        // This tests starts with the squares arranged as pictured:
-//        // a a a a a + +
-//        // a b b b w + +
-//        // a a w w a + +
-//        // + + + + + + +
-//        let ci = Board.middleMoveIndex
-//        let ci_nextRow = Board.middleMoveIndex + Board.paddedBoardDim
+//        //
+//        //    . . . . . x x
+//        //    . b b b w x x
+//        //    a a w w a x x
+//        //    x x x x x x x
+//        
+//        let ci = Board.centerIndex
+//        let ci_nextRow = Board.centerIndex + Board.paddedBoardDim
 //        let moves: [Board.Move] = [
 //            (.black,  ci), (.white, ci_nextRow + 1),
 //            (.black, ci + 1), (.white, ci_nextRow + 2),
