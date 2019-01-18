@@ -8,14 +8,12 @@
 
 import Foundation
 
-class GameNode {    
-
+class GameNode {
     let board: Board
-    
     var children: Array<GameNode> = []
     var score: Int = 0
     
-    init(board: Board) {
+    public init(board: Board) {
         self.board = board
         
         if let mostRecentMove = self.board.mostRecentMove {
