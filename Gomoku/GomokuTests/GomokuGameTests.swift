@@ -28,8 +28,12 @@ class GomokuGameTests: XCTestCase {
     
     func testWinDetection() {
         let game = Game()
-        let move = game.doBlackMove()
-        XCTAssert(move != nil && move == 264)
-        XCTAssertFalse(game.didWin(moveIndex: move!))
+        let b0 = game.doBlackMove()
+        XCTAssert(b0 != nil && b0 == 264)
+        let w0 = game.doWhiteMove()
+        XCTAssert(w0 != nil)
+        let b1 = game.doBlackMove()
+        XCTAssert(b1 != nil)
+        XCTAssertFalse(game.didWin(moveIndex: b1!))
     }
 }
