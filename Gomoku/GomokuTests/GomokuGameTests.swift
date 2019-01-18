@@ -25,4 +25,11 @@ class GomokuGameTests: XCTestCase {
         let result000 = game.generateRunIndicesList(moveIndex: Board.centerIndex)
         XCTAssertTrue(result000.count == 20)
     }
+    
+    func testWinDetection() {
+        let game = Game()
+        let move = game.doBlackMove()
+        XCTAssert(move != nil && move == 264)
+        XCTAssertFalse(game.didWin(moveIndex: move!))
+    }
 }
