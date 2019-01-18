@@ -59,6 +59,9 @@ class GomokuMinMaxTests: XCTestCase {
         //    x b b b . . x
         //    x w w w . . x
         //    x x x x x x x
+        //
+        // Because the generation of moves to be considered is randomized,
+        // there is more than one possible correct outcome for this test.
         
         let ci = Board.centerIndex
         let ci_nextRow = Board.centerIndex + Board.paddedBoardDim
@@ -83,11 +86,11 @@ class GomokuMinMaxTests: XCTestCase {
 //    func testEvaluateMinMax02() {
 //        // This tests starts with the squares arranged as pictured:
 //        //
-//        //    . . . . . x x
-//        //    . b b b w x x
-//        //    a a w w a x x
 //        //    x x x x x x x
-//        
+//        //    x b b b w x x
+//        //    . . w w . x x
+//        //    x x x x x x x
+//
 //        let ci = Board.centerIndex
 //        let ci_nextRow = Board.centerIndex + Board.paddedBoardDim
 //        let moves: [Board.Move] = [
@@ -100,7 +103,7 @@ class GomokuMinMaxTests: XCTestCase {
 //            ci_nextRow - 1, ci_nextRow, ci_nextRow + 3]
 //        let board = Board(moves: moves, availableMoveIndices: availableMoveIndices)
 //        let gameNode = GameNode(board: board)
-//        
+//
 //        let chosenGameNode = minMaxMoveChooserAux(gameNode: gameNode, depth: 2)
 //        XCTAssertEqual(gameNode.score, 1)
 //        XCTAssertNotNil(chosenGameNode)
