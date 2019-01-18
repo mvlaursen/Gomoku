@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0F1ADB21F17C4A000FC715 /* GomokuSquareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F1ADA21F17C4A000FC715 /* GomokuSquareTests.swift */; };
 		3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA35D2186781700A23700 /* AppDelegate.swift */; };
 		3B1EA3602186781700A23700 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA35F2186781700A23700 /* ViewController.swift */; };
 		3B1EA3632186781700A23700 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA3612186781700A23700 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B0F1ADA21F17C4A000FC715 /* GomokuSquareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuSquareTests.swift; sourceTree = "<group>"; };
 		3B1EA35A2186781700A23700 /* Gomoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gomoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1EA35D2186781700A23700 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B1EA35F2186781700A23700 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				3BF78DD721C74D450098605F /* GomokuGameTests.swift */,
 				3BF78DD321C74BF30098605F /* GomokuMinMaxTests.swift */,
+				3B0F1ADA21F17C4A000FC715 /* GomokuSquareTests.swift */,
 				3B1EA3772186781900A23700 /* Info.plist */,
 			);
 			path = GomokuTests;
@@ -350,6 +353,7 @@
 				3BF78DD421C74BF30098605F /* GomokuMinMaxTests.swift in Sources */,
 				3B536E1321C2117A005625B6 /* Square.swift in Sources */,
 				3B536E1121C2115B005625B6 /* GameNode.swift in Sources */,
+				3B0F1ADB21F17C4A000FC715 /* GomokuSquareTests.swift in Sources */,
 				3BF78DD821C74D450098605F /* GomokuGameTests.swift in Sources */,
 				3B536E1221C2116C005625B6 /* Board.swift in Sources */,
 				3B536E1421C2118A005625B6 /* GameConfiguration.swift in Sources */,
