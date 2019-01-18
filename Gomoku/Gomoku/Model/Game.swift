@@ -16,7 +16,7 @@ class Game {
     // purposes of the app to assume five in a row because the intention is
     // only to support the traditional Gomoku game and there is no intention to
     // let the user customize the board size or winning conditions.
-    static let runIndicesOffsetsList = [
+    private static let runIndicesOffsetsList = [
         // Horizontal runs
         [-4, -3, -2, -1, 0], [-3, -2, -1, 0, 1],
         [-2, -1, 0, 1, 2], [-1, 0, 1, 2, 3], [0, 1, 2, 3, 4],
@@ -29,14 +29,14 @@ class Game {
         [-88, -66, -44, -22, 0], [-66, -44, -22, 0, 22], [-44, -22, 0, 22, 44],
         [-22, 0, 22, 44, 66], [0, 22, 44, 66, 88]]
     
-    var firstMove: Bool = true
-    var rootNode: GameNode = GameNode(board: Board())
-    var winningRun: Array<Int>? = nil
+    private var firstMove: Bool = true
+    private(set) var rootNode: GameNode = GameNode(board: Board())
+    private(set) var winningRun: Array<Int>? = nil
     
 //    let blackMoveChooser: Game.MoveChooser = heuristicScoreMoveChooser
-    let blackMoveChooser: Game.MoveChooser = minMaxMoveChooser
+    private let blackMoveChooser: Game.MoveChooser = minMaxMoveChooser
 //    let blackMoveChooser: Game.MoveChooser = randomMoveChooser
-    let whiteMoveChooser: Game.MoveChooser = randomMoveChooser
+    private let whiteMoveChooser: Game.MoveChooser = randomMoveChooser
 
     func doTurn() -> Bool {
         if let blackMoveIndex = doBlackMove() {
