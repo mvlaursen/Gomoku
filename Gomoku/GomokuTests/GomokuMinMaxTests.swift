@@ -81,35 +81,5 @@ class GomokuMinMaxTests: XCTestCase {
         XCTAssert(chosenGameNode!.board.mostRecentMove!.index == ci + 3
             || chosenGameNode!.board.mostRecentMove!.index == ci_nextRow + 3,
             "chosen move index: \(chosenGameNode!.board.mostRecentMove!.index)")
-    }
-    
-//    func testEvaluateMinMax02() {
-//        // This tests starts with the squares arranged as pictured:
-//        //
-//        //    x x x x x x x
-//        //    x b b b w x x
-//        //    . . w w . x x
-//        //    x x x x x x x
-//
-//        let ci = Board.centerIndex
-//        let ci_nextRow = Board.centerIndex + Board.paddedBoardDim
-//        let moves: [Board.Move] = [
-//            (.black,  ci), (.white, ci_nextRow + 1),
-//            (.black, ci + 1), (.white, ci_nextRow + 2),
-//            (.black, ci + 2), (.white, ci + 3)]
-//        let availableMoveIndices: Set<Int> = [
-//            ci - 24, ci - 23, ci - 22, ci - 21, ci - 20,
-//            ci - 1,
-//            ci_nextRow - 1, ci_nextRow, ci_nextRow + 3]
-//        let board = Board(moves: moves, availableMoveIndices: availableMoveIndices)
-//        let gameNode = GameNode(board: board)
-//
-//        let chosenGameNode = minMaxMoveChooserAux(gameNode: gameNode, depth: 2)
-//        XCTAssertEqual(gameNode.score, 1)
-//        XCTAssertNotNil(chosenGameNode)
-//        XCTAssertEqual(chosenGameNode!.score, 1)
-//        XCTAssertNotNil(chosenGameNode!.board.mostRecentMove)
-//        XCTAssert(chosenGameNode!.board.mostRecentMove!.index == ci - 22,
-//            "chosen move index: \(chosenGameNode!.board.mostRecentMove!.index)")
-//    }
+    }    
 }
