@@ -26,8 +26,7 @@ class BoardView: UIView {
 
     // MARK: Drawing
 
-    private func drawGrid(rect: CGRect, color: UIColor, firstRank: Int, numRanks: Int) {
-        let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
+    private func drawGrid(squareDim: CGFloat, color: UIColor, firstRank: Int, numRanks: Int) {
         let lineStart = CGFloat(firstRank + 1) * squareDim
         let lineLength = CGFloat(firstRank + numRanks) * squareDim
 
@@ -50,9 +49,7 @@ class BoardView: UIView {
         }
     }
     
-    private func highlightStone(rect: CGRect, row: Int, col: Int) {
-        // TODO: We are calculating this same value in three different places.
-        let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
+    private func highlightStone(squareDim: CGFloat, row: Int, col: Int) {
         let highlight = UIBezierPath()
         
         UIColor.red.set()
@@ -61,8 +58,7 @@ class BoardView: UIView {
         highlight.stroke()
     }
 
-    private func drawStone(rect: CGRect, color: UIColor, row: Int, col: Int) {
-        let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
+    private func drawStone(squareDim: CGFloat, color: UIColor, row: Int, col: Int) {
         let stone = UIBezierPath()
 
         color.set()
@@ -75,15 +71,16 @@ class BoardView: UIView {
     override func draw(_ rect: CGRect) {
         // The rect is supposed to have a 1:1 aspect ratio layout constraint.
         assert(rect.size.width == rect.size.height)
+        let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
 
-        drawGrid(rect: rect, color: UIColor.lightGray, firstRank: 0, numRanks: Board.paddedBoardDim)
-        drawGrid(rect: rect, color: UIColor.black, firstRank: Board.lowerBound, numRanks: GameConfiguration.boardDim)
+        drawGrid(squareDim: squareDim, color: UIColor.lightGray, firstRank: 0, numRanks: Board.paddedBoardDim)
+        drawGrid(squareDim: squareDim, color: UIColor.black, firstRank: Board.lowerBound, numRanks: GameConfiguration.boardDim)
         
         for row in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
             for col in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
                 switch game.rootNode.board.squares[row * Board.paddedBoardDim + col] {
-                case .black: drawStone(rect: rect, color: UIColor.black, row: row, col: col)
-                case .white: drawStone(rect: rect, color: UIColor.lightGray, row: row, col: col)
+                case .black: drawStone(squareDim: squareDim, color: UIColor.black, row: row, col: col)
+                case .white: drawStone(squareDim: squareDim, color: UIColor.lightGray, row: row, col: col)
                 default: break
                 }
             }
@@ -93,7 +90,7 @@ class BoardView: UIView {
             for index in winningRun {
                 let row = index / Board.paddedBoardDim
                 let col = index - Board.paddedBoardDim * row
-                highlightStone(rect: rect, row: row, col: col)
+                highlightStone(squareDim: squareDim, row: row, col: col)
             }
         }
     }
