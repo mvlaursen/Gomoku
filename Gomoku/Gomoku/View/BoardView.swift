@@ -9,12 +9,14 @@
 import UIKit
 
 class BoardView: UIView {
+    static let timePerPlay = 0.1
+    
     var game = Game()
     
     func play(completion: @escaping () -> ()) {
         game = Game()
         
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: BoardView.timePerPlay, repeats: true) { timer in
             let gameOver = self.game.doTurn()
             self.setNeedsDisplay()
             if gameOver {
@@ -51,7 +53,9 @@ class BoardView: UIView {
     
     private func highlightStone(squareDim: CGFloat, row: Int, col: Int) {
         let highlight = UIBezierPath()
+        
         UIColor.red.set()
+        
         highlight.addArc(withCenter: CGPoint(x: CGFloat(col - Board.lowerBound + 1) * squareDim, y: CGFloat(row - Board.lowerBound + 1) * squareDim), radius: (squareDim / 3.0) + 1.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         highlight.close()
         highlight.stroke()
@@ -59,7 +63,9 @@ class BoardView: UIView {
 
     private func drawStone(squareDim: CGFloat, color: UIColor, row: Int, col: Int) {
         let stone = UIBezierPath()
+        
         color.set()
+        
         stone.addArc(withCenter: CGPoint(x: CGFloat(col - Board.lowerBound + 1) * squareDim, y: CGFloat(row - Board.lowerBound + 1) * squareDim), radius: squareDim / 3.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         stone.close()
         stone.fill()
