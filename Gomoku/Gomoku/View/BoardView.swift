@@ -94,8 +94,7 @@ class BoardView: UIView {
         
         if let winningRun = game.winningRun {
             for index in winningRun {
-                let row = index / Board.paddedSquaresPerDim
-                let col = index - Board.paddedSquaresPerDim * row
+                let (row, col) = Board.rowAndColumnFrom(index: index)
                 highlightStone(squareDim: squareDim, row: row, col: col)
             }
         }

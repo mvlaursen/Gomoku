@@ -34,7 +34,7 @@ struct Board {
         return row * Board.paddedSquaresPerDim + column
     }
     
-    private static func rowAndColumnFrom(index: Int) -> (row: Int, column: Int) {
+    static func rowAndColumnFrom(index: Int) -> (row: Int, column: Int) {
         precondition(index >= 0 && index < Board.squaresCount)
         let row = index / Board.paddedSquaresPerDim
         let column = index % Board.paddedSquaresPerDim
