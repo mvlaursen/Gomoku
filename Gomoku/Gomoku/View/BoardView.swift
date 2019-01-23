@@ -9,6 +9,8 @@
 import UIKit
 
 class BoardView: UIView {
+    let shouldDrawOutOfBoundsSquares = false
+    
     var game = Game()
     
     func play(completion: @escaping () -> ()) {
@@ -27,11 +29,12 @@ class BoardView: UIView {
     // MARK: Drawing
 
     private func drawGrid(squareDim: CGFloat, color: UIColor, firstRank: Int, numRanks: Int) {
-        let lineStart = CGFloat(firstRank + 1) * squareDim
-        let lineLength = CGFloat(firstRank + numRanks) * squareDim
+        let lineStart = shouldDrawOutOfBoundsSquares ? CGFloat(firstRank + 1) * squareDim : CGFloat(1) * squareDim
+        let lineLength = shouldDrawOutOfBoundsSquares ? CGFloat(firstRank + numRanks) * squareDim : CGFloat(numRanks) * squareDim
 
         color.set()
 
+        let firstRank = shouldDrawOutOfBoundsSquares ? firstRank : 0
         for rank in firstRank..<firstRank + numRanks {
             let lineOffset = CGFloat(rank + 1) * squareDim
             
@@ -50,6 +53,9 @@ class BoardView: UIView {
     }
     
     private func highlightStone(squareDim: CGFloat, row: Int, col: Int) {
+        let row = shouldDrawOutOfBoundsSquares ? row : row - Board.lowerBound
+        let col = shouldDrawOutOfBoundsSquares ? col : col - Board.lowerBound
+        
         let highlight = UIBezierPath()
         
         UIColor.red.set()
@@ -59,6 +65,9 @@ class BoardView: UIView {
     }
 
     private func drawStone(squareDim: CGFloat, color: UIColor, row: Int, col: Int) {
+        let row = shouldDrawOutOfBoundsSquares ? row : row - Board.lowerBound
+        let col = shouldDrawOutOfBoundsSquares ? col : col - Board.lowerBound
+        
         let stone = UIBezierPath()
 
         color.set()
@@ -71,10 +80,16 @@ class BoardView: UIView {
     override func draw(_ rect: CGRect) {
         // The rect is supposed to have a 1:1 aspect ratio layout constraint.
         assert(rect.size.width == rect.size.height)
-        let squareDim = rect.size.width / CGFloat(Board.paddedBoardDim + 1)
+        
+        let firstRank = Board.lowerBound
+        let numRanks = GameConfiguration.boardDim
+        let squaresPerSide = shouldDrawOutOfBoundsSquares ? CGFloat(Board.paddedBoardDim + 1) : CGFloat(GameConfiguration.boardDim + 1)
+        let squareDim = rect.size.width / squaresPerSide
 
-        drawGrid(squareDim: squareDim, color: UIColor.lightGray, firstRank: 0, numRanks: Board.paddedBoardDim)
-        drawGrid(squareDim: squareDim, color: UIColor.black, firstRank: Board.lowerBound, numRanks: GameConfiguration.boardDim)
+        if shouldDrawOutOfBoundsSquares {
+            drawGrid(squareDim: squareDim, color: UIColor.lightGray, firstRank: 0, numRanks: Board.paddedBoardDim)
+        }
+        drawGrid(squareDim: squareDim, color: UIColor.black, firstRank: firstRank, numRanks: numRanks)
         
         for row in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
             for col in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
