@@ -11,12 +11,12 @@ import Foundation
 struct Board {
     typealias Move = (mover: Square, index: Int)
     
-    static let paddedBoardDim = GameConfiguration.boardDim + 2 * (GameConfiguration.winningRunLength - 1)
+    static let paddedBoardDim = GameConfiguration.squaresPerDim + 2 * (GameConfiguration.winningRunLength - 1)
     private static let squaresCount: Int = Board.paddedBoardDim * Board.paddedBoardDim
     static let centerIndex: Int = Board.squaresCount / 2
     // The lower and upper bounds are included in the playable board area.
     static let lowerBound = GameConfiguration.winningRunLength - 1
-    static let upperBound = lowerBound + GameConfiguration.boardDim - 1
+    static let upperBound = lowerBound + GameConfiguration.squaresPerDim - 1
     
     let availableMoveIndices: Set<Int>
     let mostRecentMove: Move?

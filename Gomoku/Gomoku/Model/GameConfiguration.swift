@@ -9,6 +9,6 @@
 import Foundation
 
 struct GameConfiguration {
-    static let boardDim = 15
+    static let squaresPerDim = 15
     static let winningRunLength = 5
 }

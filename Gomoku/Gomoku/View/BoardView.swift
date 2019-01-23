@@ -78,12 +78,12 @@ class BoardView: UIView {
         // The rect is supposed to have a 1:1 aspect ratio layout constraint.
         assert(rect.size.width == rect.size.height)
         
-        let squareDim = rect.size.width / CGFloat(GameConfiguration.boardDim + 1)
+        let squareDim = rect.size.width / CGFloat(GameConfiguration.squaresPerDim + 1)
 
-        drawGrid(squareDim: squareDim, color: UIColor.black, firstRank: Board.lowerBound, numRanks: GameConfiguration.boardDim)
+        drawGrid(squareDim: squareDim, color: UIColor.black, firstRank: Board.lowerBound, numRanks: GameConfiguration.squaresPerDim)
         
-        for row in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
-            for col in Board.lowerBound..<GameConfiguration.boardDim + Board.lowerBound {
+        for row in Board.lowerBound..<GameConfiguration.squaresPerDim + Board.lowerBound {
+            for col in Board.lowerBound..<GameConfiguration.squaresPerDim + Board.lowerBound {
                 switch game.rootNode.board.squares[row * Board.paddedBoardDim + col] {
                 case .black: drawStone(squareDim: squareDim, color: UIColor.black, row: row, col: col)
                 case .white: drawStone(squareDim: squareDim, color: UIColor.lightGray, row: row, col: col)
