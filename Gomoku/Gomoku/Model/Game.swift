@@ -36,8 +36,12 @@ class Game {
     private(set) var rootNode: GameNode = GameNode(board: Board())
     private(set) var winningRun: Array<Int>? = nil
     
-    private let blackMoveChooser: MoveChooser = RandomMoveChooser()
-    private let whiteMoveChooser: MoveChooser = RandomMoveChooser()
+//    private let blackMoveChooser: MoveChooser = RandomMoveChooser()
+//    private let blackMoveChooser: MoveChooser = HeuristicScoreMoveChooser()
+    private let blackMoveChooser: MoveChooser = MinMaxMoveChooser()
+//    private let whiteMoveChooser: MoveChooser = RandomMoveChooser()
+    private let whiteMoveChooser: MoveChooser = HeuristicScoreMoveChooser()
+//    private let whiteMoveChooser: MoveChooser = MinMaxMoveChooser()
 
     func doTurn() -> Bool {
         if mover == .black {

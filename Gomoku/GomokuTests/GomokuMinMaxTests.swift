@@ -73,7 +73,7 @@ class GomokuMinMaxTests: XCTestCase {
         let board = Board(moves: moves, availableMoveIndices: availableMoveIndices)
         let gameNode = GameNode(board: board)
         
-        let chosenGameNode = minMaxMoveChooserAux(gameNode: gameNode, depth: 2)
+        let chosenGameNode = MinMaxMoveChooser.chooseNextMoveAux(gameNode: gameNode, depth: 2)
         XCTAssertEqual(gameNode.score, 1)
         XCTAssertNotNil(chosenGameNode)
         XCTAssertEqual(chosenGameNode!.score, 1)

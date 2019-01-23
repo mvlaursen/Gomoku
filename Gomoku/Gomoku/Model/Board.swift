@@ -9,6 +9,14 @@
 import Foundation
 
 struct Board {
+    let adjacentIndicesOffsetsList = [
+        // Horizontal adjacency
+        [0, 1],
+        // Vertical adjacency
+        [0, 23],
+        // Diagonal adjacency
+        [0, 24], [0, 22]]
+    
     typealias Move = (mover: Square, index: Int)
     
     static let paddedSquaresPerDim = GameConfiguration.squaresPerDim + 2 * (GameConfiguration.winningRunLength - 1)
