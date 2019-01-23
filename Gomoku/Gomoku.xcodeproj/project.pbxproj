@@ -35,6 +35,8 @@
 		3BF78DD521C74C3B0098605F /* MinMaxMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B536E1621C21881005625B6 /* MinMaxMoveChooser.swift */; };
 		3BF78DD621C74C480098605F /* HeuristicScoreMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */; };
 		3BF78DD821C74D450098605F /* GomokuGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF78DD721C74D450098605F /* GomokuGameTests.swift */; };
+		3BFC8B3121F91F7B00A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
+		3BFC8B3221F91F8000A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,7 @@
 		3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeuristicScoreMoveChooser.swift; sourceTree = "<group>"; };
 		3BF78DD321C74BF30098605F /* GomokuMinMaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuMinMaxTests.swift; sourceTree = "<group>"; };
 		3BF78DD721C74D450098605F /* GomokuGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuGameTests.swift; sourceTree = "<group>"; };
+		3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteMoveChooser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +184,7 @@
 				3B536E1621C21881005625B6 /* MinMaxMoveChooser.swift */,
 				3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */,
 				3BB8328721A49A1C008B248A /* Square.swift */,
+				3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,6 +341,7 @@
 				3B536E1721C21881005625B6 /* MinMaxMoveChooser.swift in Sources */,
 				3B1EA3942186A5B900A23700 /* Board.swift in Sources */,
 				3BB8328E21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift in Sources */,
+				3BFC8B3121F91F7B00A9E6CD /* WhiteMoveChooser.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,
 				3B1EA3662186781700A23700 /* Gomoku.xcdatamodeld in Sources */,
 				3BB8328C21A4C093008B248A /* RandomMoveChooser.swift in Sources */,
@@ -351,6 +356,7 @@
 				3B536E1521C211A6005625B6 /* RandomMoveChooser.swift in Sources */,
 				3BF78DD621C74C480098605F /* HeuristicScoreMoveChooser.swift in Sources */,
 				3BF78DD421C74BF30098605F /* GomokuMinMaxTests.swift in Sources */,
+				3BFC8B3221F91F8000A9E6CD /* WhiteMoveChooser.swift in Sources */,
 				3B536E1321C2117A005625B6 /* Square.swift in Sources */,
 				3B536E1121C2115B005625B6 /* GameNode.swift in Sources */,
 				3B0F1ADB21F17C4A000FC715 /* GomokuSquareTests.swift in Sources */,

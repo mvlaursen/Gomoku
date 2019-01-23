@@ -39,9 +39,7 @@ class Game {
 //    private let blackMoveChooser: MoveChooser = RandomMoveChooser()
 //    private let blackMoveChooser: MoveChooser = HeuristicScoreMoveChooser()
     private let blackMoveChooser: MoveChooser = MinMaxMoveChooser()
-//    private let whiteMoveChooser: MoveChooser = RandomMoveChooser()
-    private let whiteMoveChooser: MoveChooser = HeuristicScoreMoveChooser()
-//    private let whiteMoveChooser: MoveChooser = MinMaxMoveChooser()
+    private let whiteMoveChooser: MoveChooser = WhiteMoveChooser()
 
     func doTurn() -> Bool {
         if mover == .black {
