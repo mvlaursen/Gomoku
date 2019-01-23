@@ -11,8 +11,8 @@ import Foundation
 struct Board {
     typealias Move = (mover: Square, index: Int)
     
-    static let paddedBoardDim = GameConfiguration.squaresPerDim + 2 * (GameConfiguration.winningRunLength - 1)
-    private static let squaresCount: Int = Board.paddedBoardDim * Board.paddedBoardDim
+    static let paddedSquaresPerDim = GameConfiguration.squaresPerDim + 2 * (GameConfiguration.winningRunLength - 1)
+    private static let squaresCount: Int = Board.paddedSquaresPerDim * Board.paddedSquaresPerDim
     static let centerIndex: Int = Board.squaresCount / 2
     // The lower and upper bounds are included in the playable board area.
     static let lowerBound = GameConfiguration.winningRunLength - 1
@@ -28,16 +28,16 @@ struct Board {
     
     private static func indexFrom(row: Int, column: Int) -> Int {
         // TODO: Get rid of this precondition by defining a range?
-        precondition(row >= 0 && row < Board.paddedBoardDim)
-        precondition(column >= 0 && column < Board.paddedBoardDim)
+        precondition(row >= 0 && row < Board.paddedSquaresPerDim)
+        precondition(column >= 0 && column < Board.paddedSquaresPerDim)
         
-        return row * Board.paddedBoardDim + column
+        return row * Board.paddedSquaresPerDim + column
     }
     
     private static func rowAndColumnFrom(index: Int) -> (row: Int, column: Int) {
         precondition(index >= 0 && index < Board.squaresCount)
-        let row = index / Board.paddedBoardDim
-        let column = index % Board.paddedBoardDim
+        let row = index / Board.paddedSquaresPerDim
+        let column = index % Board.paddedSquaresPerDim
         return (row: row, column: column)
     }
 
@@ -49,7 +49,7 @@ struct Board {
         for row in Board.lowerBound...Board.upperBound {
             for column in Board.lowerBound...Board.upperBound {
                     let index = Board.indexFrom(row: row, column: column)
-                    mutableAvailableMoveIndices.insert(row * Board.paddedBoardDim + column)
+                    mutableAvailableMoveIndices.insert(row * Board.paddedSquaresPerDim + column)
                     mutableSquares[index] = .empty
             }
         }

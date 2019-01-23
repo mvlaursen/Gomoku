@@ -64,7 +64,7 @@ class GomokuMinMaxTests: XCTestCase {
         // there is more than one possible correct outcome for this test.
         
         let ci = Board.centerIndex
-        let ci_nextRow = Board.centerIndex + Board.paddedBoardDim
+        let ci_nextRow = Board.centerIndex + Board.paddedSquaresPerDim
         let moves: [Board.Move] = [
             (.black,  ci), (.white, ci_nextRow),
             (.black, ci + 1), (.white, ci_nextRow + 1),

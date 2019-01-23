@@ -84,7 +84,7 @@ class BoardView: UIView {
         
         for row in Board.lowerBound..<GameConfiguration.squaresPerDim + Board.lowerBound {
             for col in Board.lowerBound..<GameConfiguration.squaresPerDim + Board.lowerBound {
-                switch game.rootNode.board.squares[row * Board.paddedBoardDim + col] {
+                switch game.rootNode.board.squares[row * Board.paddedSquaresPerDim + col] {
                 case .black: drawStone(squareDim: squareDim, color: UIColor.black, row: row, col: col)
                 case .white: drawStone(squareDim: squareDim, color: UIColor.lightGray, row: row, col: col)
                 default: break
@@ -94,8 +94,8 @@ class BoardView: UIView {
         
         if let winningRun = game.winningRun {
             for index in winningRun {
-                let row = index / Board.paddedBoardDim
-                let col = index - Board.paddedBoardDim * row
+                let row = index / Board.paddedSquaresPerDim
+                let col = index - Board.paddedSquaresPerDim * row
                 highlightStone(squareDim: squareDim, row: row, col: col)
             }
         }
