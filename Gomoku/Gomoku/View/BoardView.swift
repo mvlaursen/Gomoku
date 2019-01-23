@@ -82,8 +82,8 @@ class BoardView: UIView {
 
         drawGrid(squareDim: squareDim, color: UIColor.black, firstRank: Board.lowerBound, numRanks: GameConfiguration.squaresPerDim)
         
-        for row in Board.lowerBound..<GameConfiguration.squaresPerDim + Board.lowerBound {
-            for col in Board.lowerBound..<GameConfiguration.squaresPerDim + Board.lowerBound {
+        for row in Board.lowerBound..<Board.lowerBound + GameConfiguration.squaresPerDim {
+            for col in Board.lowerBound..<Board.lowerBound + GameConfiguration.squaresPerDim {
                 switch game.rootNode.board.squares[row * Board.paddedSquaresPerDim + col] {
                 case .black: drawStone(squareDim: squareDim, color: UIColor.black, row: row, col: col)
                 case .white: drawStone(squareDim: squareDim, color: UIColor.lightGray, row: row, col: col)
