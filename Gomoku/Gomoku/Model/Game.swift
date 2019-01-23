@@ -29,6 +29,7 @@ class Game {
         [-88, -66, -44, -22, 0], [-66, -44, -22, 0, 22], [-44, -22, 0, 22, 44],
         [-22, 0, 22, 44, 66], [0, 22, 44, 66, 88]]
     
+    private var mover = Square.black
     private var firstMove: Bool = true
     private(set) var rootNode: GameNode = GameNode(board: Board())
     private(set) var winningRun: Array<Int>? = nil
@@ -39,16 +40,24 @@ class Game {
     private let whiteMoveChooser: Game.MoveChooser = randomMoveChooser
 
     func doTurn() -> Bool {
-        if let blackMoveIndex = doBlackMove() {
-            if didWin(moveIndex: blackMoveIndex) {
-                return true
-            } else if let whiteMoveIndex = doWhiteMove() {
+        if mover == .black {
+            if let blackMoveIndex = doBlackMove() {
+                if didWin(moveIndex: blackMoveIndex) {
+                    return true
+                }
+                mover = .white
+            }
+        } else if mover == .white {
+            if let whiteMoveIndex = doWhiteMove() {
                 if didWin(moveIndex: whiteMoveIndex) {
                     return true
                 }
+                mover = .black
             }
+        } else {
+            fatalError("mover should always be .black or .white.")
         }
-        
+                
         return false
     }
     

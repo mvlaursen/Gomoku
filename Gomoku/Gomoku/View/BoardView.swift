@@ -9,7 +9,7 @@
 import UIKit
 
 class BoardView: UIView {
-    static let timePerPlay = 0.1
+    static let timePerPlay = 0.5
     
     var game = Game()
     
