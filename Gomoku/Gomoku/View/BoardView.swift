@@ -9,7 +9,9 @@
 import UIKit
 
 class BoardView: UIView {
-    let shouldDrawOutOfBoundsSquares = false
+    // If true, draw the out-of-bounds squares that surround the playable area
+    // of the board.
+    let shouldDrawPadding = false
     
     var game = Game()
     
@@ -29,12 +31,12 @@ class BoardView: UIView {
     // MARK: Drawing
 
     private func drawGrid(squareDim: CGFloat, color: UIColor, firstRank: Int, numRanks: Int) {
-        let lineStart = shouldDrawOutOfBoundsSquares ? CGFloat(firstRank + 1) * squareDim : CGFloat(1) * squareDim
-        let lineLength = shouldDrawOutOfBoundsSquares ? CGFloat(firstRank + numRanks) * squareDim : CGFloat(numRanks) * squareDim
+        let lineStart = shouldDrawPadding ? CGFloat(firstRank + 1) * squareDim : CGFloat(1) * squareDim
+        let lineLength = shouldDrawPadding ? CGFloat(firstRank + numRanks) * squareDim : CGFloat(numRanks) * squareDim
 
         color.set()
 
-        let firstRank = shouldDrawOutOfBoundsSquares ? firstRank : 0
+        let firstRank = shouldDrawPadding ? firstRank : 0
         for rank in firstRank..<firstRank + numRanks {
             let lineOffset = CGFloat(rank + 1) * squareDim
             
@@ -53,8 +55,8 @@ class BoardView: UIView {
     }
     
     private func highlightStone(squareDim: CGFloat, row: Int, col: Int) {
-        let row = shouldDrawOutOfBoundsSquares ? row : row - Board.lowerBound
-        let col = shouldDrawOutOfBoundsSquares ? col : col - Board.lowerBound
+        let row = shouldDrawPadding ? row : row - Board.lowerBound
+        let col = shouldDrawPadding ? col : col - Board.lowerBound
         
         let highlight = UIBezierPath()
         
@@ -65,8 +67,8 @@ class BoardView: UIView {
     }
 
     private func drawStone(squareDim: CGFloat, color: UIColor, row: Int, col: Int) {
-        let row = shouldDrawOutOfBoundsSquares ? row : row - Board.lowerBound
-        let col = shouldDrawOutOfBoundsSquares ? col : col - Board.lowerBound
+        let row = shouldDrawPadding ? row : row - Board.lowerBound
+        let col = shouldDrawPadding ? col : col - Board.lowerBound
         
         let stone = UIBezierPath()
 
@@ -83,10 +85,10 @@ class BoardView: UIView {
         
         let firstRank = Board.lowerBound
         let numRanks = GameConfiguration.boardDim
-        let squaresPerSide = shouldDrawOutOfBoundsSquares ? CGFloat(Board.paddedBoardDim + 1) : CGFloat(GameConfiguration.boardDim + 1)
+        let squaresPerSide = shouldDrawPadding ? CGFloat(Board.paddedBoardDim + 1) : CGFloat(GameConfiguration.boardDim + 1)
         let squareDim = rect.size.width / squaresPerSide
 
-        if shouldDrawOutOfBoundsSquares {
+        if shouldDrawPadding {
             drawGrid(squareDim: squareDim, color: UIColor.lightGray, firstRank: 0, numRanks: Board.paddedBoardDim)
         }
         drawGrid(squareDim: squareDim, color: UIColor.black, firstRank: firstRank, numRanks: numRanks)
