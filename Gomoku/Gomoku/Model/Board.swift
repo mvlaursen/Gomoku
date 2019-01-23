@@ -27,7 +27,6 @@ struct Board {
     let squares: [Square]
     
     static func indexFrom(row: Int, column: Int) -> Int {
-        // TODO: Get rid of this precondition by defining a range?
         precondition(row >= 0 && row < Board.paddedSquaresPerDim)
         precondition(column >= 0 && column < Board.paddedSquaresPerDim)
         
