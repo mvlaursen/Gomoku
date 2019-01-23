@@ -25,10 +25,19 @@ class GomokuUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testPlayASelfPlayingGame() {
+        let playButton = XCUIApplication().buttons["Play"]
+        XCTAssert(playButton.isEnabled)
+        
+        playButton.tap()
+        XCTAssertFalse(playButton.isEnabled)
+        
+        // TODO: This is kind of a crappy way of watching for the end of the
+        // game. Do something better.
+        while !playButton.isEnabled {
+            sleep(5)
+        }
+        XCTAssert(true)
     }
-
 }

@@ -37,6 +37,8 @@
 		3BF78DD821C74D450098605F /* GomokuGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF78DD721C74D450098605F /* GomokuGameTests.swift */; };
 		3BFC8B3121F91F7B00A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
 		3BFC8B3221F91F8000A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
+		3BFC8B3421F9218500A9E6CD /* BlackMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */; };
+		3BFC8B3521F9222100A9E6CD /* BlackMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,7 @@
 		3BF78DD321C74BF30098605F /* GomokuMinMaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuMinMaxTests.swift; sourceTree = "<group>"; };
 		3BF78DD721C74D450098605F /* GomokuGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuGameTests.swift; sourceTree = "<group>"; };
 		3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteMoveChooser.swift; sourceTree = "<group>"; };
+		3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackMoveChooser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				3B1EA3642186781700A23700 /* Gomoku.xcdatamodeld */,
+				3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */,
 				3B1EA3932186A5B900A23700 /* Board.swift */,
 				3B6E29C8218777C200F4AF0B /* Game.swift */,
 				3BB8328921A4A63F008B248A /* GameConfiguration.swift */,
@@ -342,6 +346,7 @@
 				3B1EA3942186A5B900A23700 /* Board.swift in Sources */,
 				3BB8328E21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift in Sources */,
 				3BFC8B3121F91F7B00A9E6CD /* WhiteMoveChooser.swift in Sources */,
+				3BFC8B3421F9218500A9E6CD /* BlackMoveChooser.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,
 				3B1EA3662186781700A23700 /* Gomoku.xcdatamodeld in Sources */,
 				3BB8328C21A4C093008B248A /* RandomMoveChooser.swift in Sources */,
@@ -358,6 +363,7 @@
 				3BF78DD421C74BF30098605F /* GomokuMinMaxTests.swift in Sources */,
 				3BFC8B3221F91F8000A9E6CD /* WhiteMoveChooser.swift in Sources */,
 				3B536E1321C2117A005625B6 /* Square.swift in Sources */,
+				3BFC8B3521F9222100A9E6CD /* BlackMoveChooser.swift in Sources */,
 				3B536E1121C2115B005625B6 /* GameNode.swift in Sources */,
 				3B0F1ADB21F17C4A000FC715 /* GomokuSquareTests.swift in Sources */,
 				3BF78DD821C74D450098605F /* GomokuGameTests.swift in Sources */,
