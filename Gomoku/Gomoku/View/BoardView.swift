@@ -27,7 +27,7 @@ class BoardView: UIView {
     // MARK: Drawing
 
     private func drawGrid(squareDim: CGFloat, color: UIColor, firstRank: Int, numRanks: Int) {
-        let lineStart = CGFloat(1) * squareDim
+        let lineStart = squareDim
         let lineLength = CGFloat(numRanks) * squareDim
 
         color.set()
@@ -50,25 +50,17 @@ class BoardView: UIView {
     }
     
     private func highlightStone(squareDim: CGFloat, row: Int, col: Int) {
-        let row = row - Board.lowerBound
-        let col = col - Board.lowerBound
-        
         let highlight = UIBezierPath()
-        
         UIColor.red.set()
-        highlight.addArc(withCenter: CGPoint(x: CGFloat(col + 1) * squareDim, y: CGFloat(row + 1) * squareDim), radius: (squareDim / 3.0) + 1.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        highlight.addArc(withCenter: CGPoint(x: CGFloat(col - Board.lowerBound + 1) * squareDim, y: CGFloat(row - Board.lowerBound + 1) * squareDim), radius: (squareDim / 3.0) + 1.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         highlight.close()
         highlight.stroke()
     }
 
     private func drawStone(squareDim: CGFloat, color: UIColor, row: Int, col: Int) {
-        let row = row - Board.lowerBound
-        let col = col - Board.lowerBound
-        
         let stone = UIBezierPath()
-
         color.set()
-        stone.addArc(withCenter: CGPoint(x: CGFloat(col + 1) * squareDim, y: CGFloat(row + 1) * squareDim), radius: squareDim / 3.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        stone.addArc(withCenter: CGPoint(x: CGFloat(col - Board.lowerBound + 1) * squareDim, y: CGFloat(row - Board.lowerBound + 1) * squareDim), radius: squareDim / 3.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         stone.close()
         stone.fill()
         stone.stroke()
