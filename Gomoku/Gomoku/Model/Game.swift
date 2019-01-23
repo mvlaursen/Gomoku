@@ -8,9 +8,11 @@
 
 import Foundation
 
+protocol MoveChooser {
+    func chooseNextMove(currentGameNode: GameNode) -> GameNode?
+}
+
 class Game {
-    typealias MoveChooser = (GameNode) -> GameNode?
-    
     // In the Board class, the number of stones in a row for a win is
     // parameterized. But here we assume five in a row. It's fine for the
     // purposes of the app to assume five in a row because the intention is
@@ -34,10 +36,8 @@ class Game {
     private(set) var rootNode: GameNode = GameNode(board: Board())
     private(set) var winningRun: Array<Int>? = nil
     
-//    let blackMoveChooser: Game.MoveChooser = heuristicScoreMoveChooser
-    private let blackMoveChooser: Game.MoveChooser = minMaxMoveChooser
-//    let blackMoveChooser: Game.MoveChooser = randomMoveChooser
-    private let whiteMoveChooser: Game.MoveChooser = randomMoveChooser
+    private let blackMoveChooser: MoveChooser = RandomMoveChooser()
+    private let whiteMoveChooser: MoveChooser = RandomMoveChooser()
 
     func doTurn() -> Bool {
         if mover == .black {
@@ -70,7 +70,7 @@ class Game {
             firstMove = false
             moveIndex = rootNode.board.squares.count / 2
         } else {
-            moveIndex = blackMoveChooser(rootNode)?.board.mostRecentMove?.index
+            moveIndex = blackMoveChooser.chooseNextMove(currentGameNode: rootNode)?.board.mostRecentMove?.index
         }
         
         if moveIndex != nil {
@@ -82,7 +82,7 @@ class Game {
     }
 
     func doWhiteMove() -> Int? {
-        guard let moveIndex = whiteMoveChooser(rootNode)?.board.mostRecentMove?.index else {
+        guard let moveIndex = whiteMoveChooser.chooseNextMove(currentGameNode: rootNode)?.board.mostRecentMove?.index else {
             return nil
         }
         let board = Board(board: rootNode.board, index: moveIndex)
