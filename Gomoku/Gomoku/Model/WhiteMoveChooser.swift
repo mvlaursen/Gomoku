@@ -17,6 +17,16 @@ struct WhiteMoveChooser: MoveChooser {
     private let minMaxMoveChooser = RandomMoveChooser() // MinMaxMoveChooser()
     
     func chooseNextMove(currentGameNode: GameNode) -> GameNode? {
-        return minMaxMoveChooser.chooseNextMove(currentGameNode: currentGameNode)
+        precondition(currentGameNode.board.mostRecentMove?.mover == Player.black)
+        
+        if currentGameNode.board.mostRecentMove?.index == Board.centerIndex {
+            if currentGameNode.board.availableMoveIndices.contains(Board.centerIndex + 1) {
+                return GameNode(board: Board(board: currentGameNode.board, index: Board.centerIndex + 1))
+            }
+        } else {
+            return minMaxMoveChooser.chooseNextMove(currentGameNode: currentGameNode)
+        }
+        
+        return nil
     }
 }
