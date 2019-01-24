@@ -14,7 +14,7 @@ import Foundation
  * handling of the first few moves in the game.
  */
 struct WhiteMoveChooser: MoveChooser {
-    private let minMaxMoveChooser = RandomMoveChooser() // MinMaxMoveChooser()
+    private let minMaxMoveChooser = MinMaxMoveChooser()
     
     func chooseNextMove(currentGameNode: GameNode) -> GameNode? {
         precondition(currentGameNode.board.mostRecentMove?.mover == Player.black)

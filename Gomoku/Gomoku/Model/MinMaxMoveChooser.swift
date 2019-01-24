@@ -10,8 +10,8 @@ import Foundation
 
 struct MinMaxMoveChooser: MoveChooser {
     func chooseNextMove(currentGameNode: GameNode) -> GameNode? {
-        let depth = 9 - Int(log2(Float(currentGameNode.board.availableMoveIndices.count)))
-        print("==> available: \(currentGameNode.board.availableMoveIndices.count) depth: \(depth)")
+        let depth = 11 - Int(log2(Float(currentGameNode.board.availableMoveIndices.count)))
+        print("==> mover: \(currentGameNode.board.mostRecentMove!.mover.nextPlayer()) #moves: \(currentGameNode.board.availableMoveIndices.count) depth: \(depth)")
         return MinMaxMoveChooser.chooseNextMoveAux(gameNode: currentGameNode, depth: depth);
     }
     
@@ -21,10 +21,17 @@ struct MinMaxMoveChooser: MoveChooser {
         regenerateChildren(gameNode: gameNode, depth: depth)
         
         if let mostRecentMove = gameNode.board.mostRecentMove {
-            // TODO: Make this work for either the black or white player. Right now
-            // it only works for black.
-            
-            if mostRecentMove.mover == Player.white {
+            if mostRecentMove.mover == Player.black {
+                gameNode.score = Int.max
+                
+                for child in gameNode.children {
+                    assignMinMaxScore(gameNode: child)
+                    if child.score < gameNode.score {
+                        gameNode.score = child.score
+                        nextMove = child
+                    }
+                }
+            } else if mostRecentMove.mover == Player.white {
                 gameNode.score = Int.min
                 
                 for child in gameNode.children {
