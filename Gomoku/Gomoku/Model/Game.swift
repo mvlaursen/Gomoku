@@ -9,6 +9,7 @@
 import Foundation
 
 protocol MoveChooser {
+    // TODO: Have this return only the next moveIndex, not an entire node.
     func chooseNextMove(currentGameNode: GameNode) -> GameNode?
 }
 
@@ -61,6 +62,7 @@ class Game {
     func doBlackMove() -> Int? {
         var moveIndex: Int? = nil
         
+        // TO DO: Move this logic to BlackMoveChooser.
         if rootNode.board.mostRecentMove == nil {
             // The game always starts with black placing a stone in the center
             // of the board. There's a very small possibility that
