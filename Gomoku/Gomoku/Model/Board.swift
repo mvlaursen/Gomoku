@@ -9,6 +9,8 @@
 import Foundation
 
 struct Board {
+    typealias Move = (mover: Player, index: Int)
+    
     let adjacentIndicesOffsetsList = [
         // Horizontal adjacency
         [0, 1],
@@ -16,8 +18,6 @@ struct Board {
         [0, 23],
         // Diagonal adjacency
         [0, 24], [0, 22]]
-    
-    typealias Move = (mover: Square, index: Int)
     
     static let paddedSquaresPerDim = GameConfiguration.squaresPerDim + 2 * (GameConfiguration.winningRunLength - 1)
     private static let squaresCount: Int = Board.paddedSquaresPerDim * Board.paddedSquaresPerDim
@@ -69,9 +69,9 @@ struct Board {
     init(board other: Board, index: Int) {
         precondition(index > 0 && index < other.squares.count)
         
-        var mover = Square.black
+        var mover = Player.black
         if let mostRecentMove = other.mostRecentMove {
-            mover = mostRecentMove.mover == Square.black ? Square.white : Square.black
+            mover = mostRecentMove.mover == Player.black ? Player.white : Player.black
         }
         self.mostRecentMove = (mover: mover, index: index)
         
@@ -80,7 +80,7 @@ struct Board {
         self.availableMoveIndices = newAvailableMoves
         
         var newSquares = other.squares
-        newSquares[index] = mover
+        newSquares[index] = mover.toSquare()
         self.squares = newSquares
     }
 
@@ -100,12 +100,12 @@ struct Board {
                         self.squares[index]
                     }
                     if run.allSatisfy({ (square) -> Bool in
-                        square == .black
+                        square == Square.black
                     }) {
                         score = score + 1
                     }
                     else if run.allSatisfy({ (square) -> Bool in
-                        square == .white
+                        square == Square.white
                     }) {
                         score = score - 1
                     }
@@ -135,12 +135,12 @@ struct Board {
                         self.squares[index]
                     }
                     if run.allSatisfy({ (square) -> Bool in
-                        square == .black
+                        square == Square.black
                     }) {
                         score = score + 1
                     }
                     else if run.allSatisfy({ (square) -> Bool in
-                        square == .white
+                        square == Square.white
                     }) {
                         score = score - 1
                     }

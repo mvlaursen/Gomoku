@@ -17,9 +17,9 @@ class GameNode {
         self.board = board
         
         if let mostRecentMove = self.board.mostRecentMove {
-            if mostRecentMove.mover == .black {
+            if mostRecentMove.mover == Player.black {
                 score = Int.min
-            } else if mostRecentMove.mover == .white {
+            } else if mostRecentMove.mover == Player.white {
                 score = Int.max
             }
         }

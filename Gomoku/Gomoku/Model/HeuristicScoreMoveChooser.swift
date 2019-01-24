@@ -14,7 +14,7 @@ import Foundation
 struct HeuristicScoreMoveChooser: MoveChooser {
     func chooseNextMove(currentGameNode: GameNode) -> GameNode? {
         var maximize = true
-        if currentGameNode.board.mostRecentMove != nil && currentGameNode.board.mostRecentMove!.mover == Square.black {
+        if currentGameNode.board.mostRecentMove != nil && currentGameNode.board.mostRecentMove!.mover == Player.black {
             maximize = false
         }
         

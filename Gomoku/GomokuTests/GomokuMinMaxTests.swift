@@ -27,8 +27,7 @@ extension Board {
         
         var mutableSquares = startingBoard.squares
         for move in moves {
-            precondition(move.mover == .black || move.mover == .white)
-            mutableSquares[move.index] = move.mover
+            mutableSquares[move.index] = move.mover.toSquare()
         }
         self.squares = mutableSquares
         self.mostRecentMove = moves.last
@@ -66,9 +65,9 @@ class GomokuMinMaxTests: XCTestCase {
         let ci = Board.centerIndex
         let ci_nextRow = Board.centerIndex + Board.paddedSquaresPerDim
         let moves: [Board.Move] = [
-            (.black,  ci), (.white, ci_nextRow),
-            (.black, ci + 1), (.white, ci_nextRow + 1),
-            (.black, ci + 2), (.white, ci_nextRow + 2)]
+            (Player.black,  ci), (Player.white, ci_nextRow),
+            (Player.black, ci + 1), (Player.white, ci_nextRow + 1),
+            (Player.black, ci + 2), (Player.white, ci_nextRow + 2)]
         let availableMoveIndices: Set<Int> = [ci + 3, ci + 4, ci_nextRow + 3, ci_nextRow + 4]
         let board = Board(moves: moves, availableMoveIndices: availableMoveIndices)
         let gameNode = GameNode(board: board)

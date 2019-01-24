@@ -13,10 +13,4 @@ enum Square {
     case empty
     case black
     case white
-    
-    public var isAPlayer: Bool {
-        get {
-            return self == .black || self == .white
-        }
-    }
 }

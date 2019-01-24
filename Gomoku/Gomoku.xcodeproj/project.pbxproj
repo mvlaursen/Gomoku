@@ -39,6 +39,8 @@
 		3BFC8B3221F91F8000A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
 		3BFC8B3421F9218500A9E6CD /* BlackMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */; };
 		3BFC8B3521F9222100A9E6CD /* BlackMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */; };
+		3BFC8B3721F92FE900A9E6CD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3621F92FE900A9E6CD /* Player.swift */; };
+		3BFC8B3821F9398900A9E6CD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3621F92FE900A9E6CD /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,7 @@
 		3BF78DD721C74D450098605F /* GomokuGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuGameTests.swift; sourceTree = "<group>"; };
 		3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteMoveChooser.swift; sourceTree = "<group>"; };
 		3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackMoveChooser.swift; sourceTree = "<group>"; };
+		3BFC8B3621F92FE900A9E6CD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +190,7 @@
 				3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */,
 				3B536E1621C21881005625B6 /* MinMaxMoveChooser.swift */,
 				3BB8328B21A4C093008B248A /* RandomMoveChooser.swift */,
+				3BFC8B3621F92FE900A9E6CD /* Player.swift */,
 				3BB8328721A49A1C008B248A /* Square.swift */,
 				3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */,
 			);
@@ -349,6 +353,7 @@
 				3BFC8B3421F9218500A9E6CD /* BlackMoveChooser.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,
 				3B1EA3662186781700A23700 /* Gomoku.xcdatamodeld in Sources */,
+				3BFC8B3721F92FE900A9E6CD /* Player.swift in Sources */,
 				3BB8328C21A4C093008B248A /* RandomMoveChooser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +366,7 @@
 				3B536E1521C211A6005625B6 /* RandomMoveChooser.swift in Sources */,
 				3BF78DD621C74C480098605F /* HeuristicScoreMoveChooser.swift in Sources */,
 				3BF78DD421C74BF30098605F /* GomokuMinMaxTests.swift in Sources */,
+				3BFC8B3821F9398900A9E6CD /* Player.swift in Sources */,
 				3BFC8B3221F91F8000A9E6CD /* WhiteMoveChooser.swift in Sources */,
 				3B536E1321C2117A005625B6 /* Square.swift in Sources */,
 				3BFC8B3521F9222100A9E6CD /* BlackMoveChooser.swift in Sources */,

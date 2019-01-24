@@ -24,7 +24,7 @@ struct MinMaxMoveChooser: MoveChooser {
             // TODO: Make this work for either the black or white player. Right now
             // it only works for black.
             
-            if mostRecentMove.mover == .white {
+            if mostRecentMove.mover == Player.white {
                 gameNode.score = Int.min
                 
                 for child in gameNode.children {
@@ -47,12 +47,12 @@ struct MinMaxMoveChooser: MoveChooser {
             }
             
             if let mostRecentMove = gameNode.board.mostRecentMove {
-                if mostRecentMove.mover == .black {
+                if mostRecentMove.mover == Player.black {
                     gameNode.score = Int.max
                     for child in gameNode.children {
                         gameNode.score = min(gameNode.score, child.score)
                     }
-                } else if mostRecentMove.mover == .white {
+                } else if mostRecentMove.mover == Player.white {
                     gameNode.score = Int.min
                     for child in gameNode.children {
                         gameNode.score = max(gameNode.score, child.score)
