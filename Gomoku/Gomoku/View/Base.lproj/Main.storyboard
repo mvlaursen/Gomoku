@@ -17,8 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gomoku" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKz-e4-a8N">
+                                <rect key="frame" x="16" y="20" width="343" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="eBi-DN-L41"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0A-Mt-rCb" customClass="BoardView" customModule="Gomoku" customModuleProvider="target">
-                                <rect key="frame" x="16" y="162" width="343" height="343"/>
+                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="E0A-Mt-rCb" secondAttribute="height" multiplier="1:1" id="Od9-ni-Shg"/>
@@ -39,12 +48,20 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="E0A-Mt-rCb" secondAttribute="trailing" constant="16" id="4Kl-l3-FHc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8We-XP-HeO" secondAttribute="bottom" constant="20" id="lML-kr-HYy"/>
-                            <constraint firstItem="8We-XP-HeO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="nNf-Hy-qQV"/>
-                            <constraint firstItem="E0A-Mt-rCb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="oXX-CN-wnv"/>
-                            <constraint firstItem="E0A-Mt-rCb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uHc-gi-t2j"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8We-XP-HeO" secondAttribute="trailing" constant="16" id="udN-KG-wVx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8We-XP-HeO" secondAttribute="bottom" constant="20" id="98Z-Hv-AmR"/>
+                            <constraint firstItem="8We-XP-HeO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="E0A-Mt-rCb" secondAttribute="bottom" constant="8" symbolic="YES" id="ArP-Ib-Yac"/>
+                            <constraint firstItem="hKz-e4-a8N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LRB-SF-7gI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hKz-e4-a8N" secondAttribute="trailing" constant="16" id="NPJ-1O-FUS"/>
+                            <constraint firstItem="E0A-Mt-rCb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OlM-El-HGg"/>
+                            <constraint firstItem="E0A-Mt-rCb" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" priority="750" id="XwU-Ru-xpW"/>
+                            <constraint firstItem="E0A-Mt-rCb" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" priority="750" id="fBl-n3-cjT"/>
+                            <constraint firstItem="8We-XP-HeO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="fhn-Rt-V8e"/>
+                            <constraint firstItem="E0A-Mt-rCb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hNR-GE-q4t"/>
+                            <constraint firstItem="hKz-e4-a8N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="kUS-KK-wLT"/>
+                            <constraint firstItem="E0A-Mt-rCb" firstAttribute="height" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="height" id="oE8-bM-JhX"/>
+                            <constraint firstItem="E0A-Mt-rCb" firstAttribute="width" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="width" id="ssz-EL-A4M"/>
+                            <constraint firstItem="E0A-Mt-rCb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hKz-e4-a8N" secondAttribute="bottom" constant="8" symbolic="YES" id="uKv-BF-xjg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8We-XP-HeO" secondAttribute="trailing" constant="16" id="urJ-Am-Q5n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -54,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="135" y="132.5"/>
         </scene>
     </scenes>
 </document>
