@@ -32,7 +32,6 @@ class Game {
         [-22, 0, 22, 44, 66], [0, 22, 44, 66, 88]]
     
     private var mover = Player.black
-    private var firstMove: Bool = true
     private(set) var rootNode: GameNode = GameNode(board: Board())
     private(set) var winningRun: Array<Int>? = nil
     
@@ -62,11 +61,14 @@ class Game {
     func doBlackMove() -> Int? {
         var moveIndex: Int? = nil
         
-        // The game always starts with black placing a stone in the center of
-        // the board.
-        if firstMove {
-            firstMove = false
-            moveIndex = rootNode.board.squares.count / 2
+        if rootNode.board.mostRecentMove == nil {
+            // The game always starts with black placing a stone in the center
+            // of the board. There's a very small possibility that
+            // mostRecentMove is nil because all squares have been filled but
+            // there is no winner, so check that the first move is available.
+            if rootNode.board.availableMoveIndices.contains(Board.centerIndex) {
+                moveIndex = Board.centerIndex
+            }
         } else {
             moveIndex = blackMoveChooser.chooseNextMove(currentGameNode: rootNode)?.board.mostRecentMove?.index
         }
