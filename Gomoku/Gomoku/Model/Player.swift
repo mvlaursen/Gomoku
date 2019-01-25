@@ -12,9 +12,7 @@ enum Player {
     case black
     case white
     
-    // Convenient for figuring out which player has the current move if you
-    // know which player made the most recent move.
-    func nextPlayer() -> Player {
+    func opponent() -> Player {
         switch self {
         case Player.black:
             return Player.white
