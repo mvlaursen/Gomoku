@@ -12,6 +12,15 @@ enum Player {
     case black
     case white
     
+    func opponent() -> Player {
+        switch self {
+        case Player.black:
+            return Player.white
+        case Player.white:
+            return Player.black
+        }
+    }
+    
     func toSquare() -> Square {
         switch self {
         case Player.black:

@@ -9,62 +9,63 @@
 import Foundation
 
 struct MinMaxMoveChooser: MoveChooser {
-    func chooseNextMove(currentGameNode: GameNode) -> GameNode? {
-        let depth = 9 - Int(log2(Float(currentGameNode.board.availableMoveIndices.count)))
-        print("==> available: \(currentGameNode.board.availableMoveIndices.count) depth: \(depth)")
-        return MinMaxMoveChooser.chooseNextMoveAux(gameNode: currentGameNode, depth: depth);
+    let player: Player
+    
+    init(player: Player) {
+        self.player = player
     }
     
-    static func chooseNextMoveAux(gameNode: GameNode, depth: Int) -> GameNode? {
+    func chooseNextMove(currentGameNode: GameNode) -> GameNode? {
+        assert(player == currentGameNode.board.mostRecentMove?.mover.opponent())
+        
+        let depth = 11 - Int(log2(Float(currentGameNode.board.availableMoveIndices.count)))
+        print("MinMaxMoveChooser> player: \(self.player) #moves: \(currentGameNode.board.availableMoveIndices.count) depth: \(depth)")
+        return chooseNextMoveAux(gameNode: currentGameNode, depth: depth);
+    }
+    
+    func chooseNextMoveAux(gameNode: GameNode, depth: Int) -> GameNode? {
         var nextMove:GameNode? = nil
         
         regenerateChildren(gameNode: gameNode, depth: depth)
         
-        if let mostRecentMove = gameNode.board.mostRecentMove {
-            // TODO: Make this work for either the black or white player. Right now
-            // it only works for black.
-            
-            if mostRecentMove.mover == Player.white {
-                gameNode.score = Int.min
+        gameNode.score = Int.min
                 
-                for child in gameNode.children {
-                    assignMinMaxScore(gameNode: child)
-                    if child.score > gameNode.score {
-                        gameNode.score = child.score
-                        nextMove = child
-                    }
+        for child in gameNode.children {
+            assignMinMaxScore(gameNode: child)
+                if child.score > gameNode.score {
+                    gameNode.score = child.score
+                    nextMove = child
                 }
-            }
         }
         
         return nextMove
     }
 
-    static private func assignMinMaxScore(gameNode: GameNode) {
+    private func assignMinMaxScore(gameNode: GameNode) {
         if gameNode.children.count > 0 {
             for child in gameNode.children {
                 assignMinMaxScore(gameNode: child)
             }
             
             if let mostRecentMove = gameNode.board.mostRecentMove {
-                if mostRecentMove.mover == Player.black {
-                    gameNode.score = Int.max
-                    for child in gameNode.children {
-                        gameNode.score = min(gameNode.score, child.score)
-                    }
-                } else if mostRecentMove.mover == Player.white {
+                if mostRecentMove.mover == self.player {
                     gameNode.score = Int.min
                     for child in gameNode.children {
                         gameNode.score = max(gameNode.score, child.score)
                     }
-                } // TODO: else?
+                } else {
+                    gameNode.score = Int.max
+                    for child in gameNode.children {
+                        gameNode.score = min(gameNode.score, child.score)
+                    }
+                }
             }
         } else {
             gameNode.score = gameNode.board.heuristicScore()
         }
     }
     
-    static private func regenerateChildren(gameNode: GameNode, depth: Int) {
+    private func regenerateChildren(gameNode: GameNode, depth: Int) {
         if depth > 0 {
             gameNode.children = Array<GameNode>()
             
