@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bWJ-jL-fyp">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Test View Controller-->
+        <scene sceneID="gAZ-4C-dFa">
+            <objects>
+                <viewController id="bWJ-jL-fyp" customClass="TestViewController" customModule="Gomoku" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kug-HP-ejm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gomoku (Test Mode)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npU-6x-5yM">
+                                <rect key="frame" x="16" y="20" width="343" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="Pjc-Kl-aXK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGD-PJ-Kmp" customClass="TestBoardView" customModule="Gomoku" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RGD-PJ-Kmp" secondAttribute="height" multiplier="1:1" id="w30-EK-DXD"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2q-pB-qlE">
+                                <rect key="frame" x="16" y="617" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zyF-AO-x9j"/>
+                                </constraints>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="play:" destination="bWJ-jL-fyp" eventType="touchUpInside" id="Yvh-gE-Nwi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RGD-PJ-Kmp" firstAttribute="centerX" secondItem="kug-HP-ejm" secondAttribute="centerX" id="0Sq-eh-UeZ"/>
+                            <constraint firstItem="hzQ-bs-vWE" firstAttribute="bottom" secondItem="o2q-pB-qlE" secondAttribute="bottom" constant="20" id="1dc-Zl-fmq"/>
+                            <constraint firstItem="RGD-PJ-Kmp" firstAttribute="height" relation="lessThanOrEqual" secondItem="hzQ-bs-vWE" secondAttribute="height" id="2rN-jx-KhK"/>
+                            <constraint firstItem="RGD-PJ-Kmp" firstAttribute="centerY" secondItem="kug-HP-ejm" secondAttribute="centerY" id="3AG-PP-pdb"/>
+                            <constraint firstItem="RGD-PJ-Kmp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="npU-6x-5yM" secondAttribute="bottom" constant="8" symbolic="YES" id="5Kv-8j-Pys"/>
+                            <constraint firstItem="npU-6x-5yM" firstAttribute="leading" secondItem="hzQ-bs-vWE" secondAttribute="leading" constant="16" id="SGH-Kh-M5b"/>
+                            <constraint firstItem="hzQ-bs-vWE" firstAttribute="trailing" secondItem="npU-6x-5yM" secondAttribute="trailing" constant="16" id="Uow-cz-3TC"/>
+                            <constraint firstItem="o2q-pB-qlE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RGD-PJ-Kmp" secondAttribute="bottom" constant="8" symbolic="YES" id="bQ1-Ku-Ys3"/>
+                            <constraint firstItem="o2q-pB-qlE" firstAttribute="leading" secondItem="hzQ-bs-vWE" secondAttribute="leading" constant="16" id="baN-ch-pNY"/>
+                            <constraint firstItem="RGD-PJ-Kmp" firstAttribute="width" relation="lessThanOrEqual" secondItem="hzQ-bs-vWE" secondAttribute="width" id="iTD-KT-k5q"/>
+                            <constraint firstItem="RGD-PJ-Kmp" firstAttribute="height" secondItem="hzQ-bs-vWE" secondAttribute="height" priority="750" id="j79-Uq-VsG"/>
+                            <constraint firstItem="npU-6x-5yM" firstAttribute="top" secondItem="hzQ-bs-vWE" secondAttribute="top" id="qGH-pu-Fgx"/>
+                            <constraint firstItem="RGD-PJ-Kmp" firstAttribute="width" secondItem="hzQ-bs-vWE" secondAttribute="width" priority="750" id="qYo-qq-Mf8"/>
+                            <constraint firstItem="hzQ-bs-vWE" firstAttribute="trailing" secondItem="o2q-pB-qlE" secondAttribute="trailing" constant="16" id="yaG-o2-cyX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hzQ-bs-vWE"/>
+                    </view>
+                    <connections>
+                        <outlet property="playButton" destination="o2q-pB-qlE" id="uDl-Lh-77Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S2W-Bk-zdR" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135" y="132.5"/>
+        </scene>
+    </scenes>
+</document>

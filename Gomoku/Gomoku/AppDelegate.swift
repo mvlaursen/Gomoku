@@ -3,7 +3,7 @@
 //  Gomoku
 //
 //  Created by Mike Laursen on 10/28/18.
-//  Copyright © 2018 Appamajigger. All rights reserved.
+//  Copyright © 2019 Appamajigger. All rights reserved.
 //
 
 import UIKit
@@ -16,11 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         // Make sure the random numbers we use in the app are random.
+        
         let time = Int(NSDate().timeIntervalSinceReferenceDate)
         srand48(time)
+        
+        // Check if we should use the Test Mode UI instead of the normal UI.
+        
+        if UserDefaults.standard.bool(forKey: "kUseTestUI") {
+            let testStoryboard = UIStoryboard(name: "Test", bundle: nil)
+            if let window = self.window {
+                window.rootViewController = testStoryboard.instantiateInitialViewController()
+            }
+        }
         
         return true
     }

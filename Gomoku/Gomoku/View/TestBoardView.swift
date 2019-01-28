@@ -3,12 +3,12 @@
 //  Gomoku
 //
 //  Created by Mike Laursen on 11/1/18.
-//  Copyright © 2018 Appamajigger. All rights reserved.
+//  Copyright © 2019 Appamajigger. All rights reserved.
 //
 
 import UIKit
 
-class BoardView: UIView {
+class TestBoardView: UIView {
     static let timePerPlay = 0.5
     
     var game = Game()
@@ -16,7 +16,7 @@ class BoardView: UIView {
     func play(completion: @escaping () -> ()) {
         game = Game()
         
-        Timer.scheduledTimer(withTimeInterval: BoardView.timePerPlay, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: TestBoardView.timePerPlay, repeats: true) { timer in
             let gameOver = self.game.doTurn()
             self.setNeedsDisplay()
             if gameOver {

@@ -17,7 +17,7 @@
 		3B1EA3812186781900A23700 /* GomokuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3802186781900A23700 /* GomokuUITests.swift */; };
 		3B1EA390218683D500A23700 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1EA38F218683D500A23700 /* SpriteKit.framework */; };
 		3B1EA3942186A5B900A23700 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3932186A5B900A23700 /* Board.swift */; };
-		3B2284F2218BC41D003FBAA9 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2284F1218BC41D003FBAA9 /* BoardView.swift */; };
+		3B2284F2218BC41D003FBAA9 /* TestBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2284F1218BC41D003FBAA9 /* TestBoardView.swift */; };
 		3B536E1021C21146005625B6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E29C8218777C200F4AF0B /* Game.swift */; };
 		3B536E1121C2115B005625B6 /* GameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328521A4983A008B248A /* GameNode.swift */; };
 		3B536E1221C2116C005625B6 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA3932186A5B900A23700 /* Board.swift */; };
@@ -35,6 +35,8 @@
 		3BF78DD521C74C3B0098605F /* MinMaxMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B536E1621C21881005625B6 /* MinMaxMoveChooser.swift */; };
 		3BF78DD621C74C480098605F /* HeuristicScoreMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */; };
 		3BF78DD821C74D450098605F /* GomokuGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF78DD721C74D450098605F /* GomokuGameTests.swift */; };
+		3BFC761121FE857E00A29E1C /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC761021FE857E00A29E1C /* Test.storyboard */; };
+		3BFC761321FE8C2900A29E1C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC761221FE8C2900A29E1C /* TestViewController.swift */; };
 		3BFC8B3121F91F7B00A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
 		3BFC8B3221F91F8000A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
 		3BFC8B3421F9218500A9E6CD /* BlackMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */; };
@@ -77,7 +79,7 @@
 		3B1EA3822186781900A23700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B1EA38F218683D500A23700 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		3B1EA3932186A5B900A23700 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		3B2284F1218BC41D003FBAA9 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		3B2284F1218BC41D003FBAA9 /* TestBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoardView.swift; sourceTree = "<group>"; };
 		3B536E1621C21881005625B6 /* MinMaxMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMaxMoveChooser.swift; sourceTree = "<group>"; };
 		3B6E29C8218777C200F4AF0B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3BB8328521A4983A008B248A /* GameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNode.swift; sourceTree = "<group>"; };
@@ -87,6 +89,8 @@
 		3BB8328D21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeuristicScoreMoveChooser.swift; sourceTree = "<group>"; };
 		3BF78DD321C74BF30098605F /* GomokuMinMaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuMinMaxTests.swift; sourceTree = "<group>"; };
 		3BF78DD721C74D450098605F /* GomokuGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuGameTests.swift; sourceTree = "<group>"; };
+		3BFC761021FE857E00A29E1C /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
+		3BFC761221FE8C2900A29E1C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteMoveChooser.swift; sourceTree = "<group>"; };
 		3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackMoveChooser.swift; sourceTree = "<group>"; };
 		3BFC8B3621F92FE900A9E6CD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -203,8 +207,10 @@
 				3B1EA3672186781900A23700 /* Assets.xcassets */,
 				3B1EA3692186781900A23700 /* LaunchScreen.storyboard */,
 				3B1EA3612186781700A23700 /* Main.storyboard */,
-				3B2284F1218BC41D003FBAA9 /* BoardView.swift */,
 				3B1EA35F2186781700A23700 /* ViewController.swift */,
+				3BFC761021FE857E00A29E1C /* Test.storyboard */,
+				3B2284F1218BC41D003FBAA9 /* TestBoardView.swift */,
+				3BFC761221FE8C2900A29E1C /* TestViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 			files = (
 				3B1EA36B2186781900A23700 /* LaunchScreen.storyboard in Resources */,
 				3B1EA3682186781900A23700 /* Assets.xcassets in Resources */,
+				3BFC761121FE857E00A29E1C /* Test.storyboard in Resources */,
 				3B1EA3632186781700A23700 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,7 +349,8 @@
 			files = (
 				3BB8328821A49A1C008B248A /* Square.swift in Sources */,
 				3BB8328A21A4A63F008B248A /* GameConfiguration.swift in Sources */,
-				3B2284F2218BC41D003FBAA9 /* BoardView.swift in Sources */,
+				3BFC761321FE8C2900A29E1C /* TestViewController.swift in Sources */,
+				3B2284F2218BC41D003FBAA9 /* TestBoardView.swift in Sources */,
 				3B1EA3602186781700A23700 /* ViewController.swift in Sources */,
 				3B6E29C9218777C200F4AF0B /* Game.swift in Sources */,
 				3BB8328621A4983A008B248A /* GameNode.swift in Sources */,
