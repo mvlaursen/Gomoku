@@ -37,6 +37,7 @@
 		3BF78DD821C74D450098605F /* GomokuGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF78DD721C74D450098605F /* GomokuGameTests.swift */; };
 		3BFC761121FE857E00A29E1C /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC761021FE857E00A29E1C /* Test.storyboard */; };
 		3BFC761321FE8C2900A29E1C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC761221FE8C2900A29E1C /* TestViewController.swift */; };
+		3BFC761521FEAB1F00A29E1C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC761421FEAB1F00A29E1C /* Settings.bundle */; };
 		3BFC8B3121F91F7B00A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
 		3BFC8B3221F91F8000A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
 		3BFC8B3421F9218500A9E6CD /* BlackMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */; };
@@ -91,6 +92,7 @@
 		3BF78DD721C74D450098605F /* GomokuGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuGameTests.swift; sourceTree = "<group>"; };
 		3BFC761021FE857E00A29E1C /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		3BFC761221FE8C2900A29E1C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		3BFC761421FEAB1F00A29E1C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteMoveChooser.swift; sourceTree = "<group>"; };
 		3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackMoveChooser.swift; sourceTree = "<group>"; };
 		3BFC8B3621F92FE900A9E6CD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				3B1EA36C2186781900A23700 /* Info.plist */,
 				3BB8328221A49447008B248A /* Model */,
 				3BB8328F21A4D555008B248A /* View */,
+				3BFC761421FEAB1F00A29E1C /* Settings.bundle */,
 			);
 			path = Gomoku;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			files = (
 				3B1EA36B2186781900A23700 /* LaunchScreen.storyboard in Resources */,
 				3B1EA3682186781900A23700 /* Assets.xcassets in Resources */,
+				3BFC761521FEAB1F00A29E1C /* Settings.bundle in Resources */,
 				3BFC761121FE857E00A29E1C /* Test.storyboard in Resources */,
 				3B1EA3632186781700A23700 /* Main.storyboard in Resources */,
 			);
