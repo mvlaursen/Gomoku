@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="33" id="eBi-DN-L41"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8We-XP-HeO">
@@ -38,14 +38,14 @@
                                     <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o9g-1O-RJs"/>
                                 </connections>
                             </button>
-                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPS-sa-eZa">
+                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPS-sa-eZa" customClass="BoardView" customModule="Gomoku" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="80" width="320" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LPS-sa-eZa" secondAttribute="height" multiplier="1:1" id="VuC-ZB-N10"/>
                                 </constraints>
                             </skView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="LPS-sa-eZa" firstAttribute="width" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="width" id="1Fj-c4-sHq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8We-XP-HeO" secondAttribute="trailing" constant="16" id="1hf-hG-5ZW"/>

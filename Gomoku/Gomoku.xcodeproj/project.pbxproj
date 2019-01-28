@@ -38,6 +38,7 @@
 		3BFC761121FE857E00A29E1C /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC761021FE857E00A29E1C /* Test.storyboard */; };
 		3BFC761321FE8C2900A29E1C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC761221FE8C2900A29E1C /* TestViewController.swift */; };
 		3BFC761521FEAB1F00A29E1C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC761421FEAB1F00A29E1C /* Settings.bundle */; };
+		3BFC761721FEBD4500A29E1C /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC761621FEBD4500A29E1C /* BoardView.swift */; };
 		3BFC8B3121F91F7B00A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
 		3BFC8B3221F91F8000A9E6CD /* WhiteMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */; };
 		3BFC8B3421F9218500A9E6CD /* BlackMoveChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */; };
@@ -93,6 +94,7 @@
 		3BFC761021FE857E00A29E1C /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		3BFC761221FE8C2900A29E1C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		3BFC761421FEAB1F00A29E1C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		3BFC761621FEBD4500A29E1C /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		3BFC8B3021F91F7B00A9E6CD /* WhiteMoveChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteMoveChooser.swift; sourceTree = "<group>"; };
 		3BFC8B3321F9218500A9E6CD /* BlackMoveChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackMoveChooser.swift; sourceTree = "<group>"; };
 		3BFC8B3621F92FE900A9E6CD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				3B1EA3672186781900A23700 /* Assets.xcassets */,
 				3B1EA3692186781900A23700 /* LaunchScreen.storyboard */,
 				3B1EA3612186781700A23700 /* Main.storyboard */,
+				3BFC761621FEBD4500A29E1C /* BoardView.swift */,
 				3B1EA35F2186781700A23700 /* ViewController.swift */,
 				3BFC761021FE857E00A29E1C /* Test.storyboard */,
 				3B2284F1218BC41D003FBAA9 /* TestBoardView.swift */,
@@ -364,6 +367,7 @@
 				3BFC8B3121F91F7B00A9E6CD /* WhiteMoveChooser.swift in Sources */,
 				3BFC8B3421F9218500A9E6CD /* BlackMoveChooser.swift in Sources */,
 				3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */,
+				3BFC761721FEBD4500A29E1C /* BoardView.swift in Sources */,
 				3B1EA3662186781700A23700 /* Gomoku.xcdatamodeld in Sources */,
 				3BFC8B3721F92FE900A9E6CD /* Player.swift in Sources */,
 				3BB8328C21A4C093008B248A /* RandomMoveChooser.swift in Sources */,

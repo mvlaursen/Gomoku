@@ -20,9 +20,9 @@ class ViewController: UIViewController {
         playButton.alpha = 0.5
         playButton.isEnabled = false
         
-        let boardViews = self.view.subviews.filter { $0 is TestBoardView }
+        let boardViews = self.view.subviews.filter { $0 is BoardView }
         precondition(boardViews.count == 1)
-        let boardView = boardViews[0] as! TestBoardView
+        let boardView = boardViews[0] as! BoardView
         boardView.play {
             self.playButton.alpha = 1.0
             self.playButton.isEnabled = true
