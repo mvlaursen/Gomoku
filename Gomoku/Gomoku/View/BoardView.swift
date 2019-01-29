@@ -10,16 +10,16 @@ import SpriteKit
 import UIKit
 
 class BoardView: SKView {
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override func layoutSubviews() {
+        if self.scene == nil {
+            let board = SKScene(size: self.bounds.size)
+            board.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        let scene = SKScene(size: self.bounds.size)
-        scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            let image = SKSpriteNode(imageNamed: "board.png")
+            board.addChild(image)
         
-        let image = SKSpriteNode(imageNamed: "board.png")
-        scene.addChild(image)
-        
-        self.presentScene(scene)
+            self.presentScene(board)
+        }
     }
     
     func play(completion: @escaping () -> ()) {
