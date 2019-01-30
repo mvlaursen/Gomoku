@@ -16,6 +16,9 @@ class BoardView: SKView {
             board.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
             let image = SKSpriteNode(imageNamed: "board.png")
+            image.name = "Foo"
+            image.size.width = CGFloat(320)
+            image.size.height = CGFloat(320)
             board.addChild(image)
         
             self.presentScene(board)
@@ -24,5 +27,11 @@ class BoardView: SKView {
     
     func play(completion: @escaping () -> ()) {
         completion()
+    }
+    
+    func setImageSize(dim: CGFloat) {
+        let image = scene?.childNode(withName: "Foo") as! SKSpriteNode
+        let resize = SKAction.resize(toWidth: dim, height: dim, duration: 0.2)
+        image.run(resize)
     }
 }

@@ -28,5 +28,47 @@ class ViewController: UIViewController {
             self.playButton.isEnabled = true
         }
     }
+    
+    @IBAction func set320(_ sender: Any) {
+        let boardViews = self.view.subviews.filter { $0 is BoardView }
+        precondition(boardViews.count == 1)
+        let boardView = boardViews[0] as! BoardView
+        boardView.setImageSize(dim: CGFloat(320))
+    }
+    
+    @IBAction func set368(_ sender: Any) {
+        let boardViews = self.view.subviews.filter { $0 is BoardView }
+        precondition(boardViews.count == 1)
+        let boardView = boardViews[0] as! BoardView
+        boardView.setImageSize(dim: CGFloat(368))
+    }
+    
+    @IBAction func set400(_ sender: Any) {
+        let boardViews = self.view.subviews.filter { $0 is BoardView }
+        precondition(boardViews.count == 1)
+        let boardView = boardViews[0] as! BoardView
+        boardView.setImageSize(dim: CGFloat(400))
+    }
+    
+    @IBAction func set768(_ sender: Any) {
+        let boardViews = self.view.subviews.filter { $0 is BoardView }
+        precondition(boardViews.count == 1)
+        let boardView = boardViews[0] as! BoardView
+        boardView.setImageSize(dim: CGFloat(768))
+    }
+    
+    @IBAction func set1024(_ sender: Any) {
+        let boardViews = self.view.subviews.filter { $0 is BoardView }
+        precondition(boardViews.count == 1)
+        let boardView = boardViews[0] as! BoardView
+        boardView.setImageSize(dim: CGFloat(1024))
+    }
+    
+    @IBAction func set832(_ sender: Any) {
+        let boardViews = self.view.subviews.filter { $0 is BoardView }
+        precondition(boardViews.count == 1)
+        let boardView = boardViews[0] as! BoardView
+        boardView.setImageSize(dim: CGFloat(832))
+    }
 }
 
