@@ -4,6 +4,8 @@ The iOS app based on the code in this repository is distributed on Apple's App S
 
 The Apple EULA states: "You may not copy (except as permitted by this license and the Usage Rules), reverse-engineer, disassemble, attempt to derive the source code of, modify, or create derivative works of the Licensed Application, any updates, or any part thereof (except as and only to the extent that any foregoing restriction is prohibited by applicable law or to the extent as may be permitted by the licensing terms governing use of any open-sourced components included with the Licensed Application)." This seems to be saying that I can grant open source licensing for the Appamajigger-copyrighted components in this repository.
 
+FREEAPPAMAJIGGER LICENSE
+
 All files in this repository that are copyrighted by Appamajigger are subject to the FreeAppamajigger license, modeled on the FreeBSD License:
 
 https://www.freebsd.org/copyright/freebsd-license.html
@@ -12,10 +14,16 @@ FreeAppamajigger License:
 
 The FreeAppamajigger Copyright
 
-Copyright 2018 Appamajigger
+Copyright 2019 Appamajigger
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 The views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of Appamajigger.
+
+SPECIFIC ITEMS IN THIS REPOSITORY WITH OTHER LICENSING
+
+The assets, Realistic_Go_Stone.svg and Realistic_White_Go_Stone.svg, and .png files derived from them were copied from wikipedia.com, and are licensed with the Creative Commons Attribution-ShareAlike 3.0 License.
+
+The wood grain used in the graphical representations of the gomoku board were copied from https://sites.google.com/site/guerillagosite/Home, which states the assets are "free to use".
