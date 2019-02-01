@@ -13,7 +13,8 @@ class BoardView: SKView {
     struct BoardMetrics {
         let boardImageName: String
         let squareDim: CGFloat
-        let stoneDim: CGFloat
+        let blackImageName: String
+        let whiteImageName: String
     }
     
     static func boardMetrics() -> BoardMetrics {
@@ -21,17 +22,17 @@ class BoardView: SKView {
         let width = min(size.width, size.height)
         
         if width.isEqual(to: 375.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard368", squareDim: 23.0, stoneDim: 21.0)
+            return BoardMetrics(boardImageName: "GomokuBoard368", squareDim: 23.0, blackImageName: "BlackStone21", whiteImageName: "WhiteStone21")
         } else if width.isEqual(to: 768.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard768", squareDim: 48.0, stoneDim: 45.0)
+            return BoardMetrics(boardImageName: "GomokuBoard768", squareDim: 48.0, blackImageName: "BlackStone45", whiteImageName: "WhiteStone45")
         } else if width.isEqual(to: 414.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard400", squareDim: 25.0, stoneDim: 23.0)
+            return BoardMetrics(boardImageName: "GomokuBoard400", squareDim: 25.0, blackImageName: "BlackStone23", whiteImageName: "WhiteStone23")
         } else if width.isEqual(to: 1024.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard1024", squareDim: 64.0, stoneDim: 60.0)
+            return BoardMetrics(boardImageName: "GomokuBoard1024", squareDim: 64.0, blackImageName: "BlackStone60", whiteImageName: "WhiteStone60")
         } else if width.isEqual(to: 834.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard768", squareDim: 48.0, stoneDim: 45.0)
+            return BoardMetrics(boardImageName: "GomokuBoard768", squareDim: 48.0, blackImageName: "BlackStone45", whiteImageName: "WhiteStone45")
         } else {
-            return BoardMetrics(boardImageName: "GomokuBoard320", squareDim: 20.0, stoneDim: 18.0)
+            return BoardMetrics(boardImageName: "GomokuBoard320", squareDim: 20.0, blackImageName: "BlackStone18", whiteImageName: "WhiteStone18")
         }
     }
     
@@ -45,24 +46,20 @@ class BoardView: SKView {
             let image = SKSpriteNode(imageNamed: metrics.boardImageName)
             board.addChild(image)
             
-            let black = SKSpriteNode(imageNamed: "1024px-Realistic_Go_Stone.svg")
+            let black = SKSpriteNode(imageNamed: metrics.blackImageName)
             black.position = CGPoint(x: metrics.squareDim, y: 0.0)
-            black.size = CGSize(width: metrics.stoneDim, height: metrics.stoneDim)
             board.addChild(black)
         
-            let white = SKSpriteNode(imageNamed: "1024px-Realistic_White_Go_Stone.svg")
+            let white = SKSpriteNode(imageNamed: metrics.whiteImageName)
             white.position = CGPoint(x: metrics.squareDim, y: metrics.squareDim)
-            white.size = CGSize(width: metrics.stoneDim, height: metrics.stoneDim)
             board.addChild(white)
             
-            let black2 = SKSpriteNode(imageNamed: "1024px-Realistic_Go_Stone.svg")
+            let black2 = SKSpriteNode(imageNamed: metrics.blackImageName)
             black2.position = CGPoint(x: 2.0 * metrics.squareDim, y: 0.0)
-            black2.size = CGSize(width: metrics.stoneDim, height: metrics.stoneDim)
             board.addChild(black2)
 
-            let white2 = SKSpriteNode(imageNamed: "1024px-Realistic_White_Go_Stone.svg")
+            let white2 = SKSpriteNode(imageNamed: metrics.whiteImageName)
             white2.position = CGPoint(x: 2.0 * metrics.squareDim, y: metrics.squareDim)
-            white2.size = CGSize(width: metrics.stoneDim, height: metrics.stoneDim)
             board.addChild(white2)
             
             self.presentScene(board)
