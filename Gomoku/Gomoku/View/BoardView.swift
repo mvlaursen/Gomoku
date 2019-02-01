@@ -10,14 +10,17 @@ import SpriteKit
 import UIKit
 
 class BoardView: SKView {
-    struct BoardMetrics {
+    private struct BoardMetrics {
         let boardImageName: String
         let squareDim: CGFloat
         let blackImageName: String
         let whiteImageName: String
     }
     
-    static func boardMetrics() -> BoardMetrics {
+    private class Stone: SKSpriteNode {
+    }
+    
+    private static func boardMetrics() -> BoardMetrics {
         let size = UIScreen.main.bounds.size
         let width = min(size.width, size.height)
         
@@ -46,19 +49,19 @@ class BoardView: SKView {
             let image = SKSpriteNode(imageNamed: metrics.boardImageName)
             board.addChild(image)
             
-            let black = SKSpriteNode(imageNamed: metrics.blackImageName)
+            let black = Stone(imageNamed: metrics.blackImageName)
             black.position = CGPoint(x: metrics.squareDim, y: 0.0)
             board.addChild(black)
         
-            let white = SKSpriteNode(imageNamed: metrics.whiteImageName)
+            let white = Stone(imageNamed: metrics.whiteImageName)
             white.position = CGPoint(x: metrics.squareDim, y: metrics.squareDim)
             board.addChild(white)
             
-            let black2 = SKSpriteNode(imageNamed: metrics.blackImageName)
+            let black2 = Stone(imageNamed: metrics.blackImageName)
             black2.position = CGPoint(x: 2.0 * metrics.squareDim, y: 0.0)
             board.addChild(black2)
 
-            let white2 = SKSpriteNode(imageNamed: metrics.whiteImageName)
+            let white2 = Stone(imageNamed: metrics.whiteImageName)
             white2.position = CGPoint(x: 2.0 * metrics.squareDim, y: metrics.squareDim)
             board.addChild(white2)
             
@@ -68,5 +71,25 @@ class BoardView: SKView {
     
     func play(completion: @escaping () -> ()) {
         completion()
+    }
+    
+    // MARK: Gesture Handling
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        var handledTouch = false
+        
+        if let touch = touches.first, let scene = self.scene {
+            let location = touch.location(in: scene)
+            let nodes = scene.nodes(at: location)
+            let stones = nodes.filter { $0.isKind(of: BoardView.Stone.self) }
+            // If our code is working correctly, there should never be more
+            // than one stone in the same spot on the board.
+            assert(stones.count <= 1)
+            handledTouch = !stones.isEmpty
+        }
+        
+        if !handledTouch {
+            super.touchesBegan(touches, with: event)
+        }
     }
 }
