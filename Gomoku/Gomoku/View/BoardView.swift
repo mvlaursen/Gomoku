@@ -74,10 +74,13 @@ class BoardView: SKView {
     
     func nearestSquare(location: CGPoint) -> (x: Int, y: Int) {
         let metrics = BoardView.boardMetrics()
-        let x = Int((7.0 * metrics.squareDim + location.x) / metrics.squareDim)
-        let yInverted = -1.0 * location.y
-        print("location: \(location.x), \(yInverted)")
-        let y = Int((7.0 * metrics.squareDim + yInverted) / metrics.squareDim)
+        
+        let xFloat = CGFloat(round((7.0 * metrics.squareDim + location.x) / metrics.squareDim))
+        let x = Int(xFloat)
+        
+        let yFloat = CGFloat(round((7.0 * metrics.squareDim - location.y) / metrics.squareDim))
+        let y = Int(yFloat)
+        
         print("    square at: \(x), \(y)")
         return (x, y)
     }
