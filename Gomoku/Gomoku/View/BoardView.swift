@@ -17,7 +17,10 @@ class BoardView: SKView {
         let whiteImageName: String
     }
     
-    private class Stone: SKSpriteNode {
+    private class BoardNode: SKSpriteNode {
+    }
+    
+    private class StoneNode: SKSpriteNode {
     }
     
     private static func boardMetrics() -> BoardMetrics {
@@ -46,27 +49,37 @@ class BoardView: SKView {
         
             let metrics = BoardView.boardMetrics()
             
-            let image = SKSpriteNode(imageNamed: metrics.boardImageName)
+            let image = BoardNode(imageNamed: metrics.boardImageName)
             board.addChild(image)
             
-            let black = Stone(imageNamed: metrics.blackImageName)
+            let black = StoneNode(imageNamed: metrics.blackImageName)
             black.position = CGPoint(x: metrics.squareDim, y: 0.0)
             board.addChild(black)
         
-            let white = Stone(imageNamed: metrics.whiteImageName)
+            let white = StoneNode(imageNamed: metrics.whiteImageName)
             white.position = CGPoint(x: metrics.squareDim, y: metrics.squareDim)
             board.addChild(white)
             
-            let black2 = Stone(imageNamed: metrics.blackImageName)
+            let black2 = StoneNode(imageNamed: metrics.blackImageName)
             black2.position = CGPoint(x: 2.0 * metrics.squareDim, y: 0.0)
             board.addChild(black2)
 
-            let white2 = Stone(imageNamed: metrics.whiteImageName)
+            let white2 = StoneNode(imageNamed: metrics.whiteImageName)
             white2.position = CGPoint(x: 2.0 * metrics.squareDim, y: metrics.squareDim)
             board.addChild(white2)
             
             self.presentScene(board)
         }
+    }
+    
+    func nearestSquare(location: CGPoint) -> (x: Int, y: Int) {
+        let metrics = BoardView.boardMetrics()
+        let x = Int((7.0 * metrics.squareDim + location.x) / metrics.squareDim)
+        let yInverted = -1.0 * location.y
+        print("location: \(location.x), \(yInverted)")
+        let y = Int((7.0 * metrics.squareDim + yInverted) / metrics.squareDim)
+        print("    square at: \(x), \(y)")
+        return (x, y)
     }
     
     func play(completion: @escaping () -> ()) {
@@ -81,11 +94,23 @@ class BoardView: SKView {
         if let touch = touches.first, let scene = self.scene {
             let location = touch.location(in: scene)
             let nodes = scene.nodes(at: location)
-            let stones = nodes.filter { $0.isKind(of: BoardView.Stone.self) }
+            let stones = nodes.filter { $0.isKind(of: BoardView.StoneNode.self) }
             // If our code is working correctly, there should never be more
             // than one stone in the same spot on the board.
             assert(stones.count <= 1)
-            handledTouch = !stones.isEmpty
+            if stones.count > 0 {
+                handledTouch = !stones.isEmpty
+            } else {
+                let boards = nodes.filter { $0.isKind(of: BoardView.BoardNode.self) }
+                assert(boards.count <= 1)
+                if boards.count > 0 {
+                    if let board = boards.first {
+                        let square = nearestSquare(location: touch.location(in: board))
+                        print(square)
+                        handledTouch = true
+                    }
+                }
+            }
         }
         
         if !handledTouch {
