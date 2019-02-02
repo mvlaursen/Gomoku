@@ -76,10 +76,10 @@ class BoardView: SKView {
         let metrics = BoardView.boardMetrics()
         
         let xFloat = CGFloat(round((7.0 * metrics.squareDim + location.x) / metrics.squareDim))
-        let x = Int(xFloat)
+        let x = min(max(Int(xFloat), 0), 14)
         
         let yFloat = CGFloat(round((7.0 * metrics.squareDim - location.y) / metrics.squareDim))
-        let y = Int(yFloat)
+        let y = min(max(Int(yFloat), 0), 14)
         
         print("    square at: \(x), \(y)")
         return (x, y)
