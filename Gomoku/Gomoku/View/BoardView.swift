@@ -75,10 +75,11 @@ class BoardView: SKView {
     func nearestSquare(location: CGPoint) -> (x: Int, y: Int) {
         let metrics = BoardView.boardMetrics()
         
-        let xFloat = CGFloat(round((7.0 * metrics.squareDim + location.x) / metrics.squareDim))
+        let xFloat = CGFloat(round((metrics.squareDim + location.x) / metrics.squareDim)) + 6.0
         let x = min(max(Int(xFloat), 0), 14)
         
-        let yFloat = CGFloat(round((7.0 * metrics.squareDim - location.y) / metrics.squareDim))
+        let yFloat = CGFloat(round((metrics.squareDim - location.y) / metrics.squareDim)) + 6.0
+        print("    xFloat, yFloat: \(xFloat), \(yFloat)")
         let y = min(max(Int(yFloat), 0), 14)
         
         print("    square at: \(x), \(y)")
@@ -110,6 +111,12 @@ class BoardView: SKView {
                     if let board = boards.first {
                         let square = nearestSquare(location: touch.location(in: board))
                         print(square)
+                        
+                        let metrics = BoardView.boardMetrics()
+                        let black = StoneNode(imageNamed: metrics.blackImageName)
+                        black.position = CGPoint(x: CGFloat(square.x - 7) * metrics.squareDim, y: CGFloat(7 - square.y) * metrics.squareDim)
+                        board.addChild(black)
+
                         handledTouch = true
                     }
                 }
