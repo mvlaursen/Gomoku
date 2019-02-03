@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Check if we should use the Test Mode UI instead of the normal UI.
         
-        if UserDefaults.standard.bool(forKey: "kUseTestUI") {
+        let appMode = UserDefaults.standard.string(forKey: "kAppMode")
+        if appMode == "kAppModeDemo" {
             let testStoryboard = UIStoryboard(name: "Test", bundle: nil)
             if let window = self.window {
                 window.rootViewController = testStoryboard.instantiateInitialViewController()
