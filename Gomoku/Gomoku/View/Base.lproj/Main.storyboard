@@ -38,7 +38,7 @@
                                     <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o9g-1O-RJs"/>
                                 </connections>
                             </button>
-                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPS-sa-eZa" customClass="BoardView" customModule="Gomoku" customModuleProvider="target">
+                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPS-sa-eZa" customClass="CreativeBoardView" customModule="Gomoku" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="80" width="320" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LPS-sa-eZa" secondAttribute="height" multiplier="1:1" id="VuC-ZB-N10"/>

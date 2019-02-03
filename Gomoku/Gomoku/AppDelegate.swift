@@ -22,10 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let time = Int(NSDate().timeIntervalSinceReferenceDate)
         srand48(time)
         
-        // Check if we should use the Test Mode UI instead of the normal UI.
+        // Use the demo mode UI instead of the normal UI if kAppModeDem has
+        // been chosen in Settings, or if an XCUITest requests it in the app's
+        // launch arguments.
         
         let appMode = UserDefaults.standard.string(forKey: "kAppMode")
-        if appMode == "kAppModeDemo" {
+        if (appMode == "kAppModeDemo") || ProcessInfo.processInfo.arguments.contains("ui-testing") {
             let testStoryboard = UIStoryboard(name: "Test", bundle: nil)
             if let window = self.window {
                 window.rootViewController = testStoryboard.instantiateInitialViewController()
