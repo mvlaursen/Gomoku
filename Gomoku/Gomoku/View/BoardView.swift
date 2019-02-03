@@ -23,6 +23,8 @@ class BoardView: SKView {
     private class StoneNode: SKSpriteNode {
     }
     
+    private var blackOrWhite: Bool = true
+    
     private static func boardMetrics() -> BoardMetrics {
         let size = UIScreen.main.bounds.size
         let width = min(size.width, size.height)
@@ -51,22 +53,6 @@ class BoardView: SKView {
             
             let image = BoardNode(imageNamed: metrics.boardImageName)
             board.addChild(image)
-            
-            let black = StoneNode(imageNamed: metrics.blackImageName)
-            black.position = CGPoint(x: metrics.squareDim, y: 0.0)
-            board.addChild(black)
-        
-            let white = StoneNode(imageNamed: metrics.whiteImageName)
-            white.position = CGPoint(x: metrics.squareDim, y: metrics.squareDim)
-            board.addChild(white)
-            
-            let black2 = StoneNode(imageNamed: metrics.blackImageName)
-            black2.position = CGPoint(x: 2.0 * metrics.squareDim, y: 0.0)
-            board.addChild(black2)
-
-            let white2 = StoneNode(imageNamed: metrics.whiteImageName)
-            white2.position = CGPoint(x: 2.0 * metrics.squareDim, y: metrics.squareDim)
-            board.addChild(white2)
             
             self.presentScene(board)
         }
@@ -125,10 +111,12 @@ class BoardView: SKView {
                             print("    row: \(row), column: \(column)")
                         
                             let metrics = BoardView.boardMetrics()
-                            let black = StoneNode(imageNamed: metrics.blackImageName)
-                            black.position = CGPoint(x: CGFloat(column - 7) * metrics.squareDim, y: CGFloat(7 - row) * metrics.squareDim)
-                            board.addChild(black)
-
+                            let stoneImageName = blackOrWhite ? metrics.blackImageName : metrics.whiteImageName
+                            let stone = StoneNode(imageNamed: stoneImageName)
+                            stone.position = CGPoint(x: CGFloat(column - 7) * metrics.squareDim, y: CGFloat(7 - row) * metrics.squareDim)
+                            board.addChild(stone)
+                            blackOrWhite = !blackOrWhite
+                            
                             handledTouch = true
                         }
                     }
