@@ -72,18 +72,13 @@ class BoardView: SKView {
         }
     }
     
-    func nearestSquare(location: CGPoint) -> (x: Int, y: Int) {
+    private func moveIndex(for location: CGPoint) -> Int? {
         let metrics = BoardView.boardMetrics()
         
         // TODO: Should define these constants based on GameConfiguration.squaresPerDim
-        
-        let xFloat = round(location.x / metrics.squareDim) + 7.0
-        let x = Int(xFloat).clamped(to: 0...14)
-        
-        let yFloat = round(7.0 - location.y / metrics.squareDim)
-        let y = Int(yFloat).clamped(to: 0...14)
-                
-        return (x, y)
+        let column = Int(round(location.x / metrics.squareDim) + 7.0).clamped(to: 0...14)
+        let row = Int(round(7.0 - location.y / metrics.squareDim)).clamped(to: 0...14)
+        return Board.indexFrom(row: row, column: column)
     }
     
     func play(completion: @escaping () -> ()) {
@@ -109,15 +104,18 @@ class BoardView: SKView {
                 assert(boards.count <= 1)
                 if boards.count > 0 {
                     if let board = boards.first {
-                        let square = nearestSquare(location: touch.location(in: board))
-                        print(square)
+                        if let moveIndex = moveIndex(for: touch.location(in: board)) {
+                            let (row, column) = Board.rowAndColumnFrom(index: moveIndex)
+                            print("moveIndex: \(moveIndex)")
+                            print("    row: \(row), column: \(column)")
                         
-                        let metrics = BoardView.boardMetrics()
-                        let black = StoneNode(imageNamed: metrics.blackImageName)
-                        black.position = CGPoint(x: CGFloat(square.x - 7) * metrics.squareDim, y: CGFloat(7 - square.y) * metrics.squareDim)
-                        board.addChild(black)
+                            let metrics = BoardView.boardMetrics()
+                            let black = StoneNode(imageNamed: metrics.blackImageName)
+                            black.position = CGPoint(x: CGFloat(column - 7) * metrics.squareDim, y: CGFloat(7 - row) * metrics.squareDim)
+                            board.addChild(black)
 
-                        handledTouch = true
+                            handledTouch = true
+                        }
                     }
                 }
             }
