@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B0F1ADB21F17C4A000FC715 /* GomokuSquareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F1ADA21F17C4A000FC715 /* GomokuSquareTests.swift */; };
+		3B17A86622066EAC00BEDAFF /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B17A86522066EAC00BEDAFF /* IntExtensions.swift */; };
 		3B1EA35E2186781700A23700 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA35D2186781700A23700 /* AppDelegate.swift */; };
 		3B1EA3602186781700A23700 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EA35F2186781700A23700 /* ViewController.swift */; };
 		3B1EA3632186781700A23700 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA3612186781700A23700 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		3B0F1ADA21F17C4A000FC715 /* GomokuSquareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomokuSquareTests.swift; sourceTree = "<group>"; };
+		3B17A86522066EAC00BEDAFF /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
 		3B1EA35A2186781700A23700 /* Gomoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gomoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1EA35D2186781700A23700 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B1EA35F2186781700A23700 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B17A86422066C6F00BEDAFF /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3B17A86522066EAC00BEDAFF /* IntExtensions.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		3B1EA3512186781700A23700 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +163,7 @@
 				3B1EA35D2186781700A23700 /* AppDelegate.swift */,
 				3B1EA36C2186781900A23700 /* Info.plist */,
 				3BB8328221A49447008B248A /* Model */,
+				3B17A86422066C6F00BEDAFF /* Utility */,
 				3BB8328F21A4D555008B248A /* View */,
 				3BFC761421FEAB1F00A29E1C /* Settings.bundle */,
 			);
@@ -363,6 +374,7 @@
 				3BB8328621A4983A008B248A /* GameNode.swift in Sources */,
 				3B536E1721C21881005625B6 /* MinMaxMoveChooser.swift in Sources */,
 				3B1EA3942186A5B900A23700 /* Board.swift in Sources */,
+				3B17A86622066EAC00BEDAFF /* IntExtensions.swift in Sources */,
 				3BB8328E21A4C0FD008B248A /* HeuristicScoreMoveChooser.swift in Sources */,
 				3BFC8B3121F91F7B00A9E6CD /* WhiteMoveChooser.swift in Sources */,
 				3BFC8B3421F9218500A9E6CD /* BlackMoveChooser.swift in Sources */,
