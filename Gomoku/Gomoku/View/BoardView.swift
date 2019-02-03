@@ -73,12 +73,27 @@ class BoardView: SKView {
     }
     
     private func moveIndex(for location: CGPoint) -> Int? {
+        var retVal: Int? = nil
+        
         let metrics = BoardView.boardMetrics()
         
         // TODO: Should define these constants based on GameConfiguration.squaresPerDim
+        
         let column = Int(round(location.x / metrics.squareDim) + 7.0).clamped(to: 0...14)
-        let row = Int(round(7.0 - location.y / metrics.squareDim)).clamped(to: 0...14)
-        return Board.indexFrom(row: row, column: column)
+        let xFromColumn = CGFloat(column - 7) * metrics.squareDim //CGFloat(7 - row) * metrics.squareDim
+        let xDiff = abs(location.x - xFromColumn)
+        
+        if xDiff < metrics.squareDim / 2.5 {
+            let row = Int(round(7.0 - location.y / metrics.squareDim)).clamped(to: 0...14)
+            let yFromRow = CGFloat(7 - row) * metrics.squareDim
+            let yDiff = abs(location.y - yFromRow)
+
+            if yDiff < metrics.squareDim / 2.5 {
+                retVal = Board.indexFrom(row: row, column: column)
+            }
+        }
+
+        return retVal
     }
     
     func play(completion: @escaping () -> ()) {
