@@ -61,8 +61,8 @@ class BoardView: SKView {
             let metrics = BoardView.boardMetrics()
 
             let board = BoardNode(imageNamed: metrics.boardImageName)
-            board.anchorPoint = CGPoint(x: 0.0625, y: 0.0625)
-            board.position = CGPoint(x: (scene.size.width - board.size.width)/2.0 + metrics.squareDim, y:  (scene.size.height - board.size.height)/2.0 + metrics.squareDim)
+            board.anchorPoint = CGPoint(x: 0.0625, y: 0.9375)
+            board.position = CGPoint(x: (scene.size.width - board.size.width)/2.0 + metrics.squareDim, y:  (scene.size.height - board.size.height)/2.0 + 15.0 * metrics.squareDim)
             board.zPosition = BoardView.kBoardZPosition
             scene.addChild(board)
             
@@ -82,9 +82,9 @@ class BoardView: SKView {
         let xFromColumn = CGFloat(column) * metrics.squareDim
         
         if xFromColumn.matches(location.x, within: metrics.squareDim / BoardView.kTapTolerance) {
-            var row = 14 - Int(round(location.y / metrics.squareDim))
+            var row = -Int(round(location.y / metrics.squareDim))
             row = row.clamped(to: BoardView.validSquares)
-            let yFromRow = CGFloat(14 - row) * metrics.squareDim
+            let yFromRow = CGFloat(-row) * metrics.squareDim
             
             if yFromRow.matches(location.y, within: metrics.squareDim / BoardView.kTapTolerance) {
                 print("    x, y: \(xFromColumn), \(yFromRow)")

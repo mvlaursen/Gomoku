@@ -35,7 +35,7 @@ class CreativeBoardView: BoardView {
                             let metrics = BoardView.boardMetrics()
                             let stoneImageName = blackOrWhite ? metrics.blackImageName : metrics.whiteImageName
                             let stone = StoneNode(imageNamed: stoneImageName)
-                            stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(14 - row) * metrics.squareDim)
+                            stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(-row) * metrics.squareDim)
                             stone.zPosition = BoardView.kStoneZPosition
                             board.addChild(stone)
                             blackOrWhite = !blackOrWhite
