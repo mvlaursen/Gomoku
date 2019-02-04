@@ -60,7 +60,7 @@ class BoardView: SKView {
             let scene = SKScene(size: self.bounds.size)
             
             // To make conversion from the location of a tap in the scene's
-            // coordinate space to board row and column as straightforward as
+            // coordinate system to board row and column as straightforward as
             // possible, align row 0, column 0 of the board image with the
             // scene's origin. There is still the difference that the scene's
             // y-axis points up while row numbers increase from top to bottom
@@ -87,6 +87,9 @@ class BoardView: SKView {
         }
     }
     
+    /**
+     * - parameter for: Should be in the SKScene's coordinate system.
+     */
     func moveIndex(for location: CGPoint) -> Int? {
         var retVal: Int? = nil
         
