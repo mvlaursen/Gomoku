@@ -8,6 +8,14 @@
 
 import UIKit
 
+/**
+ * I added CreativeBoardView at my daughter's request.
+ *
+ * She enjoys simply placing black and white stones in patterns on the board,
+ * perhaps more than she enjoys playing Gomoku. So, there is an optional app
+ * mode in Settings that lets the user do exactly that. Note that this view
+ * doesn't even interact with the game model.
+ */
 class CreativeBoardView: BoardView {
     private var blackOrWhite: Bool = true
     
