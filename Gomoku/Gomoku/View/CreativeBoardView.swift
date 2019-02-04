@@ -39,7 +39,8 @@ class CreativeBoardView: BoardView {
                             let stoneImageName = blackOrWhite ? metrics.blackImageName : metrics.whiteImageName
                             let stone = StoneNode(imageNamed: stoneImageName)
                             stone.position = CGPoint(x: CGFloat(column - 7) * metrics.squareDim, y: CGFloat(7 - row) * metrics.squareDim)
-                            board.addChild(stone) //TODO: Need to set zPosition.
+                            stone.zPosition = kStoneZPosition
+                            board.addChild(stone)
                             blackOrWhite = !blackOrWhite
                             
                             handledTouch = true

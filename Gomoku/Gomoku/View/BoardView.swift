@@ -10,6 +10,9 @@ import SpriteKit
 import UIKit
 
 class BoardView: SKView {
+    let kBoardZPosition = CGFloat(100.0)
+    let kStoneZPosition = CGFloat(200.0)
+    
     struct BoardMetrics {
         let boardImageName: String
         let squareDim: CGFloat
@@ -45,7 +48,8 @@ class BoardView: SKView {
     override func layoutSubviews() {
         if self.scene == nil {
             let board = SKScene(size: self.bounds.size)
-            board.anchorPoint = CGPoint(x: 0.5, y: 0.5) //TODO: Need to set zPosition.
+            board.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            board.zPosition = kBoardZPosition
         
             let metrics = BoardView.boardMetrics()
             
