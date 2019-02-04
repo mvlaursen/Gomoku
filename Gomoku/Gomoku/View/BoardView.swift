@@ -10,8 +10,12 @@ import SpriteKit
 import UIKit
 
 class BoardView: SKView {
-    let kBoardZPosition = CGFloat(100.0)
-    let kStoneZPosition = CGFloat(200.0)
+    static let kBoardZPosition = CGFloat(100.0)
+    static let kStoneZPosition = CGFloat(200.0)
+    static let kTapTolerance = CGFloat(2.5)
+    
+    static let centerSquare = GameConfiguration.squaresPerDim / 2
+    private static let validSquares = (0...(GameConfiguration.squaresPerDim - 1))
     
     struct BoardMetrics {
         let boardImageName: String
@@ -25,8 +29,6 @@ class BoardView: SKView {
     
     class StoneNode: SKSpriteNode {
     }
-    
-    private let validSquares = (0...(GameConfiguration.squaresPerDim - 1))
     
     static func boardMetrics() -> BoardMetrics {
         let size = UIScreen.main.bounds.size
@@ -51,7 +53,7 @@ class BoardView: SKView {
         if self.scene == nil {
             let board = SKScene(size: self.bounds.size)
             board.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            board.zPosition = kBoardZPosition
+            board.zPosition = BoardView.kBoardZPosition
         
             let metrics = BoardView.boardMetrics()
             
@@ -67,16 +69,16 @@ class BoardView: SKView {
         
         let metrics = BoardView.boardMetrics()
         
-        let column = Int(round(location.x / metrics.squareDim) + 7.0).clamped(to: validSquares)
-        let xFromColumn = CGFloat(column - 7) * metrics.squareDim
+        let column = (Int(round(location.x / metrics.squareDim)) + BoardView.centerSquare).clamped(to: BoardView.validSquares)
+        let xFromColumn = CGFloat(column - BoardView.centerSquare) * metrics.squareDim
         let xDiff = abs(location.x - xFromColumn)
         
-        if xDiff < metrics.squareDim / 2.5 {
-            let row = Int(round(7.0 - location.y / metrics.squareDim)).clamped(to: validSquares)
-            let yFromRow = CGFloat(7 - row) * metrics.squareDim
+        if xDiff < metrics.squareDim / BoardView.kTapTolerance {
+            let row = (BoardView.centerSquare - Int(round(location.y / metrics.squareDim))).clamped(to: BoardView.validSquares)
+            let yFromRow = CGFloat(BoardView.centerSquare - row) * metrics.squareDim
             let yDiff = abs(location.y - yFromRow)
 
-            if yDiff < metrics.squareDim / 2.5 {
+            if yDiff < metrics.squareDim / BoardView.kTapTolerance {
                 retVal = Board.indexFrom(row: row, column: column)
             }
         }
