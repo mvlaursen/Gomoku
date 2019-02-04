@@ -94,12 +94,21 @@ class BoardView: SKView {
         
         let metrics = BoardView.boardMetrics()
         
+        // Convert the location of the tap to a row and column on the board.
+        //
+        // However, only return the row and column if the tap is not ambiguous
+        // (i.e. the tap is halfway between two rows or two columns, or the tap
+        // is in the board's margin). To check for ambiguity, reverse engineer
+        // the x and y coordinates of the tap from the row and column, then
+        // test if the reverse-engineered x and y are close to the tap location
+        // that was passed in.
+        
         var column = Int(round(location.x / metrics.squareDim))
         column = column.clamped(to: BoardView.validSquares)
         let xFromColumn = CGFloat(column) * metrics.squareDim
         
         if xFromColumn.matches(location.x, within: metrics.squareDim / BoardView.kTapTolerance) {
-            var row = -Int(round(location.y / metrics.squareDim))
+            var row = Int(round(-location.y / metrics.squareDim))
             row = row.clamped(to: BoardView.validSquares)
             let yFromRow = CGFloat(-row) * metrics.squareDim
             
