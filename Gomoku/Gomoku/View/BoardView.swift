@@ -26,6 +26,8 @@ class BoardView: SKView {
     class StoneNode: SKSpriteNode {
     }
     
+    private let validSquares = (0...(GameConfiguration.squaresPerDim - 1))
+    
     static func boardMetrics() -> BoardMetrics {
         let size = UIScreen.main.bounds.size
         let width = min(size.width, size.height)
@@ -65,14 +67,12 @@ class BoardView: SKView {
         
         let metrics = BoardView.boardMetrics()
         
-        // TODO: Should define these constants based on GameConfiguration.squaresPerDim
-        
-        let column = Int(round(location.x / metrics.squareDim) + 7.0).clamped(to: 0...14)
-        let xFromColumn = CGFloat(column - 7) * metrics.squareDim //CGFloat(7 - row) * metrics.squareDim
+        let column = Int(round(location.x / metrics.squareDim) + 7.0).clamped(to: validSquares)
+        let xFromColumn = CGFloat(column - 7) * metrics.squareDim
         let xDiff = abs(location.x - xFromColumn)
         
         if xDiff < metrics.squareDim / 2.5 {
-            let row = Int(round(7.0 - location.y / metrics.squareDim)).clamped(to: 0...14)
+            let row = Int(round(7.0 - location.y / metrics.squareDim)).clamped(to: validSquares)
             let yFromRow = CGFloat(7 - row) * metrics.squareDim
             let yDiff = abs(location.y - yFromRow)
 
