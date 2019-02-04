@@ -32,13 +32,10 @@ class CreativeBoardView: BoardView {
                     if let board = boards.first {
                         if let moveIndex = moveIndex(for: touch.location(in: board)) {
                             let (row, column) = Board.rowAndColumnFrom(index: moveIndex)
-                            print("moveIndex: \(moveIndex)")
-                            print("    row: \(row), column: \(column)")
-                            
                             let metrics = BoardView.boardMetrics()
                             let stoneImageName = blackOrWhite ? metrics.blackImageName : metrics.whiteImageName
                             let stone = StoneNode(imageNamed: stoneImageName)
-                            stone.position = CGPoint(x: CGFloat(column - BoardView.centerSquare) * metrics.squareDim, y: CGFloat(BoardView.centerSquare - row) * metrics.squareDim)
+                            stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(14 - row) * metrics.squareDim)
                             stone.zPosition = BoardView.kStoneZPosition
                             board.addChild(stone)
                             blackOrWhite = !blackOrWhite
