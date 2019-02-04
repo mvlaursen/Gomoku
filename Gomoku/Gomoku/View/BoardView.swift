@@ -56,14 +56,31 @@ class BoardView: SKView {
     
     override func layoutSubviews() {
         if self.scene == nil {
+            let metrics = BoardView.boardMetrics()
             let scene = SKScene(size: self.bounds.size)
             
-            let metrics = BoardView.boardMetrics()
-
+            // To make conversion from the location of a tap in the scene's
+            // coordinate space to board row and column as straightforward as
+            // possible, align row 0, column 0 of the board image with the
+            // scene's origin. There is still the difference that the scene's
+            // y-axis points up while row numbers increase from top to bottom
+            // of the board, but aligning row 0 with y = 0 allows us to simply
+            // negate the value of y when converting.
+            
             let board = BoardNode(imageNamed: metrics.boardImageName)
-            board.anchorPoint = CGPoint(x: 0.0625, y: 0.9375)
-            board.position = CGPoint(x: (scene.size.width - board.size.width)/2.0 + metrics.squareDim, y:  (scene.size.height - board.size.height)/2.0 + 15.0 * metrics.squareDim)
+            
+            let squareDimInUnitSpace = 1.0 / CGFloat(GameConfiguration.squaresPerDim + 1)
+            board.anchorPoint = CGPoint(x: squareDimInUnitSpace, y: 1.0 - squareDimInUnitSpace)
+            
+            // If our collection of artwork is done correctly, the board images
+            // always fit within the available screen space.
+            assert(scene.size.width >= board.size.width)
+            assert(scene.size.height >= board.size.height)
+            let xMargin = (scene.size.width - board.size.width) / 2.0
+            let yMargin = (scene.size.height - board.size.height) / 2.0
+            board.position = CGPoint(x: xMargin + metrics.squareDim, y: yMargin + CGFloat(GameConfiguration.squaresPerDim) * metrics.squareDim)
             board.zPosition = BoardView.kBoardZPosition
+            
             scene.addChild(board)
             
             self.presentScene(scene)
