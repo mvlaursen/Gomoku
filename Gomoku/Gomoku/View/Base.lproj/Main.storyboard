@@ -26,51 +26,77 @@
                                 <color key="textColor" red="0.99942404029999998" green="0.89024413841459327" blue="0.068729332797804465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8We-XP-HeO">
-                                <rect key="frame" x="16" y="430" width="288" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ju1-81-ebS"/>
-                                </constraints>
-                                <state key="normal" title="Play">
-                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o9g-1O-RJs"/>
-                                </connections>
-                            </button>
                             <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPS-sa-eZa" customClass="CreativeBoardView" customModule="Gomoku" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="80" width="320" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LPS-sa-eZa" secondAttribute="height" multiplier="1:1" id="VuC-ZB-N10"/>
                                 </constraints>
                             </skView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="firstBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-hi-4CG" userLabel="Buttons">
+                                <rect key="frame" x="16" y="430" width="288" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8We-XP-HeO">
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="30"/>
+                                        <state key="normal" title="Play">
+                                            <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o9g-1O-RJs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbc-Gb-x3M" userLabel="Undo">
+                                        <rect key="frame" x="96" y="0.0" width="96" height="30"/>
+                                        <state key="normal" title="Undo">
+                                            <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="omS-wG-glB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rm6-W5-U5c" userLabel="Quit">
+                                        <rect key="frame" x="192" y="0.0" width="96" height="30"/>
+                                        <state key="normal" title="Quit">
+                                            <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="quit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vIM-Lj-9Or"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="NwU-Gf-Twh"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000000000002" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="LPS-sa-eZa" firstAttribute="width" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="width" id="1Fj-c4-sHq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8We-XP-HeO" secondAttribute="trailing" constant="16" id="1hf-hG-5ZW"/>
                             <constraint firstItem="hKz-e4-a8N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Iq4-hl-eeY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2ea-hi-4CG" secondAttribute="trailing" constant="16" id="KY9-ae-Al8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2ea-hi-4CG" secondAttribute="bottom" constant="20" id="Lga-0h-5gC"/>
                             <constraint firstItem="LPS-sa-eZa" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" priority="750" id="M2g-dN-Ug5"/>
                             <constraint firstItem="LPS-sa-eZa" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" priority="750" id="NlJ-ej-DTQ"/>
-                            <constraint firstItem="8We-XP-HeO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="WH1-wn-mdq"/>
+                            <constraint firstItem="2ea-hi-4CG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Vjr-EB-WjH"/>
                             <constraint firstItem="LPS-sa-eZa" firstAttribute="height" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="height" id="YUY-l4-5eo"/>
+                            <constraint firstItem="2ea-hi-4CG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LPS-sa-eZa" secondAttribute="top" id="ZsK-az-ZVF"/>
                             <constraint firstItem="hKz-e4-a8N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="afd-vC-P9P"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hKz-e4-a8N" secondAttribute="trailing" constant="16" id="bmh-qX-fLN"/>
                             <constraint firstItem="LPS-sa-eZa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hRg-nX-Pl8"/>
                             <constraint firstItem="LPS-sa-eZa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hKz-e4-a8N" secondAttribute="bottom" constant="8" symbolic="YES" id="ngD-zL-x2p"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8We-XP-HeO" secondAttribute="bottom" constant="20" id="o4y-S0-YnN"/>
-                            <constraint firstItem="8We-XP-HeO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LPS-sa-eZa" secondAttribute="bottom" constant="8" symbolic="YES" id="vpy-jV-9nN"/>
                             <constraint firstItem="LPS-sa-eZa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y1W-re-kCX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="buttons" destination="2ea-hi-4CG" id="k7b-Ss-C74"/>
                         <outlet property="playButton" destination="8We-XP-HeO" id="9gB-rs-IPq"/>
+                        <outlet property="quitButton" destination="rm6-W5-U5c" id="Vyc-wd-khZ"/>
+                        <outlet property="undoButton" destination="sbc-Gb-x3M" id="K2R-LN-o03"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="131.78410794602701"/>
+            <point key="canvasLocation" x="133.125" y="131.25"/>
         </scene>
     </scenes>
 </document>
