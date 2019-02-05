@@ -17,7 +17,6 @@ import UIKit
  * doesn't even interact with the game model.
  */
 class CreativeBoardView: BoardView {
-    private var blackOrWhite: Bool = true
     private var board = Board()
     
     override func play(completion: @escaping () -> ()) {
@@ -52,12 +51,11 @@ class CreativeBoardView: BoardView {
                             if let move = board.mostRecentMove {
                                 let (row, column) = Board.rowAndColumnFrom(index: move.index)
                                 let metrics = BoardView.boardMetrics()
-                                let stoneImageName = blackOrWhite ? metrics.blackImageName : metrics.whiteImageName
+                                let stoneImageName = move.mover == .black ? metrics.blackImageName : metrics.whiteImageName
                                 let stone = StoneNode(imageNamed: stoneImageName)
                                 stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(-row) * metrics.squareDim)
                                 stone.zPosition = BoardView.kStoneZPosition
                                 boardNode.addChild(stone)
-                                blackOrWhite = !blackOrWhite
                             }
                         }
                     }
