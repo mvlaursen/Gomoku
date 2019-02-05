@@ -22,9 +22,10 @@ class CreativeBoardView: BoardView {
     private var board = Board()
     
     override func play(completion: @escaping () -> ()) {
+        board = Board()
+        
         Timer.scheduledTimer(withTimeInterval: CreativeBoardView.kTimeInterval, repeats: true) { timer in
             let gameOver = self.board.availableMoveIndices.isEmpty
-            self.setNeedsDisplay()
             if gameOver {
                 timer.invalidate()
                 completion()
