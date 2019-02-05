@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         
         let boardViews = self.view.subviews.filter { $0 is BoardView }
         precondition(boardViews.count == 1)
-        let boardView = boardViews[0] as! BoardView
+        let boardView = boardViews[0] as! CreativeBoardView
         boardView.play {
             self.setButtons(showPlayButton: true)
         }

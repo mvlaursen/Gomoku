@@ -17,17 +17,19 @@ import UIKit
  * doesn't even interact with the game model.
  */
 class CreativeBoardView: BoardView {
+    private static let kTimeInterval = 0.5
+
     private var board = Board()
     
     override func play(completion: @escaping () -> ()) {
-//        Timer.scheduledTimer(withTimeInterval: TestBoardView.timePerPlay, repeats: true) { timer in
-//            let gameOver = self.board.availableMoveIndices.isEmpty
-//            self.setNeedsDisplay()
-//            if gameOver {
-//                timer.invalidate()
-//                completion()
-//            }
-//        }
+        Timer.scheduledTimer(withTimeInterval: CreativeBoardView.kTimeInterval, repeats: true) { timer in
+            let gameOver = self.board.availableMoveIndices.isEmpty
+            self.setNeedsDisplay()
+            if gameOver {
+                timer.invalidate()
+                completion()
+            }
+        }
     }
 
     // MARK: Gesture Handling

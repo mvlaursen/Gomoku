@@ -9,7 +9,7 @@
 import UIKit
 
 class TestBoardView: UIView {
-    static let timePerPlay = 0.5
+    private static let timePerPlay = 0.5
     
     var game = Game()
     
