@@ -18,7 +18,19 @@ import UIKit
  */
 class CreativeBoardView: BoardView {
     private var blackOrWhite: Bool = true
+    private var board = Board()
     
+    override func play(completion: @escaping () -> ()) {
+//        Timer.scheduledTimer(withTimeInterval: TestBoardView.timePerPlay, repeats: true) { timer in
+//            let gameOver = self.board.availableMoveIndices.isEmpty
+//            self.setNeedsDisplay()
+//            if gameOver {
+//                timer.invalidate()
+//                completion()
+//            }
+//        }
+    }
+
     // MARK: Gesture Handling
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,19 +43,22 @@ class CreativeBoardView: BoardView {
             assert(stones.count <= 1)
             
             if stones.isEmpty {
-                let boards = nodes.filter { $0.isKind(of: BoardView.BoardNode.self) }
-                assert(boards.count <= 1)
-                if boards.count > 0 {
-                    if let board = boards.first {
-                        if let moveIndex = moveIndex(for: touch.location(in: board)) {
-                            let (row, column) = Board.rowAndColumnFrom(index: moveIndex)
-                            let metrics = BoardView.boardMetrics()
-                            let stoneImageName = blackOrWhite ? metrics.blackImageName : metrics.whiteImageName
-                            let stone = StoneNode(imageNamed: stoneImageName)
-                            stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(-row) * metrics.squareDim)
-                            stone.zPosition = BoardView.kStoneZPosition
-                            board.addChild(stone)
-                            blackOrWhite = !blackOrWhite
+                let boardNodes = nodes.filter { $0.isKind(of: BoardView.BoardNode.self) }
+                assert(boardNodes.count <= 1)
+                if boardNodes.count > 0 {
+                    if let boardNode = boardNodes.first {
+                        if let moveIndex = moveIndex(for: touch.location(in: boardNode)) {
+                            board = Board(board: board, index: moveIndex)
+                            if let move = board.mostRecentMove {
+                                let (row, column) = Board.rowAndColumnFrom(index: move.index)
+                                let metrics = BoardView.boardMetrics()
+                                let stoneImageName = blackOrWhite ? metrics.blackImageName : metrics.whiteImageName
+                                let stone = StoneNode(imageNamed: stoneImageName)
+                                stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(-row) * metrics.squareDim)
+                                stone.zPosition = BoardView.kStoneZPosition
+                                boardNode.addChild(stone)
+                                blackOrWhite = !blackOrWhite
+                            }
                         }
                     }
                 }

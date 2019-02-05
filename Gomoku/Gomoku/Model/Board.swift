@@ -67,8 +67,8 @@ struct Board {
     }
     
     init(board other: Board, index: Int) {
-        precondition(index > 0 && index < other.squares.count)
-        
+        precondition(index >= 0 && index < Board.squaresCount)
+
         var mover = Player.black
         if let mostRecentMove = other.mostRecentMove {
             mover = mostRecentMove.mover == Player.black ? Player.white : Player.black
