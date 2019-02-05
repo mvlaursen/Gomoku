@@ -74,8 +74,6 @@ class BoardView: SKView {
             
             // If our collection of artwork is done correctly, the board images
             // always fit within the available screen space.
-            assert(scene.size.width >= board.size.width)
-            assert(scene.size.height >= board.size.height)
             let xMargin = (scene.size.width - board.size.width) / 2.0
             let yMargin = (scene.size.height - board.size.height) / 2.0
             board.position = CGPoint(x: xMargin + metrics.squareDim, y: yMargin + CGFloat(GameConfiguration.squaresPerDim) * metrics.squareDim)
