@@ -17,7 +17,7 @@ import UIKit
  * doesn't even interact with the game model.
  */
 class CreativeBoardView: BoardView {
-    private static let kTimeInterval = 0.5
+    private static let kTimeInterval = 0.2
 
     private var board = Board()
     
@@ -25,12 +25,40 @@ class CreativeBoardView: BoardView {
         board = Board()
         
         Timer.scheduledTimer(withTimeInterval: CreativeBoardView.kTimeInterval, repeats: true) { timer in
-            let gameOver = self.board.availableMoveIndices.isEmpty
-            if gameOver {
+            self.updateBoard()
+            if self.board.availableMoveIndices.isEmpty {
                 timer.invalidate()
                 completion()
             }
         }
+    }
+    
+    private func updateBoard() {
+        if let scene = self.scene {
+            let boardNodes = scene.children.filter { $0.isKind(of: BoardNode.self) }
+            assert(boardNodes.count <= 1)
+            if boardNodes.count > 0 {
+                if let boardNode = boardNodes.first {
+                    boardNode.removeAllChildren()
+                    
+                    for row in 0..<GameConfiguration.squaresPerDim {
+                        for column in 0..<GameConfiguration.squaresPerDim {
+                            let square = board.squares[Board.indexFrom(row: row, column: column)]
+                            if square == .black || square == .white {
+                                let metrics = BoardView.boardMetrics()
+                                let stoneImageName = square == .black ? metrics.blackImageName : metrics.whiteImageName
+                                let stone = StoneNode(imageNamed: stoneImageName)
+                                stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(-row) * metrics.squareDim)
+                                stone.zPosition = BoardView.kStoneZPosition
+                                boardNode.addChild(stone)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+
     }
 
     // MARK: Gesture Handling
@@ -51,15 +79,6 @@ class CreativeBoardView: BoardView {
                     if let boardNode = boardNodes.first {
                         if let moveIndex = moveIndex(for: touch.location(in: boardNode)) {
                             board = Board(board: board, index: moveIndex)
-                            if let move = board.mostRecentMove {
-                                let (row, column) = Board.rowAndColumnFrom(index: move.index)
-                                let metrics = BoardView.boardMetrics()
-                                let stoneImageName = move.mover == .black ? metrics.blackImageName : metrics.whiteImageName
-                                let stone = StoneNode(imageNamed: stoneImageName)
-                                stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(-row) * metrics.squareDim)
-                                stone.zPosition = BoardView.kStoneZPosition
-                                boardNode.addChild(stone)
-                            }
                         }
                     }
                 }
