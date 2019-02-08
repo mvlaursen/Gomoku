@@ -19,7 +19,7 @@ import UIKit
 class CreativeBoardView: BoardView {
     private static let kTimeInterval = 0.1
 
-    private var previousBoard = Board()
+    private var previousBoard: Board? = nil
     private var board = Board()
     
     override func play(completion: @escaping () -> ()) {
@@ -36,8 +36,10 @@ class CreativeBoardView: BoardView {
     }
     
     override func undo() {
-        board = previousBoard;
-        previousBoard = Board()
+        if let previous = previousBoard {
+            board = previous;
+            previousBoard = nil
+        }
     }
     
     private func updateBoard() {

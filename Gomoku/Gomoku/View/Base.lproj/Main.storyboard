@@ -55,7 +55,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rm6-W5-U5c" userLabel="Quit">
                                         <rect key="frame" x="192" y="0.0" width="96" height="30"/>
-                                        <state key="normal" title="Quit">
+                                        <state key="normal" title="New Game">
                                             <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
