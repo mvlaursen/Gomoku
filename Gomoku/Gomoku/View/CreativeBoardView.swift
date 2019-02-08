@@ -17,7 +17,7 @@ import UIKit
  * doesn't even interact with the game model.
  */
 class CreativeBoardView: BoardView {
-    private static let kTimeInterval = 0.2
+    private static let kTimeInterval = 0.1
 
     private var board = Board()
     
@@ -28,6 +28,7 @@ class CreativeBoardView: BoardView {
             self.updateBoard()
             if self.board.availableMoveIndices.isEmpty {
                 timer.invalidate()
+                self.updateBoard()
                 completion()
             }
         }
