@@ -12,7 +12,7 @@ extension Board {
     /**
      Board initializer for setting up test scenarios.
      
-     - Parameters:
+     - parameters:
        - moves: This list of Moves is applied to a board that starts out with
            `.empty` squares in the playable area, `.outofbounds` squares in the
            padding areas.

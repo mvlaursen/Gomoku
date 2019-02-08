@@ -43,7 +43,7 @@ class CreativeBoardView: BoardView {
                     
                     for row in 0..<GameConfiguration.squaresPerDim {
                         for column in 0..<GameConfiguration.squaresPerDim {
-                            let square = board.squares[Board.indexFrom(row: row, column: column)]
+                            let square = board.squares[Board.indexFromVisible(row: row, column: column)]
                             if square == .black || square == .white {
                                 let metrics = BoardView.boardMetrics()
                                 let stoneImageName = square == .black ? metrics.blackImageName : metrics.whiteImageName

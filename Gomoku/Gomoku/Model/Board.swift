@@ -34,6 +34,13 @@ struct Board {
     // check for winning runs, etc.
     let squares: [Square]
     
+    /**
+     * - parameters:
+     *   - row, column: The row and column should be in padded board
+     *       dimensions.
+     * - returns:
+     *       The one-dimensional index, in padded board dimensions.
+     */
     static func indexFrom(row: Int, column: Int) -> Int {
         precondition(row >= 0 && row < Board.paddedSquaresPerDim)
         precondition(column >= 0 && column < Board.paddedSquaresPerDim)
@@ -41,6 +48,27 @@ struct Board {
         return row * Board.paddedSquaresPerDim + column
     }
     
+    /**
+     * - parameters:
+     *   - row, column: The row and column should be in the visible, unpadded
+     *       board dimensions.
+     * - returns:
+     *       The one-dimensional index, in padded board dimensions.
+     */
+    static func indexFromVisible(row: Int, column: Int) -> Int {
+        precondition(row >= 0 && row < Board.paddedSquaresPerDim)
+        precondition(column >= 0 && column < Board.paddedSquaresPerDim)
+        
+        return (lowerBound + row) * Board.paddedSquaresPerDim + (lowerBound + column)
+    }
+
+    /**
+     * - parameters:
+     *   - index: The one-dimensional index, in padded board dimensions.
+     * - returns:
+     *       A tuple containing the row and column, in the padded board
+     *       dimensions.
+     */
     static func rowAndColumnFrom(index: Int) -> (row: Int, column: Int) {
         precondition(index >= 0 && index < Board.squaresCount)
         let row = index / Board.paddedSquaresPerDim

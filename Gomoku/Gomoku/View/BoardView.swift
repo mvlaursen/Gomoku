@@ -116,7 +116,7 @@ class BoardView: SKView {
             if yFromRow.matches(location.y, within: metrics.squareDim / BoardView.kTapTolerance) {
                 print("    x, y: \(xFromColumn), \(yFromRow)")
                 print("    row, column: \(row), \(column)")
-                retVal = Board.indexFrom(row: row, column: column)
+                retVal = Board.indexFromVisible(row: row, column: column)
             }
         }
 
