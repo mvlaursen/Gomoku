@@ -33,6 +33,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func quit(_ sender: Any) {
+        let boardViews = self.view.subviews.filter { $0 is BoardView }
+        precondition(boardViews.count == 1)
+        let boardView = boardViews[0] as! CreativeBoardView
+        boardView.quit()
+
         setButtons(showPlayButton: true)
     }
     

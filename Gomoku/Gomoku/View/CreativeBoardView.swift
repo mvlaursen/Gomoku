@@ -22,9 +22,7 @@ class CreativeBoardView: BoardView {
     private var previousBoard: Board? = nil
     private var board = Board()
     
-    override func play(completion: @escaping () -> ()) {
-        board = Board()
-        
+    override func play(completion: @escaping () -> ()) {        
         Timer.scheduledTimer(withTimeInterval: CreativeBoardView.kTimeInterval, repeats: true) { timer in
             self.updateBoard()
             if self.board.availableMoveIndices.isEmpty {
@@ -33,6 +31,11 @@ class CreativeBoardView: BoardView {
                 completion()
             }
         }
+    }
+    
+    override func quit() {
+        previousBoard = nil
+        board = Board()
     }
     
     override func undo() {

@@ -127,6 +127,9 @@ class BoardView: SKView {
         //completion()
     }
     
+    func quit() {
+    }
+
     func undo() {
     }
 }
