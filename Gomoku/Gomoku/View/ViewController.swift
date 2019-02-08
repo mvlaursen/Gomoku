@@ -37,6 +37,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func undo(_ sender: Any) {
+        let boardViews = self.view.subviews.filter { $0 is BoardView }
+        precondition(boardViews.count == 1)
+        let boardView = boardViews[0] as! CreativeBoardView
+        boardView.undo()
     }
 
     private func setButtons(showPlayButton: Bool) {

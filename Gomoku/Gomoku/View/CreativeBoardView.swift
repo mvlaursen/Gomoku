@@ -19,6 +19,7 @@ import UIKit
 class CreativeBoardView: BoardView {
     private static let kTimeInterval = 0.1
 
+    private var previousBoard = Board()
     private var board = Board()
     
     override func play(completion: @escaping () -> ()) {
@@ -32,6 +33,11 @@ class CreativeBoardView: BoardView {
                 completion()
             }
         }
+    }
+    
+    override func undo() {
+        board = previousBoard;
+        previousBoard = Board()
     }
     
     private func updateBoard() {
@@ -79,6 +85,7 @@ class CreativeBoardView: BoardView {
                 if boardNodes.count > 0 {
                     if let boardNode = boardNodes.first {
                         if let moveIndex = moveIndex(for: touch.location(in: boardNode)) {
+                            previousBoard = board
                             board = Board(board: board, index: moveIndex)
                         }
                     }

@@ -126,4 +126,7 @@ class BoardView: SKView {
     func play(completion: @escaping () -> ()) {
         //completion()
     }
+    
+    func undo() {
+    }
 }
