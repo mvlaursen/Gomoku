@@ -46,7 +46,7 @@ class BoardView: SKView {
         } else if width.isEqual(to: 414.0) {
             return BoardMetrics(boardImageName: "GomokuBoard400", squareDim: 25.0, blackImageName: "BlackStone23", whiteImageName: "WhiteStone23")
         } else if width.isEqual(to: 1024.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard1024", squareDim: 64.0, blackImageName: "BlackStone60", whiteImageName: "WhiteStone60")
+            return BoardMetrics(boardImageName: "GomokuBoard1024", squareDim: 64.0, blackImageName: "BlackStoneNate60", whiteImageName: "WhiteStoneNate60")
         } else if width.isEqual(to: 834.0) {
             return BoardMetrics(boardImageName: "GomokuBoard768", squareDim: 48.0, blackImageName: "BlackStone45", whiteImageName: "WhiteStone45")
         } else {

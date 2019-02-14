@@ -10,11 +10,11 @@
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Mode</string>
+			<string>Play Mode</string>
 			<key>Key</key>
 			<string>kAppMode</string>
 			<key>DefaultValue</key>
-			<string>Human vs. Computer</string>
+			<string>kAppModeNormal</string>
 			<key>Titles</key>
 			<array>
 				<string>Human vs. Computer</string>
@@ -26,6 +26,26 @@
 				<string>kAppModeNormal</string>
 				<string>kAppModeDemo</string>
 				<string>kAppModeCreative</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Skin</string>
+			<key>Key</key>
+			<string>kAppUISkin</string>
+			<key>DefaultValue</key>
+			<string>kAppUISkinNormal</string>
+			<key>Titles</key>
+			<array>
+				<string>Normal</string>
+				<string>Hand-Drawn Look</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>kAppUISkinNormal</string>
+				<string>kAppUISkinHandDrawn</string>
 			</array>
 		</dict>
 	</array>
