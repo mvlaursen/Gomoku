@@ -58,7 +58,6 @@ class CreativeBoardView: BoardView {
                             let square = board.squares[Board.indexFromVisible(row: row, column: column)]
                             if square == .black || square == .white {
                                 let metrics = BoardView.boardMetrics()
-                                // TODO: Replace with listening for notification of preference change.
                                 let skin = UserDefaults.standard.string(forKey: BoardView.kAppUISkin) ?? BoardView.kAppUISkinNormal
                                 let stoneImageName = square == .black ? metrics.blackImageName[skin] : metrics.whiteImageName[skin]
                                 assert(stoneImageName != nil)
