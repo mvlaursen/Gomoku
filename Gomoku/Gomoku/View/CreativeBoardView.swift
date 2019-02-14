@@ -60,13 +60,15 @@ class CreativeBoardView: BoardView {
                                 let metrics = BoardView.boardMetrics()
                                 // TODO: Replace with listening for notification of preference change.
                                 let skin = UserDefaults.standard.string(forKey: BoardView.kAppUISkin) ?? BoardView.kAppUISkinNormal
-                                // TODO: This should be an assert or something, not an if.
-                                if let stoneImageName = square == .black ? metrics.blackImageName[skin] : metrics.whiteImageName[skin] {
-                                    let stone = StoneNode(imageNamed: stoneImageName)
-                                    stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(-row) * metrics.squareDim)
-                                    stone.zPosition = BoardView.kStoneZPosition
-                                    boardNode.addChild(stone)
+                                let stoneImageName = square == .black ? metrics.blackImageName[skin] : metrics.whiteImageName[skin]
+                                assert(stoneImageName != nil)
+                                guard stoneImageName != nil else {
+                                    return
                                 }
+                                let stone = StoneNode(imageNamed: stoneImageName!)
+                                stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(-row) * metrics.squareDim)
+                                stone.zPosition = BoardView.kStoneZPosition
+                                boardNode.addChild(stone)
                             }
                         }
                     }
