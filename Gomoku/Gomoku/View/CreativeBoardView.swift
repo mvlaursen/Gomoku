@@ -19,8 +19,6 @@ import UIKit
 class CreativeBoardView: BoardView {
     private static let kTimeInterval = 0.1
 
-    private var previousBoard: Board? = nil
-    private var board = Board()
     
     override func play(completion: @escaping () -> ()) {        
         Timer.scheduledTimer(withTimeInterval: CreativeBoardView.kTimeInterval, repeats: true) { timer in
@@ -45,39 +43,6 @@ class CreativeBoardView: BoardView {
         }
     }
     
-    private func updateBoard() {
-        if let scene = self.scene {
-            let boardNodes = scene.children.filter { $0.isKind(of: BoardNode.self) }
-            assert(boardNodes.count <= 1)
-            if boardNodes.count > 0 {
-                if let boardNode = boardNodes.first {
-                    boardNode.removeAllChildren()
-                    
-                    for row in 0..<GameConfiguration.squaresPerDim {
-                        for column in 0..<GameConfiguration.squaresPerDim {
-                            let square = board.squares[Board.indexFromVisible(row: row, column: column)]
-                            if square == .black || square == .white {
-                                let metrics = BoardView.boardMetrics()
-                                let skin = UserDefaults.standard.string(forKey: BoardView.kAppUISkin) ?? BoardView.kAppUISkinNormal
-                                let stoneImageName = square == .black ? metrics.blackImageName[skin] : metrics.whiteImageName[skin]
-                                assert(stoneImageName != nil)
-                                guard stoneImageName != nil else {
-                                    return
-                                }
-                                let stone = StoneNode(imageNamed: stoneImageName!)
-                                stone.position = CGPoint(x: CGFloat(column) * metrics.squareDim, y: CGFloat(-row) * metrics.squareDim)
-                                stone.zPosition = BoardView.kStoneZPosition
-                                boardNode.addChild(stone)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-
-    }
-
     // MARK: Gesture Handling
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
