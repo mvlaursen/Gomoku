@@ -24,8 +24,11 @@ class BoardView: SKView {
     static let kAppUISkinNormal = "kAppUISkinNormal"
     static let kAppUISkinHandDrawn = "kAppUISkinHandDrawn"
     
+    private static let kBoardUpdateInterval = 0.1
+
     var previousBoard: Board? = nil
     var board = Board()
+    var boardUpdateTimer: Timer? = nil
 
     private static let validSquares = (0...(GameConfiguration.squaresPerDim - 1))
     
@@ -142,6 +145,24 @@ class BoardView: SKView {
         return retVal
     }
     
+    func startUpdatingBoard() {
+        assert(boardUpdateTimer == nil)
+        if boardUpdateTimer != nil {
+            boardUpdateTimer?.invalidate()
+            boardUpdateTimer = nil
+        }
+        
+        boardUpdateTimer = Timer.scheduledTimer(withTimeInterval: BoardView.kBoardUpdateInterval, repeats: true, block: { (timer) in
+            self.updateBoard()
+        })
+    }
+    
+    func stopUpdatingBoard() {
+        boardUpdateTimer?.invalidate()
+        self.updateBoard()
+        boardUpdateTimer = nil
+    }
+    
     func updateBoard() {
         if let scene = self.scene {
             let boardNodes = scene.children.filter { $0.isKind(of: BoardNode.self) }
@@ -171,8 +192,6 @@ class BoardView: SKView {
                 }
             }
         }
-        
-        
     }
     
     func play(completion: @escaping () -> ()) {

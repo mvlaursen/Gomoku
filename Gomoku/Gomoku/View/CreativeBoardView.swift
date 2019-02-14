@@ -22,10 +22,8 @@ class CreativeBoardView: BoardView {
     
     override func play(completion: @escaping () -> ()) {        
         Timer.scheduledTimer(withTimeInterval: CreativeBoardView.kTimeInterval, repeats: true) { timer in
-            self.updateBoard()
             if self.board.availableMoveIndices.isEmpty {
                 timer.invalidate()
-                self.updateBoard()
                 completion()
             }
         }
