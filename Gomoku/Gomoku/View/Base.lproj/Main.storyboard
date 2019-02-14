@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gomoku" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKz-e4-a8N">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gomoku" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hKz-e4-a8N">
                                 <rect key="frame" x="16" y="20" width="288" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="eBi-DN-L41"/>
@@ -91,6 +91,7 @@
                         <outlet property="buttons" destination="2ea-hi-4CG" id="k7b-Ss-C74"/>
                         <outlet property="playButton" destination="8We-XP-HeO" id="9gB-rs-IPq"/>
                         <outlet property="quitButton" destination="rm6-W5-U5c" id="Vyc-wd-khZ"/>
+                        <outlet property="titleLabel" destination="hKz-e4-a8N" id="Fyw-ME-iOl"/>
                         <outlet property="undoButton" destination="sbc-Gb-x3M" id="K2R-LN-o03"/>
                     </connections>
                 </viewController>
