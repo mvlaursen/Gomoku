@@ -20,13 +20,17 @@ class BoardView: SKView {
     static let kStoneZPosition = CGFloat(200.0)
     static let kTapTolerance = CGFloat(2.5)
     
+    static let kAppUISkin = "kAppUISkin"
+    static let kAppUISkinNormal = "kAppUISkinNormal"
+    static let kAppUISkinHandDrawn = "kAppUISkinHandDrawn"
+    
     private static let validSquares = (0...(GameConfiguration.squaresPerDim - 1))
     
     struct BoardMetrics {
         let boardImageName: String
         let squareDim: CGFloat
-        let blackImageName: String
-        let whiteImageName: String
+        let blackImageName: Dictionary<String, String>
+        let whiteImageName: Dictionary<String, String>
     }
     
     class BoardNode: SKSpriteNode {
@@ -40,17 +44,29 @@ class BoardView: SKView {
         let width = min(size.width, size.height)
         
         if width.isEqual(to: 375.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard368", squareDim: 23.0, blackImageName: "BlackStone21", whiteImageName: "WhiteStone21")
+            return BoardMetrics(boardImageName: "GomokuBoard368", squareDim: 23.0,
+                blackImageName: [kAppUISkinNormal: "BlackStone21", kAppUISkinHandDrawn: "BlackStoneNate21"],
+                whiteImageName: [kAppUISkinNormal: "WhiteStone21", kAppUISkinHandDrawn: "WhiteStoneNate21"])
         } else if width.isEqual(to: 768.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard768", squareDim: 48.0, blackImageName: "BlackStone45", whiteImageName: "WhiteStone45")
+            return BoardMetrics(boardImageName: "GomokuBoard768", squareDim: 48.0,
+                blackImageName: [kAppUISkinNormal: "BlackStone45", kAppUISkinHandDrawn: "BlackStoneNate45"],
+                whiteImageName: [kAppUISkinNormal: "WhiteStone45", kAppUISkinHandDrawn: "WhiteStoneName45"])
         } else if width.isEqual(to: 414.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard400", squareDim: 25.0, blackImageName: "BlackStone23", whiteImageName: "WhiteStone23")
+            return BoardMetrics(boardImageName: "GomokuBoard400", squareDim: 25.0,
+                blackImageName: [kAppUISkinNormal: "BlackStone23", kAppUISkinHandDrawn: "BlackStoneNate23"],
+                whiteImageName: [kAppUISkinNormal: "WhiteStone23", kAppUISkinHandDrawn: "WhiteStoneNate23"])
         } else if width.isEqual(to: 1024.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard1024", squareDim: 64.0, blackImageName: "BlackStoneNate60", whiteImageName: "WhiteStoneNate60")
+            return BoardMetrics(boardImageName: "GomokuBoard1024", squareDim: 64.0,
+                blackImageName: [kAppUISkinNormal: "BlackStone60", kAppUISkinHandDrawn: "BlackStoneNate60"],
+                whiteImageName: [kAppUISkinNormal: "WhiteStone60", kAppUISkinHandDrawn: "WhiteStoneNate60"])
         } else if width.isEqual(to: 834.0) {
-            return BoardMetrics(boardImageName: "GomokuBoard768", squareDim: 48.0, blackImageName: "BlackStone45", whiteImageName: "WhiteStone45")
+            return BoardMetrics(boardImageName: "GomokuBoard768", squareDim: 48.0,
+                blackImageName: [kAppUISkinNormal: "BlackStone45", kAppUISkinHandDrawn: "BlackStoneNate45"],
+                whiteImageName: [kAppUISkinNormal: "WhiteStone45", kAppUISkinHandDrawn: "WhiteStoneNate45"])
         } else {
-            return BoardMetrics(boardImageName: "GomokuBoard320", squareDim: 20.0, blackImageName: "BlackStone18", whiteImageName: "WhiteStone18")
+            return BoardMetrics(boardImageName: "GomokuBoard320", squareDim: 20.0,
+                blackImageName: [kAppUISkinNormal: "BlackStone18", kAppUISkinHandDrawn: "BlackStoneNate18"],
+                whiteImageName: [kAppUISkinNormal: "WhiteStone18", kAppUISkinHandDrawn: "WhiteStoneNate18"])
         }
     }
     
